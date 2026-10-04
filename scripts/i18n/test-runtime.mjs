@@ -71,6 +71,38 @@ assert.equal(i18n.translateKey("launcher.testing.fallback"), "English fallback",
 assert.equal(i18n.translate("This workshop item is already installed at:\nZ:\\mods\\map\n\nRemove it first if you want to reinstall."),
   "Cet élément de l’Atelier est déjà installé ici :\nZ:\\mods\\map\n\nSupprimez-le d’abord si vous souhaitez le réinstaller.");
 assert.equal(i18n.translateKey("launcher.language.help").includes("Windows"), true, "French accents/apostrophes should survive UTF-8 decoding");
+assert.equal(i18n.translate("Page 2 / 7"), "Page 2 sur 7", "dynamic page counters should come from the locale catalog");
+assert.equal(i18n.translate("3 items"), "3 éléments", "pluralized launcher counts should use catalog forms");
+assert.equal(i18n.translate("Workshop ID: 311210"), "ID de l’Atelier : 311210");
+assert.equal(i18n.translate("Starting download for Kino..."), "Téléchargement de Kino…");
+assert.equal(i18n.translate("Starting download: Kino (attempt 2)"),
+  "Démarrage du téléchargement : Kino (tentative 2)");
+assert.equal(i18n.translate("Downloading Kino..."), "Téléchargement de Kino…");
+assert.equal(i18n.translate("Waiting for SteamCMD... (attempt 2)"),
+  "En attente de SteamCMD… (tentative 2)");
+assert.equal(i18n.translate("Updating SteamCMD... (attempt 2)"),
+  "Mise à jour de SteamCMD… (tentative 2)");
+assert.equal(i18n.translate("Verifying (Campaign Multiplayer)..."),
+  "Vérification (Campagne Multijoueur)…");
+assert.equal(i18n.translate("Mode: Campaign Multiplayer"), "Mode : Campagne Multijoueur");
+assert.equal(i18n.translate("Loading manifest..."), "Chargement du manifeste…");
+assert.equal(i18n.translate("Removing mod..."), "Suppression du mod…");
+assert.equal(i18n.translate("1 file with issues:"), "1 fichier avec des problèmes :");
+assert.equal(i18n.translate("4 files with issues:"), "4 fichiers avec des problèmes :");
+assert.equal(i18n.translate("verification.json not found in Z:\\BO3\\verification.json"),
+  "verification.json est introuvable dans Z:\\BO3\\verification.json");
+assert.equal(i18n.translate("All: Verified 3 files: 3 OK - all good!"),
+  "Tous : 3 fichiers vérifiés : 3 OK — tout est correct !");
+assert.equal(i18n.translate("Campaign: Verified 10 files: 8 OK | ERRORS: 1 missing 1 wrong size | Optional (DLC): 1 corrupt | Base Game: 1 missing ; MP DLC: 1 corrupt"),
+  "Campagne : 10 fichiers vérifiés : 8 OK | ERREURS : 1 fichier manquant, 1 fichier de taille incorrecte | Contenu facultatif (DLC) : 1 fichier corrompu | Jeu de base : 1 fichier manquant ; DLC multijoueur : 1 fichier corrompu");
+assert.equal(i18n.translate("This workshop item is already installed at:\nZ:\\mods\\map\n\nRemove it first if you want to reinstall."),
+  "Cet élément de l’Atelier est déjà installé ici :\nZ:\\mods\\map\n\nSupprimez-le d’abord si vous souhaitez le réinstaller.");
+assert.equal(i18n.translate("SteamCMD did not download to the expected path.\nChecked: Z:\\steamcmd\\content\n    and: Z:\\content"),
+  "SteamCMD n’a pas téléchargé les fichiers dans le dossier attendu.\nVérifié : Z:\\steamcmd\\content\n    et : Z:\\content");
+assert.equal(i18n.translate("Only 500 MB remaining. Free up disk space and try again."),
+  "Il ne reste que 500 MB. Libérez de l’espace disque et réessayez.");
+assert.equal(i18n.translate("All files verified — no changes detected."),
+  "Tous les fichiers sont vérifiés : aucune modification détectée.");
 assert.equal(i18n.normalizeLocale("xx-ZZ"), "en-US", "unknown locale should use source locale");
 assert.equal(i18n.setLanguage("xx-ZZ"), "en-US");
 assert.equal(i18n.translateKey("launcher.testing.greeting", { name: "Mike" }), "Hello, Mike");

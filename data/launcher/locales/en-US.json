@@ -8,30 +8,30 @@
   "launcher": {
     "legacy": {
       "home": {
-        "3a786953": "Home"
+        "text": "Home"
       },
       "workshop": {
-        "c0086f23": "Workshop",
+        "text": "Workshop",
         "ready": {
-          "f4bd6678": "Workshop ready"
+          "text": "Workshop ready"
         },
         "on": {
           "wine": {
-            "4d2352db": "Workshop on Wine"
+            "text": "Workshop on Wine"
           }
         },
         "browsing": {
           "is": {
             "not": {
               "available": {
-                "2931b25d": "Workshop browsing is not available."
+                "text": "Workshop browsing is not available."
               }
             }
           },
           "failed": {
             "to": {
               "start": {
-                "9545e56c": "Workshop browsing failed to start."
+                "text": "Workshop browsing failed to start."
               }
             }
           }
@@ -40,43 +40,43 @@
           "is": {
             "not": {
               "available": {
-                "de9b2aef": "Workshop search is not available."
+                "text": "Workshop search is not available."
               }
             }
           },
           "failed": {
             "to": {
               "start": {
-                "0c4f09e1": "Workshop search failed to start."
+                "text": "Workshop search failed to start."
               }
             }
           }
         },
         "id": {
-          "1c532d21": "Workshop ID"
+          "text": "Workshop ID"
         },
         "item": {
           "installed": {
             "successfully": {
-              "66a936ae": "Workshop item installed successfully."
+              "text": "Workshop item installed successfully."
             }
           }
         },
         "error": {
-          "3b89c76e": "Workshop Error"
+          "text": "Workshop Error"
         },
         "remove": {
           "is": {
             "not": {
               "available": {
-                "09b7145e": "Workshop remove is not available."
+                "text": "Workshop remove is not available."
               }
             }
           }
         },
         "staging": {
           "folder": {
-            "2828f3a0": "Workshop staging folder"
+            "text": "Workshop staging folder"
           }
         },
         "downloads": {
@@ -84,7 +84,7 @@
             "steamcmd": {
               "may": {
                 "be": {
-                  "3b9e0b4b": "Workshop downloads through SteamCMD may be unavailable"
+                  "text": "Workshop downloads through SteamCMD may be unavailable"
                 }
               }
             }
@@ -95,7 +95,7 @@
             "folders": {
               "were": {
                 "repaired": {
-                  "de786247": "Workshop and profile folders were repaired."
+                  "text": "Workshop and profile folders were repaired."
                 }
               }
             }
@@ -106,7 +106,7 @@
             "not": {
               "be": {
                 "repaired": {
-                  "e39e9166": "Workshop folders could not be repaired."
+                  "text": "Workshop folders could not be repaired."
                 }
               }
             }
@@ -114,26 +114,26 @@
         }
       },
       "library": {
-        "dc20b3d5": "Library"
+        "text": "Library"
       },
       "friends": {
-        "bd104d1b": "Friends",
+        "text": "Friends",
         "list": {
-          "efc1b284": "Friends List"
+          "text": "Friends List"
         },
         "only": {
-          "d6ebf1f9": "Friends Only"
+          "text": "Friends Only"
         }
       },
       "settings": {
-        "74a883a0": "Settings",
+        "text": "Settings",
         "reset": {
-          "be84fea7": "Settings Reset"
+          "text": "Settings Reset"
         }
       },
       "show": {
         "credits": {
-          "19d17b66": "Show Credits"
+          "text": "Show Credits"
         },
         "full": {
           "untruncated": {
@@ -141,7 +141,7 @@
               "output": {
                 "logs": {
                   "are": {
-                    "2375cb45": "Show full untruncated log output (logs are trimmed by default)"
+                    "text": "Show full untruncated log output (logs are trimmed by default)"
                   }
                 }
               }
@@ -150,25 +150,25 @@
         },
         "fps": {
           "counter": {
-            "56728cec": "Show FPS Counter"
+            "text": "Show FPS Counter"
           }
         }
       },
       "launch": {
         "options": {
-          "947832bc": "Launch Options"
+          "text": "Launch Options"
         },
         "with": {
           "advanced": {
             "options": {
-              "bca6b158": "Launch with advanced options"
+              "text": "Launch with advanced options"
             }
           },
           "minimal": {
             "settings": {
               "for": {
                 "troublesh": {
-                  "d4a9d848": "Launch with minimal settings for troubleshooting (no mods loading)"
+                  "text": "Launch with minimal settings for troubleshooting (no mods loading)"
                 }
               }
             }
@@ -178,7 +178,7 @@
           "connecting": {
             "to": {
               "steam": {
-                "78e070e8": "Launch without connecting to Steam"
+                "text": "Launch without connecting to Steam"
               }
             }
           }
@@ -187,7 +187,7 @@
       "additional": {
         "launch": {
           "arguments": {
-            "94103fef": "Additional launch arguments"
+            "text": "Additional launch arguments"
           }
         }
       },
@@ -196,7 +196,7 @@
           "com": {
             "maxfps": {
               "60": {
-                "b6860597": "Example: +set com_maxfps 60"
+                "text": "Example: +set com_maxfps 60"
               }
             }
           }
@@ -209,7 +209,7 @@
               "to": {
                 "boiii": {
                   "as": {
-                    "6747e403": "Optional arguments are passed to BOIII as written. The language menu already adds -french."
+                    "text": "Optional arguments are passed to BOIII as written. The language menu already adds -french."
                   }
                 }
               }
@@ -217,16 +217,16 @@
           }
         },
         "dlc": {
-          "c16ccd4e": "Optional (DLC)"
+          "text": "Optional (DLC)"
         }
       },
       "advanced": {
         "launch": {
           "options": {
-            "0f050ede": "Advanced launch options"
+            "text": "Advanced launch options"
           }
         },
-        "9f088dbe": "Advanced"
+        "text": "Advanced"
       },
       "enter": {
         "one": {
@@ -237,7 +237,7 @@
                   "up": {
                     "to": {
                       "5": {
-                        "9e755589": "Enter one line of launch arguments, up to 512 characters. Control characters are not allowed."
+                        "text": "Enter one line of launch arguments, up to 512 characters. Control characters are not allowed."
                       }
                     }
                   }
@@ -248,14 +248,14 @@
         },
         "your": {
           "name": {
-            "b562dde9": "Enter your name..."
+            "text": "Enter your name..."
           }
         },
         "workshop": {
           "id": {
             "or": {
               "link": {
-                "a447de7f": "Enter Workshop ID or link..."
+                "text": "Enter Workshop ID or link..."
               }
             }
           }
@@ -267,7 +267,7 @@
                 "boiii": {
                   "friend": {
                     "code": {
-                      "508b1b50": "Enter a display name and BOIII Friend Code to add a friend"
+                      "text": "Enter a display name and BOIII Friend Code to add a friend"
                     }
                   }
                 }
@@ -278,7 +278,7 @@
             "id": {
               "or": {
                 "link": {
-                  "57b5e881": "Enter a Workshop ID or link."
+                  "text": "Enter a Workshop ID or link."
                 }
               }
             }
@@ -290,7 +290,7 @@
               "and": {
                 "a": {
                   "command": {
-                    "0f9c7640": "Enter both a key and a command."
+                    "text": "Enter both a key and a command."
                   }
                 }
               }
@@ -301,15 +301,15 @@
       "launcher": {
         "game": {
           "language": {
-            "3432f590": "Launcher & game language"
+            "text": "Launcher & game language"
           }
         },
         "features": {
-          "861088fa": "Launcher features"
+          "text": "Launcher features"
         },
-        "22614ace": "Launcher",
+        "text": "Launcher",
         "data": {
-          "3bce4dc6": "Launcher data"
+          "text": "Launcher data"
         },
         "ui": {
           "data": {
@@ -317,7 +317,7 @@
               "missing": {
                 "or": {
                   "incomplete": {
-                    "7f024ffe": "Launcher UI data is missing or incomplete"
+                    "text": "Launcher UI data is missing or incomplete"
                   }
                 }
               }
@@ -326,39 +326,39 @@
         }
       },
       "english": {
-        "ba118bf7": "English"
+        "text": "English"
       },
       "french": {
         "partial": {
           "translation": {
-            "9e42bf51": "French (partial translation)"
+            "text": "French (partial translation)"
           }
         }
       },
       "no": {
         "console": {
-          "2b18c422": "No Console"
+          "text": "No Console"
         },
         "steam": {
-          "59a9b10c": "No Steam"
+          "text": "No Steam"
         },
         "plugins": {
-          "1077ef9e": "No Plugins"
+          "text": "No Plugins"
         },
         "image": {
-          "ffd6177d": "No Image"
+          "text": "No Image"
         },
         "password": {
-          "56b9e00d": "No password"
+          "text": "No password"
         },
         "items": {
           "found": {
-            "949da6a3": "No items found"
+            "text": "No items found"
           },
           "match": {
             "your": {
               "search": {
-                "69d7dadb": "No items match your search"
+                "text": "No items match your search"
               }
             }
           }
@@ -366,11 +366,11 @@
         "workshop": {
           "items": {
             "available": {
-              "f17a9588": "No workshop items available"
+              "text": "No workshop items available"
             },
             "installed": {
               "yet": {
-                "3da63595": "No workshop items installed yet"
+                "text": "No workshop items installed yet"
               }
             }
           }
@@ -380,7 +380,7 @@
             "match": {
               "your": {
                 "search": {
-                  "e6ca1668": "No installed items match your search"
+                  "text": "No installed items match your search"
                 }
               }
             }
@@ -388,7 +388,7 @@
         },
         "description": {
           "available": {
-            "4d4c2197": "No description available."
+            "text": "No description available."
           }
         },
         "game": {
@@ -398,7 +398,7 @@
                 "selected": {
                   "modes": {
                     "h": {
-                      "e14c0bde": "No game modes selected or selected modes have no files."
+                      "text": "No game modes selected or selected modes have no files."
                     }
                   }
                 }
@@ -406,20 +406,20 @@
             }
           },
           "files": {
-            "d2b273d0": "No game files"
+            "text": "No game files"
           }
         },
         "files": {
           "found": {
-            "949d59b7": "No files found"
+            "text": "No files found"
           }
         },
         "custom": {
           "binds": {
             "saved": {
-              "53a1ec23": "No custom binds saved.",
+              "text": "No custom binds saved.",
               "yet": {
-                "336290f3": "No custom binds saved yet"
+                "text": "No custom binds saved yet"
               }
             }
           }
@@ -428,7 +428,7 @@
           "results": {
             "were": {
               "returned": {
-                "41a40a50": "No diagnostic results were returned."
+                "text": "No diagnostic results were returned."
               }
             }
           }
@@ -436,7 +436,7 @@
         "friends": {
           "added": {
             "yet": {
-              "48313d74": "No friends added yet"
+              "text": "No friends added yet"
             }
           }
         }
@@ -448,7 +448,7 @@
               "window": {
                 "without": {
                   "d": {
-                    "8ed8c4dd": "Hide the external console window without disabling logs"
+                    "text": "Hide the external console window without disabling logs"
                   }
                 }
               }
@@ -458,7 +458,7 @@
       },
       "keep": {
         "launcher": {
-          "4a418b26": "Keep Launcher"
+          "text": "Keep Launcher"
         },
         "the": {
           "launcher": {
@@ -466,7 +466,7 @@
               "after": {
                 "starting": {
                   "the": {
-                    "54fc7d2d": "Keep the launcher open after starting the game"
+                    "text": "Keep the launcher open after starting the game"
                   }
                 }
               }
@@ -476,7 +476,7 @@
       },
       "enable": {
         "cheats": {
-          "a008e3a0": "Enable Cheats"
+          "text": "Enable Cheats"
         },
         "cheat": {
           "dvars": {
@@ -484,7 +484,7 @@
               "commands": {
                 "other": {
                   "play": {
-                    "4d68e437": "Enable cheat dvars and commands; other players can use them in a hosted private match"
+                    "text": "Enable cheat dvars and commands; other players can use them in a hosted private match"
                   }
                 }
               }
@@ -496,7 +496,7 @@
             "scaling": {
               "some": {
                 "interface": {
-                  "c1dc8da6": "Enable ultrawide UI scaling; some interfaces may not align correctly"
+                  "text": "Enable ultrawide UI scaling; some interfaces may not align correctly"
                 }
               }
             }
@@ -507,7 +507,7 @@
             "console": {
               "in": {
                 "game": {
-                  "11c1cb21": "Enable the developer console in-game"
+                  "text": "Enable the developer console in-game"
                 }
               }
             }
@@ -519,7 +519,7 @@
               "prevent": {
                 "screen": {
                   "tea": {
-                    "f13846c8": "Enable vertical sync to prevent screen tearing"
+                    "text": "Enable vertical sync to prevent screen tearing"
                   }
                 }
               }
@@ -531,7 +531,7 @@
             "for": {
               "consistent": {
                 "fram": {
-                  "49357aa6": "Enable frame smoothing for consistent frame pacing"
+                  "text": "Enable frame smoothing for consistent frame pacing"
                 }
               }
             }
@@ -540,14 +540,14 @@
       },
       "skip": {
         "intro": {
-          "32ba5101": "Skip Intro"
+          "text": "Skip Intro"
         },
         "the": {
           "intro": {
             "cinematic": {
               "on": {
                 "startup": {
-                  "0b2e2850": "Skip the intro cinematic on startup"
+                  "text": "Skip the intro cinematic on startup"
                 }
               }
             }
@@ -558,7 +558,7 @@
                 "video": {
                   "on": {
                     "startup": {
-                      "7e06a234": "Skip the BO3 logo intro video on startup"
+                      "text": "Skip the BO3 logo intro video on startup"
                     }
                   }
                 }
@@ -567,7 +567,7 @@
           }
         },
         "cinematics": {
-          "4f393213": "Skip Cinematics"
+          "text": "Skip Cinematics"
         },
         "every": {
           "cinematic": {
@@ -575,7 +575,7 @@
               "in": {
                 "game": {
                   "cut": {
-                    "c144e214": "Skip every cinematic, including in-game cutscenes"
+                    "text": "Skip every cinematic, including in-game cutscenes"
                   }
                 }
               }
@@ -584,19 +584,19 @@
         },
         "game": {
           "intro": {
-            "68c26875": "Skip game intro"
+            "text": "Skip game intro"
           }
         },
         "all": {
           "intros": {
-            "7430697f": "Skip all intros"
+            "text": "Skip all intros"
           },
           "cinematic": {
             "intro": {
               "videos": {
                 "campaign": {
                   "z": {
-                    "e777cb91": "Skip all cinematic intro videos (campaign, zombies, etc.)"
+                    "text": "Skip all cinematic intro videos (campaign, zombies, etc.)"
                   }
                 }
               }
@@ -605,14 +605,14 @@
         }
       },
       "borderless": {
-        "b136109a": "Borderless"
+        "text": "Borderless"
       },
       "run": {
         "in": {
           "borderless": {
             "fullscreen": {
               "mode": {
-                "cd594263": "Run in borderless fullscreen mode"
+                "text": "Run in borderless fullscreen mode"
               }
             }
           }
@@ -623,7 +623,7 @@
               "a": {
                 "windowed": {
                   "window": {
-                    "5965bead": "Run the game in a windowed window"
+                    "text": "Run the game in a windowed window"
                   }
                 }
               }
@@ -634,7 +634,7 @@
               "a": {
                 "visible": {
                   "window": {
-                    "952ba108": "Run the server without a visible window"
+                    "text": "Run the server without a visible window"
                   }
                 }
               }
@@ -642,12 +642,12 @@
           }
         },
         "diagnostics": {
-          "95d218f5": "Run Diagnostics",
+          "text": "Run Diagnostics",
           "to": {
             "check": {
               "the": {
                 "installation": {
-                  "fc4237ba": "Run diagnostics to check the installation."
+                  "text": "Run diagnostics to check the installation."
                 }
               }
             }
@@ -655,38 +655,38 @@
         }
       },
       "windowed": {
-        "3f26603a": "Windowed",
+        "text": "Windowed",
         "fullscreen": {
           "or": {
             "borderless": {
-              "720da0d7": "Windowed, Fullscreen, or Borderless"
+              "text": "Windowed, Fullscreen, or Borderless"
             }
           }
         }
       },
       "ultrawide": {
         "ui": {
-          "b776c1cf": "Ultrawide UI"
+          "text": "Ultrawide UI"
         }
       },
       "full": {
         "logs": {
-          "04bb769f": "Full Logs"
+          "text": "Full Logs"
         },
         "vram": {
           "usage": {
-            "3bcabfee": "Full VRAM usage"
+            "text": "Full VRAM usage"
           }
         }
       },
       "dev": {
         "console": {
-          "0c37dafa": "Dev Console"
+          "text": "Dev Console"
         }
       },
       "unsafe": {
         "lua": {
-          "135194e2": "Unsafe Lua"
+          "text": "Unsafe Lua"
         }
       },
       "allow": {
@@ -695,7 +695,7 @@
             "unsigned": {
               "lua": {
                 "scripts": {
-                  "13289786": "Allow loading of unsigned Lua scripts"
+                  "text": "Allow loading of unsigned Lua scripts"
                 }
               }
             }
@@ -708,7 +708,7 @@
             "custom": {
               "plugins": {
                 "plugins": {
-                  "7d891b72": "Disable loading of custom plugins (plugins are enabled by default)"
+                  "text": "Disable loading of custom plugins (plugins are enabled by default)"
                 }
               }
             }
@@ -720,7 +720,7 @@
               "movement": {
                 "for": {
                   "slower": {
-                    "85d9a4a3": "Disable page and hover movement for slower systems"
+                    "text": "Disable page and hover movement for slower systems"
                   }
                 }
               }
@@ -730,18 +730,18 @@
         "asset": {
           "pools": {
             "patches": {
-              "6a414ac6": "Disable asset pools patches"
+              "text": "Disable asset pools patches"
             }
           }
         }
       },
       "safe": {
         "mode": {
-          "61bf60a0": "Safe Mode"
+          "text": "Safe Mode"
         }
       },
       "headless": {
-        "af9bfb72": "Headless"
+        "text": "Headless"
       },
       "call": {
         "of": {
@@ -752,12 +752,12 @@
                   "enhanced": {
                     "with": {
                       "our": {
-                        "49ecb991": "Call of Duty: Black Ops 3 enhanced with our modifications. Experience the full campaign, multiplayer, and zombies modes with improved stability and additional features."
+                        "text": "Call of Duty: Black Ops 3 enhanced with our modifications. Experience the full campaign, multiplayer, and zombies modes with improved stability and additional features."
                       }
                     },
                     "client": {
                       "c": {
-                        "9989dfb2": "Call of Duty: Black Ops 3 enhanced client. Custom launcher, workshop support, and community features."
+                        "text": "Call of Duty: Black Ops 3 enhanced client. Custom launcher, workshop support, and community features."
                       }
                     }
                   }
@@ -769,55 +769,55 @@
       },
       "auto": {
         "updates": {
-          "8c00ca51": "Auto updates"
+          "text": "Auto updates"
         },
         "refresh": {
           "library": {
-            "97f1f707": "Auto-refresh library"
+            "text": "Auto-refresh library"
           }
         }
       },
       "community": {
         "client": {
-          "a3fe0853": "Community client"
+          "text": "Community client"
         }
       },
       "version": {
-        "4c5726ee": "Version:"
+        "text": "Version:"
       },
       "latest": {
         "auto": {
           "update": {
-            "ed4f2435": "Latest (Auto-update)"
+            "text": "Latest (Auto-update)"
           }
         }
       },
       "player": {
         "name": {
-          "0456bb5c": "Player Name"
+          "text": "Player Name"
         },
         "sounds": {
           "table": {
-            "93925d1c": "Player Sounds Table"
+            "text": "Player Sounds Table"
           }
         },
         "fx": {
           "table": {
-            "4a69e14d": "Player FX Table"
+            "text": "Player FX Table"
           }
         },
         "character": {
-          "807ff035": "Player Character"
+          "text": "Player Character"
         }
       },
       "discord": {
-        "053bc658": "Discord"
+        "text": "Discord"
       },
       "forum": {
-        "4da7bd42": "Forum"
+        "text": "Forum"
       },
       "manage": {
-        "5a234448": "Manage",
+        "text": "Manage",
         "your": {
           "friends": {
             "list": {
@@ -825,7 +825,7 @@
                 "friends": {
                   "by": {
                     "th": {
-                      "9c7912e0": "Manage your friends list. Add friends by their BOIII Friend Code to see them here."
+                      "text": "Manage your friends list. Add friends by their BOIII Friend Code to see them here."
                     }
                   }
                 }
@@ -834,26 +834,26 @@
           }
         },
         "installation": {
-          "f3d2ba4e": "Manage Installation"
+          "text": "Manage Installation"
         }
       },
       "verify": {
         "game": {
           "files": {
-            "45c50213": "Verify Game Files"
+            "text": "Verify Game Files"
           }
         },
         "again": {
-          "be9badb2": "Verify Again"
+          "text": "Verify Again"
         }
       },
       "change": {
         "game": {
           "path": {
-            "bc1eea63": "Change Game Path"
+            "text": "Change Game Path"
           }
         },
-        "c0bf75bd": "Change"
+        "text": "Change"
       },
       "browse": {
         "download": {
@@ -862,7 +862,7 @@
               "custom": {
                 "maps": {
                   "and": {
-                    "9eecb904": "Browse, download, and manage custom maps and mods from the Steam Workshop."
+                    "text": "Browse, download, and manage custom maps and mods from the Steam Workshop."
                   }
                 }
               }
@@ -870,14 +870,14 @@
           }
         },
         "workshop": {
-          "fe755691": "Browse Workshop"
+          "text": "Browse Workshop"
         },
         "and": {
           "manage": {
             "your": {
               "installed": {
                 "workshop": {
-                  "59854529": "Browse and manage your installed workshop maps and mods."
+                  "text": "Browse and manage your installed workshop maps and mods."
                 }
               }
             }
@@ -886,10 +886,10 @@
       },
       "quick": {
         "download": {
-          "25df2763": "Quick Download"
+          "text": "Quick Download"
         },
         "preset": {
-          "a04ae528": "Quick preset"
+          "text": "Quick preset"
         }
       },
       "download": {
@@ -898,20 +898,20 @@
             "id": {
               "or": {
                 "link": {
-                  "92b871e5": "Download by Workshop ID or link"
+                  "text": "Download by Workshop ID or link"
                 }
               }
             }
           }
         },
-        "d6eafe82": "Download",
+        "text": "Download",
         "timeout": {
           "in": {
             "seconds": {
               "for": {
                 "workshop": {
                   "i": {
-                    "36328445": "Download timeout in seconds for workshop items (60–3600)"
+                    "text": "Download timeout in seconds for workshop items (60–3600)"
                   }
                 }
               }
@@ -921,77 +921,77 @@
         "previous": {
           "blackops3": {
             "exe": {
-              "4b722a6f": "Download Previous BlackOps3.exe"
+              "text": "Download Previous BlackOps3.exe"
             }
           }
         },
         "complete": {
-          "d4be3940": "Download Complete"
+          "text": "Download Complete"
         },
         "in": {
           "progress": {
-            "15ab5743": "Download in progress"
+            "text": "Download in progress"
           }
         }
       },
       "open": {
         "folder": {
-          "68b3f4bf": "Open Folder"
+          "text": "Open Folder"
         },
         "download": {
           "folder": {
-            "a30e75e7": "Open download folder"
+            "text": "Open download folder"
           }
         }
       },
       "pause": {
-        "858e4ba7": "Pause"
+        "text": "Pause"
       },
       "cancel": {
-        "19766ed6": "Cancel"
+        "text": "Cancel"
       },
       "single": {
         "column": {
-          "e664b8c6": "Single column"
+          "text": "Single column"
         }
       },
       "two": {
         "columns": {
-          "ff4a0135": "Two columns"
+          "text": "Two columns"
         }
       },
       "most": {
         "recent": {
-          "7ffd1b8a": "Most Recent"
+          "text": "Most Recent"
         }
       },
       "top": {
         "rated": {
-          "90e7047e": "Top Rated"
+          "text": "Top Rated"
         }
       },
       "oldest": {
-        "505dc450": "Oldest"
+        "text": "Oldest"
       },
       "alphabetical": {
-        "a49d631f": "Alphabetical"
+        "text": "Alphabetical"
       },
       "search": {
-        "49c266ba": "Search",
+        "text": "Search",
         "by": {
           "name": {
-            "ed82cf60": "Search by name..."
+            "text": "Search by name..."
           }
         },
         "installed": {
           "items": {
-            "08866ff9": "Search installed items..."
+            "text": "Search installed items..."
           }
         }
       },
       "refresh": {
-        "9cbbfc3a": "↻ Refresh",
-        "0e916101": "Refresh",
+        "icon": "↻ Refresh",
+        "text": "Refresh",
         "the": {
           "mod": {
             "library": {
@@ -999,7 +999,7 @@
                 "a": {
                   "workshop": {
                     "d": {
-                      "9f26efc1": "Refresh the mod library after a workshop download completes"
+                      "text": "Refresh the mod library after a workshop download completes"
                     }
                   }
                 }
@@ -1008,155 +1008,155 @@
           }
         },
         "rate": {
-          "9be2cdd8": "Refresh Rate"
+          "text": "Refresh Rate"
         }
       },
       "clear": {
-        "83b12c22": "Clear",
+        "text": "Clear",
         "library": {
           "search": {
-            "ea01654f": "Clear library search"
+            "text": "Clear library search"
           }
         },
         "profile": {
           "data": {
-            "2ff74a28": "Clear Profile Data"
+            "text": "Clear Profile Data"
           }
         }
       },
       "loading": {
         "workshop": {
           "items": {
-            "f0898161": "Loading workshop items...",
+            "text": "Loading workshop items...",
             "took": {
               "too": {
                 "long": {
-                  "081e5c2f": "Loading workshop items took too long."
+                  "text": "Loading workshop items took too long."
                 }
               }
             }
           }
         },
         "manifest": {
-          "323c2ef0": "Loading manifest..."
+          "text": "Loading manifest..."
         }
       },
       "mod": {
         "details": {
-          "91d9807f": "Mod Details"
+          "text": "Mod Details"
         }
       },
       "view": {
         "on": {
           "steam": {
-            "a3d1af79": "View on Steam"
+            "text": "View on Steam"
           }
         },
         "all": {
           "contributors": {
-            "f814457d": "View All Contributors"
+            "text": "View All Contributors"
           }
         },
-        "dcc839a4": "View"
+        "text": "View"
       },
       "installed": {
         "items": {
-          "d1237a43": "Installed Items"
+          "text": "Installed Items"
         }
       },
       "list": {
         "view": {
-          "48627bdf": "List View"
+          "text": "List View"
         }
       },
       "grid": {
         "view": {
-          "38ee89c3": "Grid View"
+          "text": "Grid View"
         }
       },
       "check": {
         "updates": {
-          "a4738b60": "Check Updates"
+          "text": "Check Updates"
         },
         "for": {
           "updates": {
             "on": {
               "launch": {
-                "d4b35530": "Check for updates on launch"
+                "text": "Check for updates on launch"
               }
             }
           }
         },
-        "9d60841e": "Check"
+        "text": "Check"
       },
       "delete": {
         "all": {
-          "ef85afa1": "Delete All",
+          "text": "Delete All",
           "mods": {
-            "663a15e8": "Delete all mods"
+            "text": "Delete all mods"
           }
         },
-        "e2d0a549": "Delete",
+        "text": "Delete",
         "game": {
           "modes": {
-            "2cad74a9": "Delete Game Modes"
+            "text": "Delete Game Modes"
           }
         },
         "complete": {
-          "a1c57a61": "Delete Complete"
+          "text": "Delete Complete"
         }
       },
       "prev": {
-        "ad218904": "‹ Prev"
+        "text": "‹ Prev"
       },
       "next": {
-        "868d1670": "Next ›"
+        "text": "Next ›"
       },
       "your": {
         "boiii": {
           "friend": {
             "code": {
-              "be43e747": "Your BOIII Friend Code"
+              "text": "Your BOIII Friend Code"
             }
           },
           "identity": {
-            "e3f5cd8f": "Your BOIII identity"
+            "text": "Your BOIII identity"
           }
         }
       },
       "unavailable": {
-        "ca184496": "Unavailable"
+        "text": "Unavailable"
       },
       "copy": {
         "friend": {
           "code": {
-            "c350dd66": "Copy Friend Code"
+            "text": "Copy Friend Code"
           }
         }
       },
       "add": {
         "friend": {
-          "0967ca7c": "Add Friend"
+          "text": "Add Friend"
         },
-        "9fd728c6": "Add",
+        "text": "Add",
         "update": {
-          "f08ce4b4": "Add / Update"
+          "text": "Add / Update"
         }
       },
       "display": {
         "name": {
-          "feb0decd": "Display name..."
+          "text": "Display name..."
         },
-        "34e108c0": "Display",
+        "text": "Display",
         "mode": {
-          "8ce318ba": "Display Mode"
+          "text": "Display Mode"
         },
         "an": {
           "in": {
             "game": {
               "fps": {
                 "counter": {
-                  "f4fba920": "Display an in-game FPS counter"
+                  "text": "Display an in-game FPS counter"
                 }
               }
             }
@@ -1166,13 +1166,13 @@
       "boiii": {
         "friend": {
           "code": {
-            "714acf77": "BOIII Friend Code",
+            "text": "BOIII Friend Code",
             "must": {
               "be": {
                 "a": {
                   "numeric": {
                     "value": {
-                      "9c0c8d5b": "BOIII Friend Code must be a numeric value."
+                      "text": "BOIII Friend Code must be a numeric value."
                     }
                   }
                 }
@@ -1187,7 +1187,7 @@
                 "the": {
                   "latest": {
                     "steam": {
-                      "b40e8481": "BOIII does not work with the latest Steam update. If you downloaded the latest update through Steam, use the button below to get the previous BlackOps3.exe and replace the one in your game directory."
+                      "text": "BOIII does not work with the latest Steam update. If you downloaded the latest update through Steam, use the button below to get the previous BlackOps3.exe and replace the one in your game directory."
                     }
                   }
                 }
@@ -1201,23 +1201,23 @@
           "preferences": {
             "graphics": {
               "an": {
-                "38ea807f": "Configure launcher preferences, graphics, and network options."
+                "text": "Configure launcher preferences, graphics, and network options."
               }
             }
           }
         }
       },
       "general": {
-        "c910d474": "General"
+        "text": "General"
       },
       "graphics": {
-        "a874fca8": "Graphics",
+        "text": "Graphics",
         "preset": {
-          "41ecd675": "Graphics Preset",
+          "text": "Graphics Preset",
           "applied": {
             "successfully": {
               "resta": {
-                "72a25d7d": "Graphics preset applied successfully. Restart the game for changes to take effect."
+                "text": "Graphics preset applied successfully. Restart the game for changes to take effect."
               }
             }
           }
@@ -1225,78 +1225,78 @@
       },
       "asset": {
         "pools": {
-          "c7ce4de5": "Asset Pools",
+          "text": "Asset Pools",
           "reset": {
-            "f961bef9": "Asset Pools Reset"
+            "text": "Asset Pools Reset"
           }
         },
         "pool": {
           "expansion": {
-            "802910ae": "Asset Pool Expansion"
+            "text": "Asset Pool Expansion"
           }
         }
       },
       "patches": {
-        "1c228155": "Patches"
+        "text": "Patches"
       },
       "binds": {
-        "f61993f4": "Binds"
+        "text": "Binds"
       },
       "diagnostics": {
-        "268f14bb": "Diagnostics",
+        "text": "Diagnostics",
         "results": {
-          "b60ee1ed": "Diagnostics Results"
+          "text": "Diagnostics Results"
         }
       },
       "game": {
         "path": {
-          "7c4ee25f": "Game Path",
+          "text": "Game Path",
           "updated": {
-            "6045bc29": "Game Path Updated"
+            "text": "Game Path Updated"
           }
         },
         "password": {
-          "68476ece": "Game Password"
+          "text": "Game Password"
         },
         "map": {
-          "96989c07": "Game Map"
+          "text": "Game Map"
         },
         "render": {
           "resolution": {
             "e": {
               "g": {
                 "1920x1080": {
-                  "e99f42ba": "Game render resolution (e.g. 1920x1080)"
+                  "text": "Game render resolution (e.g. 1920x1080)"
                 }
               }
             }
           }
         },
         "running": {
-          "82d99c74": "Game Running"
+          "text": "Game Running"
         },
         "is": {
           "running": {
-            "16e705d9": "Game is running"
+            "text": "Game is running"
           }
         },
         "executable": {
-          "0e8e83f0": "Game executable"
+          "text": "Game executable"
         }
       },
       "not": {
         "set": {
-          "4895f731": "Not set"
+          "text": "Not set"
         },
         "installed": {
-          "d177cdc0": "Not installed",
+          "text": "Not installed",
           "yet": {
             "it": {
               "will": {
                 "download": {
                   "when": {
                     "ne": {
-                      "43c1ba48": "Not installed yet; it will download when needed"
+                      "text": "Not installed yet; it will download when needed"
                     }
                   }
                 }
@@ -1309,7 +1309,7 @@
         "launcher": {
           "on": {
             "play": {
-              "25294274": "Close launcher on play"
+              "text": "Close launcher on play"
             }
           }
         },
@@ -1320,7 +1320,7 @@
                 "you": {
                   "start": {
                     "t": {
-                      "9c1deb2f": "Close the launcher window when you start the game"
+                      "text": "Close the launcher window when you start the game"
                     }
                   }
                 }
@@ -1332,7 +1332,7 @@
               "clearing": {
                 "profile": {
                   "dat": {
-                    "f0c8fa72": "Close the game before clearing profile data."
+                    "text": "Close the game before clearing profile data."
                   }
                 }
               }
@@ -1346,7 +1346,7 @@
             "client": {
               "updates": {
                 "whe": {
-                  "3a3308ef": "Automatically check for client updates when the launcher opens"
+                  "text": "Automatically check for client updates when the launcher opens"
                 }
               }
             }
@@ -1356,16 +1356,16 @@
       "reduced": {
         "ui": {
           "motion": {
-            "6c20ec3d": "Reduced UI motion"
+            "text": "Reduced UI motion"
           }
         }
       },
       "downloads": {
-        "d5fdc1af": "Downloads"
+        "text": "Downloads"
       },
       "retry": {
         "attempts": {
-          "558fe9e3": "Retry Attempts"
+          "text": "Retry Attempts"
         }
       },
       "number": {
@@ -1375,7 +1375,7 @@
               "attempts": {
                 "for": {
                   "wo": {
-                    "fafd119f": "Number of connection retry attempts for workshop downloads (1–1000)"
+                    "text": "Number of connection retry attempts for workshop downloads (1–1000)"
                   }
                 }
               }
@@ -1385,16 +1385,16 @@
       },
       "timeout": {
         "seconds": {
-          "1f966032": "Timeout (seconds)"
+          "text": "Timeout (seconds)"
         }
       },
       "performance": {
-        "442aded8": "Performance"
+        "text": "Performance"
       },
       "extended": {
         "asset": {
           "pools": {
-            "d67dcaf2": "Extended asset pools"
+            "text": "Extended asset pools"
           }
         }
       },
@@ -1405,7 +1405,7 @@
               "material": {
                 "pool": {
                   "lim": {
-                    "0eee756c": "Increase model, image, and material pool limits for heavy mods (requires restart)"
+                    "text": "Increase model, image, and material pool limits for heavy mods (requires restart)"
                   }
                 }
               }
@@ -1415,7 +1415,7 @@
       },
       "reduce": {
         "stuttering": {
-          "ede42b92": "Reduce stuttering"
+          "text": "Reduce stuttering"
         }
       },
       "rename": {
@@ -1426,7 +1426,7 @@
                 "use": {
                   "latest": {
                     "co": {
-                      "599d8ee5": "Rename d3dcompiler_46.dll to use latest compiler and reduce shader stutter"
+                      "text": "Rename d3dcompiler_46.dll to use latest compiler and reduce shader stutter"
                     }
                   }
                 }
@@ -1436,23 +1436,23 @@
         }
       },
       "video": {
-        "d534be82": "Video"
+        "text": "Video"
       },
       "links": {
-        "9024c197": "Links"
+        "text": "Links"
       },
       "about": {
-        "4efca0d1": "About"
+        "text": "About"
       },
       "ezz": {
         "boiii": {
-          "6a262243": "EZZ BOIII"
+          "text": "EZZ BOIII"
         }
       },
       "network": {
-        "1744b964": "Network",
+        "text": "Network",
         "password": {
-          "73c76365": "Network Password"
+          "text": "Network Password"
         }
       },
       "private": {
@@ -1462,7 +1462,7 @@
               "server": {
                 "isolation": {
                   "c": {
-                    "a444ab62": "Private network key for server isolation (clients must match to connect)"
+                    "text": "Private network key for server isolation (clients must match to connect)"
                   }
                 }
               }
@@ -1477,7 +1477,7 @@
               "your": {
                 "hosted": {
                   "game": {
-                    "f23f31f1": "Password required to join your hosted game (g_password, leave empty to disable)"
+                    "text": "Password required to join your hosted game (g_password, leave empty to disable)"
                   }
                 }
               }
@@ -1492,7 +1492,7 @@
               "join": {
                 "your": {
                   "lobby": {
-                    "eb77722d": "Only allow friends to join your lobby"
+                    "text": "Only allow friends to join your lobby"
                   }
                 }
               }
@@ -1505,7 +1505,7 @@
           "settings": {
             "to": {
               "defaults": {
-                "2cb04945": "Reset All Settings to Defaults"
+                "text": "Reset All Settings to Defaults"
               }
             }
           },
@@ -1515,7 +1515,7 @@
                 "to": {
                   "their": {
                     "defaul": {
-                      "0d3fcfe8": "Reset all asset pool sizes to their default values?"
+                      "text": "Reset all asset pool sizes to their default values?"
                     }
                   }
                 }
@@ -1528,17 +1528,17 @@
             "sizes": {
               "to": {
                 "default": {
-                  "88fad6b6": "Reset Asset Pool Sizes to Default"
+                  "text": "Reset Asset Pool Sizes to Default"
                 }
               }
             }
           },
           "pools": {
-            "65b0b80a": "Reset Asset Pools"
+            "text": "Reset Asset Pools"
           }
         },
         "settings": {
-          "c17307e2": "Reset Settings"
+          "text": "Reset Settings"
         }
       },
       "turn": {
@@ -1550,7 +1550,7 @@
                   "and": {
                     "use": {
                       "th": {
-                        "12bd6db2": "Turn off all asset pool patches and use the game's original limits (requires restart)"
+                        "text": "Turn off all asset pool patches and use the game's original limits (requires restart)"
                       }
                     }
                   }
@@ -1566,7 +1566,7 @@
             "memory": {
               "allocation": {
                 "f": {
-                  "f9f12fcf": "These settings control memory allocation for game assets. Setting values too high can cause crashes or excessive memory usage. Only change these if you know what you're doing."
+                  "text": "These settings control memory allocation for game assets. Setting values too high can cause crashes or excessive memory usage. Only change these if you know what you're doing."
                 }
               }
             }
@@ -1575,512 +1575,512 @@
       },
       "physics": {
         "models": {
-          "c6b69e9a": "Physics & Models"
+          "text": "Physics & Models"
         }
       },
       "phys": {
         "preset": {
-          "8045408c": "Phys Preset"
+          "text": "Phys Preset"
         },
         "constraints": {
-          "ec16cdbe": "Phys Constraints"
+          "text": "Phys Constraints"
         }
       },
       "destructible": {
         "def": {
-          "4f230377": "Destructible Def"
+          "text": "Destructible Def"
         }
       },
       "xmodel": {
-        "f5bea40b": "XModel",
+        "text": "XModel",
         "mesh": {
-          "fc114430": "XModel Mesh"
+          "text": "XModel Mesh"
         },
         "alias": {
-          "724507a3": "XModel Alias"
+          "text": "XModel Alias"
         }
       },
       "materials": {
         "rendering": {
-          "568c13b2": "Materials & Rendering"
+          "text": "Materials & Rendering"
         }
       },
       "material": {
-        "616cb218": "Material"
+        "text": "Material"
       },
       "compute": {
         "shader": {
           "set": {
-            "3608e572": "Compute Shader Set"
+            "text": "Compute Shader Set"
           }
         }
       },
       "technique": {
         "set": {
-          "87df74e2": "Technique Set"
+          "text": "Technique Set"
         }
       },
       "image": {
-        "1aa4cb0b": "Image"
+        "text": "Image"
       },
       "light": {
         "def": {
-          "0b960d14": "Light Def"
+          "text": "Light Def"
         },
         "description": {
-          "27ba100e": "Light Description"
+          "text": "Light Description"
         }
       },
       "lensflare": {
         "def": {
-          "fc38a57a": "Lensflare Def"
+          "text": "Lensflare Def"
         }
       },
       "klf": {
         "new": {
           "lensflare": {
-            "1c072577": "KLF (New Lensflare)"
+            "text": "KLF (New Lensflare)"
           }
         }
       },
       "texture": {
         "list": {
-          "b80067ed": "Texture List"
+          "text": "Texture List"
         },
         "combo": {
-          "3ebd8bcf": "Texture Combo"
+          "text": "Texture Combo"
         }
       },
       "maps": {
         "volumes": {
           "visibility": {
-            "f163faa9": "Maps, Volumes & Visibility"
+            "text": "Maps, Volumes & Visibility"
           }
         }
       },
       "col": {
         "map": {
-          "06838bb9": "Col Map"
+          "text": "Col Map"
         }
       },
       "com": {
         "map": {
-          "268e3e31": "Com Map"
+          "text": "Com Map"
         }
       },
       "map": {
         "ents": {
-          "91bca7c5": "Map Ents"
+          "text": "Map Ents"
         },
         "table": {
-          "05f1b009": "Map Table",
+          "text": "Map Table",
           "loading": {
             "images": {
-              "29d2fb42": "Map Table Loading Images"
+              "text": "Map Table Loading Images"
             }
           }
         }
       },
       "gfx": {
         "map": {
-          "71362fa8": "Gfx Map"
+          "text": "Gfx Map"
         }
       },
       "ui": {
         "map": {
-          "67fdd9f0": "UI Map"
+          "text": "UI Map"
         }
       },
       "addon": {
         "map": {
           "ents": {
-            "68e862f4": "Addon Map Ents"
+            "text": "Addon Map Ents"
           }
         }
       },
       "umbra": {
         "tome": {
-          "f2e6a40b": "Umbra Tome"
+          "text": "Umbra Tome"
         }
       },
       "navmesh": {
-        "5abaa18c": "Navmesh"
+        "text": "Navmesh"
       },
       "nav": {
         "volume": {
-          "e9057434": "Nav Volume"
+          "text": "Nav Volume"
         }
       },
       "audio": {
         "sound": {
-          "d573720c": "Audio & Sound"
+          "text": "Audio & Sound"
         }
       },
       "sound": {
-        "46124e02": "Sound",
+        "text": "Sound",
         "patch": {
-          "51f4b5cb": "Sound Patch"
+          "text": "Sound Patch"
         }
       },
       "snd": {
         "driver": {
           "globals": {
-            "6060d1c4": "Snd Driver Globals"
+            "text": "Snd Driver Globals"
           }
         }
       },
       "impact": {
         "sounds": {
           "table": {
-            "7e46a69a": "Impact Sounds Table"
+            "text": "Impact Sounds Table"
           }
         }
       },
       "surface": {
         "sound": {
           "def": {
-            "53f3123d": "Surface Sound Def"
+            "text": "Surface Sound Def"
           }
         },
         "fx": {
           "table": {
-            "f98e8553": "Surface FX Table"
+            "text": "Surface FX Table"
           }
         }
       },
       "entity": {
         "sound": {
           "impacts": {
-            "23a1577f": "Entity Sound Impacts"
+            "text": "Entity Sound Impacts"
           }
         },
         "fx": {
           "impacts": {
-            "5dd93e91": "Entity FX Impacts"
+            "text": "Entity FX Impacts"
           }
         }
       },
       "weapons": {
         "attachments": {
-          "101f80f9": "Weapons & Attachments"
+          "text": "Weapons & Attachments"
         }
       },
       "weapon": {
-        "1710782c": "Weapon",
+        "text": "Weapon",
         "def": {
-          "a98fcf93": "Weapon Def"
+          "text": "Weapon Def"
         },
         "variant": {
-          "7a400003": "Weapon Variant"
+          "text": "Weapon Variant"
         },
         "full": {
-          "77d932ae": "Weapon Full"
+          "text": "Weapon Full"
         },
         "camo": {
-          "b5864049": "Weapon Camo"
+          "text": "Weapon Camo"
         }
       },
       "shared": {
         "weapon": {
           "sounds": {
-            "6c713062": "Shared Weapon Sounds"
+            "text": "Shared Weapon Sounds"
           }
         }
       },
       "attachment": {
-        "040d2b36": "Attachment",
+        "text": "Attachment",
         "unique": {
-          "fafc579f": "Attachment Unique"
+          "text": "Attachment Unique"
         },
         "cosmetic": {
           "variant": {
-            "6d3cad93": "Attachment Cosmetic Variant"
+            "text": "Attachment Cosmetic Variant"
           }
         }
       },
       "fx": {
         "mechanics": {
           "ui": {
-            "0d860746": "FX, Mechanics & UI"
+            "text": "FX, Mechanics & UI"
           }
         },
-        "adf02dd6": "FX"
+        "text": "FX"
       },
       "tag": {
         "fx": {
-          "2690f9ba": "Tag FX"
+          "text": "Tag FX"
         }
       },
       "impacts": {
         "fx": {
           "table": {
-            "b1872923": "Impacts FX Table"
+            "text": "Impacts FX Table"
           }
         }
       },
       "tracer": {
-        "1719e009": "Tracer"
+        "text": "Tracer"
       },
       "slug": {
-        "d15387ec": "Slug"
+        "text": "Slug"
       },
       "bullet": {
         "penetration": {
-          "e1091139": "Bullet Penetration"
+          "text": "Bullet Penetration"
         }
       },
       "loc": {
         "dmg": {
           "table": {
-            "ceded03b": "Loc Dmg Table"
+            "text": "Loc Dmg Table"
           }
         }
       },
       "aim": {
         "table": {
-          "c64cfe62": "Aim Table"
+          "text": "Aim Table"
         }
       },
       "shellshock": {
-        "b6dda493": "Shellshock"
+        "text": "Shellshock"
       },
       "flame": {
         "table": {
-          "0e979973": "Flame Table"
+          "text": "Flame Table"
         }
       },
       "font": {
-        "64d0b3ad": "Font",
+        "text": "Font",
         "icon": {
-          "49c10c7b": "Font Icon"
+          "text": "Font Icon"
         }
       },
       "truetype": {
         "font": {
-          "2103640f": "TrueType Font"
+          "text": "TrueType Font"
         }
       },
       "cg": {
         "media": {
           "table": {
-            "d3afa61c": "CG Media Table"
+            "text": "CG Media Table"
           }
         }
       },
       "characters": {
         "ai": {
           "vehicles": {
-            "39ba1c52": "Characters, AI & Vehicles"
+            "text": "Characters, AI & Vehicles"
           }
         }
       },
       "ai": {
         "type": {
-          "2945ddcd": "AI Type"
+          "text": "AI Type"
         }
       },
       "character": {
-        "1405a63e": "Character"
+        "text": "Character"
       },
       "vehicle": {
-        "a62394ba": "Vehicle",
+        "text": "Vehicle",
         "fx": {
           "def": {
-            "a2e69f79": "Vehicle FX Def"
+            "text": "Vehicle FX Def"
           }
         },
         "sound": {
           "def": {
-            "21d6a4eb": "Vehicle Sound Def"
+            "text": "Vehicle Sound Def"
           }
         }
       },
       "footstep": {
         "table": {
-          "095aeffb": "Footstep Table"
+          "text": "Footstep Table"
         }
       },
       "animation": {
         "behaviors": {
-          "a5c05cd6": "Animation & Behaviors"
+          "text": "Animation & Behaviors"
         }
       },
       "xanim": {
-        "beeab26a": "XAnim"
+        "text": "XAnim"
       },
       "sanim": {
-        "c725929e": "SAnim"
+        "text": "SAnim"
       },
       "anim": {
         "selector": {
           "table": {
-            "b234b6aa": "Anim Selector Table"
+            "text": "Anim Selector Table"
           }
         },
         "mapping": {
           "table": {
-            "2c28f40b": "Anim Mapping Table"
+            "text": "Anim Mapping Table"
           }
         },
         "state": {
           "machine": {
-            "7facd086": "Anim State Machine"
+            "text": "Anim State Machine"
           }
         }
       },
       "behavior": {
         "tree": {
-          "86eab9fb": "Behavior Tree"
+          "text": "Behavior Tree"
         },
         "state": {
           "machine": {
-            "a7b25e77": "Behavior State Machine"
+            "text": "Behavior State Machine"
           }
         }
       },
       "data": {
         "scripts": {
           "tables": {
-            "eb4826ba": "Data, Scripts & Tables"
+            "text": "Data, Scripts & Tables"
           }
         }
       },
       "raw": {
         "file": {
-          "d3ccb5d0": "Raw File"
+          "text": "Raw File"
         }
       },
       "script": {
         "parse": {
           "tree": {
-            "67ad47fa": "Script Parse Tree"
+            "text": "Script Parse Tree"
           }
         },
         "bundle": {
-          "09a672d8": "Script Bundle",
+          "text": "Script Bundle",
           "list": {
-            "af35432a": "Script Bundle List"
+            "text": "Script Bundle List"
           }
         }
       },
       "localize": {
-        "70447770": "Localize"
+        "text": "Localize"
       },
       "string": {
         "table": {
-          "956b15e0": "String Table"
+          "text": "String Table"
         }
       },
       "structured": {
         "table": {
-          "8792422c": "Structured Table"
+          "text": "Structured Table"
         }
       },
       "leaderboard": {
         "def": {
-          "33530d3e": "Leaderboard Def"
+          "text": "Leaderboard Def"
         }
       },
       "ddl": {
-        "95da96f2": "DDL"
+        "text": "DDL"
       },
       "key": {
         "value": {
           "pairs": {
-            "59de68de": "Key Value Pairs"
+            "text": "Key Value Pairs"
           }
         },
         "e": {
           "g": {
             "f5": {
-              "20d02292": "Key (e.g. F5)"
+              "text": "Key (e.g. F5)"
             }
           }
         }
       },
       "customization": {
         "table": {
-          "65a15196": "Customization Table",
+          "text": "Customization Table",
           "fe": {
             "images": {
-              "100e24a2": "Customization Table FE Images"
+              "text": "Customization Table FE Images"
             }
           },
           "color": {
-            "4f9c0094": "Customization Table Color"
+            "text": "Customization Table Color"
           }
         }
       },
       "medal": {
-        "e191eb56": "Medal",
+        "text": "Medal",
         "table": {
-          "9790a80f": "Medal Table"
+          "text": "Medal Table"
         }
       },
       "misc": {
         "advanced": {
-          "ba2c246a": "Misc & Advanced"
+          "text": "Misc & Advanced"
         }
       },
       "objective": {
-        "3b20adc3": "Objective",
+        "text": "Objective",
         "list": {
-          "a258ba25": "Objective List"
+          "text": "Objective List"
         }
       },
       "zbarrier": {
-        "48148361": "ZBarrier"
+        "text": "ZBarrier"
       },
       "glasses": {
-        "eb25ede2": "Glasses"
+        "text": "Glasses"
       },
       "type": {
         "info": {
-          "b0e9b52e": "Type Info"
+          "text": "Type Info"
         },
-        "baaddf70": "Type"
+        "text": "Type"
       },
       "rumble": {
-        "78b3cc36": "Rumble"
+        "text": "Rumble"
       },
       "xcam": {
-        "4f0e7e94": "XCam"
+        "text": "XCam"
       },
       "bg": {
         "cache": {
-          "ac9223fc": "BG Cache"
+          "text": "BG Cache"
         }
       },
       "bitfield": {
-        "c787d628": "Bitfield"
+        "text": "Bitfield"
       },
       "binary": {
         "html": {
-          "8a925db2": "Binary HTML"
+          "text": "Binary HTML"
         }
       },
       "laser": {
-        "38df4d69": "Laser"
+        "text": "Laser"
       },
       "beam": {
-        "2e5b0ef5": "Beam"
+        "text": "Beam"
       },
       "streamer": {
         "hint": {
-          "c53424cb": "Streamer Hint"
+          "text": "Streamer Hint"
         }
       },
       "steam": {
         "update": {
           "fix": {
-            "36634900": "Steam Update Fix"
+            "text": "Steam Update Fix"
           }
         }
       },
       "previous": {
         "blackops3": {
           "exe": {
-            "2f509394": "Previous BlackOps3.exe"
+            "text": "Previous BlackOps3.exe"
           }
         }
       },
@@ -2089,51 +2089,51 @@
           "predefined": {
             "graphics": {
               "configuration": {
-                "25ded7ac": "Apply a predefined graphics configuration"
+                "text": "Apply a predefined graphics configuration"
               }
             }
           }
         },
-        "31e392d1": "Apply"
+        "text": "Apply"
       },
       "select": {
-        "1339bddc": "Select...",
+        "text": "Select...",
         "game": {
           "modes": {
             "to": {
               "remove": {
-                "b4bfa797": "Select game modes to remove"
+                "text": "Select game modes to remove"
               }
             }
           },
           "mode": {
-            "4122873d": "Select Game Mode"
+            "text": "Select Game Mode"
           }
         }
       },
       "smooth": {
-        "da519387": "Smooth",
+        "text": "Smooth",
         "framerate": {
-          "30151dac": "Smooth Framerate"
+          "text": "Smooth Framerate"
         }
       },
       "low": {
         "latency": {
-          "705e2fd3": "Low-Latency"
+          "text": "Low-Latency"
         }
       },
       "fullscreen": {
-        "c461dbb2": "Fullscreen"
+        "text": "Fullscreen"
       },
       "resolution": {
-        "d4055faf": "Resolution"
+        "text": "Resolution"
       },
       "monitor": {
         "refresh": {
           "rate": {
             "in": {
               "hz": {
-                "7d9d6abe": "Monitor refresh rate in Hz"
+                "text": "Monitor refresh rate in Hz"
               }
             }
           }
@@ -2141,12 +2141,12 @@
       },
       "v": {
         "sync": {
-          "784de207": "V-Sync"
+          "text": "V-Sync"
         }
       },
       "fps": {
         "limit": {
-          "dcc5d5ce": "FPS Limit"
+          "text": "FPS Limit"
         }
       },
       "maximum": {
@@ -2155,7 +2155,7 @@
             "second": {
               "0": {
                 "unlimited": {
-                  "825f9e49": "Maximum frames per second (0 = unlimited)"
+                  "text": "Maximum frames per second (0 = unlimited)"
                 }
               }
             }
@@ -2163,14 +2163,14 @@
         }
       },
       "fov": {
-        "5608c2a1": "FOV"
+        "text": "FOV"
       },
       "field": {
         "of": {
           "view": {
             "65": {
               "120": {
-                "a29d9af0": "Field of view (65-120)"
+                "text": "Field of view (65-120)"
               }
             }
           }
@@ -2180,7 +2180,7 @@
         "all": {
           "graphics": {
             "options": {
-              "3aba198e": "Unlock all graphics options"
+              "text": "Unlock all graphics options"
             }
           }
         }
@@ -2190,7 +2190,7 @@
           "restrictions": {
             "for": {
               "advanced": {
-                "995be343": "Remove graphics restrictions for advanced settings access"
+                "text": "Remove graphics restrictions for advanced settings access"
               }
             }
           }
@@ -2202,7 +2202,7 @@
                 "want": {
                   "to": {
                     "reinstall": {
-                      "1b5c9544": "Remove it first if you want to reinstall."
+                      "text": "Remove it first if you want to reinstall."
                     }
                   }
                 }
@@ -2210,17 +2210,17 @@
             }
           }
         },
-        "c3812fc4": "Remove",
+        "text": "Remove",
         "workshop": {
           "item": {
-            "8e691bc9": "Remove workshop item"
+            "text": "Remove workshop item"
           }
         }
       },
       "max": {
         "frame": {
           "latency": {
-            "96486942": "Max Frame Latency"
+            "text": "Max Frame Latency"
           }
         },
         "queued": {
@@ -2230,7 +2230,7 @@
                 "latency": {
                   "4": {
                     "smooth": {
-                      "1ae9b86e": "Max queued frames (1=low latency, 4=smooth)"
+                      "text": "Max queued frames (1=low latency, 4=smooth)"
                     }
                   }
                 }
@@ -2246,7 +2246,7 @@
               "to": {
                 "reduce": {
                   "textur": {
-                    "8567c4f3": "Target all available VRAM to reduce texture streaming stutter"
+                    "text": "Target all available VRAM to reduce texture streaming stutter"
                   }
                 }
               }
@@ -2257,52 +2257,52 @@
       "custom": {
         "key": {
           "binds": {
-            "db49e11f": "Custom Key Binds"
+            "text": "Custom Key Binds"
           }
         },
         "binds": {
-          "761e94aa": "Custom binds"
+          "text": "Custom binds"
         }
       },
       "repair": {
         "tools": {
-          "731932af": "Repair Tools"
+          "text": "Repair Tools"
         },
         "workshop": {
           "folders": {
-            "f91ad30a": "Repair Workshop Folders"
+            "text": "Repair Workshop Folders"
           }
         }
       },
       "ready": {
-        "5fa7aac5": "Ready"
+        "text": "Ready"
       },
       "clearing": {
         "profile": {
           "data": {
             "permanently": {
               "removes": {
-                "75d30046": "Clearing profile data permanently removes boiii_players, including settings, saves, and binds."
+                "text": "Clearing profile data permanently removes boiii_players, including settings, saves, and binds."
               }
             }
           }
         }
       },
       "all": {
-        "a52ace42": "All",
+        "text": "All",
         "items": {
           "are": {
             "up": {
               "to": {
                 "date": {
-                  "5ee10a13": "All items are up to date!"
+                  "text": "All items are up to date!"
                 }
               }
             }
           }
         },
         "good": {
-          "556115b1": "all good!"
+          "text": "all good!"
         },
         "settings": {
           "have": {
@@ -2311,7 +2311,7 @@
                 "to": {
                   "defaults": {
                     "r": {
-                      "6ba3edd8": "All settings have been reset to defaults. Restart the game for changes to take effect."
+                      "text": "All settings have been reset to defaults. Restart the game for changes to take effect."
                     }
                   }
                 }
@@ -2327,7 +2327,7 @@
                   "reset": {
                     "to": {
                       "de": {
-                        "0f7bb398": "All asset pool sizes have been reset to defaults. Restart the game for changes to take effect."
+                        "text": "All asset pool sizes have been reset to defaults. Restart the game for changes to take effect."
                       }
                     }
                   }
@@ -2338,33 +2338,33 @@
         }
       },
       "zombies": {
-        "f0dd1d97": "Zombies"
+        "text": "Zombies"
       },
       "multiplayer": {
-        "563370a7": "Multiplayer"
+        "text": "Multiplayer"
       },
       "campaign": {
-        "268286d2": "Campaign"
+        "text": "Campaign"
       },
       "start": {
         "verification": {
-          "01615b8f": "Start Verification"
+          "text": "Start Verification"
         }
       },
       "message": {
-        "2f77668a": "Message"
+        "text": "Message"
       },
       "ok": {
-        "565339bc": "OK"
+        "text": "OK"
       },
       "confirm": {
-        "eebdd24a": "Confirm"
+        "text": "Confirm"
       },
       "credits": {
-        "2a6b24ad": "Credits"
+        "text": "Credits"
       },
       "maintainers": {
-        "4eb9f909": "Maintainers"
+        "text": "Maintainers"
       },
       "you": {
         "can": {
@@ -2375,7 +2375,7 @@
                   "wine": {
                     "but": {
                       "do": {
-                        "4ae1ad39": "You can browse the Workshop on Wine, but downloads are currently unavailable because SteamCMD does not work through Wine. You can still open item pages on Steam."
+                        "text": "You can browse the Workshop on Wine, but downloads are currently unavailable because SteamCMD does not work through Wine. You can still open item pages on Steam."
                       }
                     }
                   }
@@ -2390,7 +2390,7 @@
           "is": {
             "an": {
               "archive": {
-                "ca3f9dcb": "THIS MAP IS AN ARCHIVE"
+                "text": "THIS MAP IS AN ARCHIVE"
               }
             }
           }
@@ -2402,7 +2402,7 @@
                 "remove": {
                   "it": {
                     "f": {
-                      "d6c21346": "This item is already installed. Remove it first to reinstall."
+                      "text": "This item is already installed. Remove it first to reinstall."
                     }
                   }
                 }
@@ -2413,7 +2413,7 @@
         "cannot": {
           "be": {
             "undone": {
-              "7f5d26a5": "? This cannot be undone."
+              "text": "? This cannot be undone."
             }
           }
         },
@@ -2424,7 +2424,7 @@
                 "already": {
                   "in": {
                     "your": {
-                      "67d4b449": "This BOIII Friend Code is already in your friends list."
+                      "text": "This BOIII Friend Code is already in your friends list."
                     }
                   }
                 }
@@ -2434,30 +2434,30 @@
         }
       },
       "initializing": {
-        "6f191ff7": "Initializing..."
+        "text": "Initializing..."
       },
       "popularity": {
-        "fe60d851": "Popularity"
+        "text": "Popularity"
       },
       "size": {
-        "1af85190": "Size"
+        "text": "Size"
       },
       "rating": {
-        "9f295304": "Rating"
+        "text": "Rating"
       },
       "subscribers": {
-        "a344c89d": "Subscribers"
+        "text": "Subscribers"
       },
       "already": {
         "installed": {
-          "79eaac97": "Already Installed",
-          "9616d808": "Already installed"
+          "titleCase": "Already Installed",
+          "text": "Already installed"
         }
       },
       "starting": {
         "download": {
           "for": {
-            "c9e914da": "Starting download for "
+            "text": "Starting download for "
           }
         }
       },
@@ -2469,7 +2469,7 @@
                 "progress": {
                   "stop": {
                     "it": {
-                      "63a816c8": "A download is already in progress. Stop it and download \""
+                      "text": "A download is already in progress. Stop it and download \""
                     }
                   }
                 }
@@ -2484,7 +2484,7 @@
                 "progress": {
                   "keep": {
                     "th": {
-                      "2b2c7ffc": "A workshop download is in progress. Keep the launcher open while you play?"
+                      "text": "A workshop download is in progress. Keep the launcher open while you play?"
                     }
                   }
                 }
@@ -2494,9 +2494,9 @@
         }
       },
       "update": {
-        "c1c1009d": "Update",
+        "text": "Update",
         "now": {
-          "f96f4d46": "Update Now"
+          "text": "Update Now"
         }
       },
       "cannot": {
@@ -2505,7 +2505,7 @@
             "name": {
               "is": {
                 "missing": {
-                  "17b31497": "Cannot remove: folder name is missing."
+                  "text": "Cannot remove: folder name is missing."
                 }
               }
             }
@@ -2513,7 +2513,7 @@
         },
         "check": {
           "updates": {
-            "55adb296": "Cannot check updates."
+            "text": "Cannot check updates."
           }
         }
       },
@@ -2522,7 +2522,7 @@
           "is": {
             "already": {
               "running": {
-                "6b99e0e5": "Another removal is already running."
+                "text": "Another removal is already running."
               }
             }
           }
@@ -2530,10 +2530,10 @@
       },
       "removal": {
         "failed": {
-          "59ac9c0e": "Removal failed"
+          "text": "Removal failed"
         },
         "complete": {
-          "b2834eac": "Removal complete"
+          "text": "Removal complete"
         }
       },
       "are": {
@@ -2543,12 +2543,12 @@
               "want": {
                 "to": {
                   "remove": {
-                    "61433ab4": "Are you sure you want to remove "
+                    "text": "Are you sure you want to remove "
                   },
                   "reset": {
                     "all": {
                       "setting": {
-                        "fbcf4705": "Are you sure you want to reset all settings to defaults? This cannot be undone."
+                        "text": "Are you sure you want to reset all settings to defaults? This cannot be undone."
                       }
                     }
                   }
@@ -2562,21 +2562,21 @@
         "to": {
           "remove": {
             "files": {
-              "fdceca7c": "Failed to remove files: "
+              "text": "Failed to remove files: "
             }
           },
           "parse": {
             "verification": {
               "json": {
                 "manifest": {
-                  "740c1d83": "Failed to parse verification.json manifest"
+                  "text": "Failed to parse verification.json manifest"
                 }
               }
             }
           },
           "apply": {
             "preset": {
-              "fd1be546": "Failed to apply preset: "
+              "text": "Failed to apply preset: "
             }
           },
           "add": {
@@ -2585,7 +2585,7 @@
                 "check": {
                   "the": {
                     "inpu": {
-                      "a45daa53": "Failed to add friend. Please check the inputs."
+                      "text": "Failed to add friend. Please check the inputs."
                     }
                   }
                 }
@@ -2593,30 +2593,30 @@
             }
           }
         },
-        "031a8f0f": "Failed"
+        "text": "Failed"
       },
       "wrong": {
         "size": {
-          "d6fb8664": "wrong size"
+          "text": "wrong size"
         }
       },
       "verification": {
         "not": {
           "available": {
-            "ee4ef50f": "Verification not available."
+            "text": "Verification not available."
           }
         },
         "is": {
           "already": {
             "running": {
-              "e0ef2304": "Verification is already running."
+              "text": "Verification is already running."
             }
           }
         },
         "failed": {
           "try": {
             "again": {
-              "912e2b0d": "Verification failed (try again)"
+              "text": "Verification failed (try again)"
             }
           }
         }
@@ -2627,7 +2627,7 @@
             "is": {
               "already": {
                 "running": {
-                  "d8057b57": "Black Ops III is already running."
+                  "text": "Black Ops III is already running."
                 }
               }
             }
@@ -2636,13 +2636,13 @@
       },
       "invalid": {
         "folder": {
-          "55fc0560": "Invalid Folder"
+          "text": "Invalid Folder"
         },
         "manifest": {
           "no": {
             "files": {
               "array": {
-                "112d44e1": "Invalid manifest: no files array"
+                "text": "Invalid manifest: no files array"
               }
             }
           }
@@ -2655,7 +2655,7 @@
               "not": {
                 "contain": {
                   "black": {
-                    "24cda99e": "The selected folder does not contain BlackOps3.exe."
+                    "text": "The selected folder does not contain BlackOps3.exe."
                   }
                 }
               }
@@ -2669,7 +2669,7 @@
                 "spaces": {
                   "quotes": {
                     "or": {
-                      "bd2d1c4e": "The key must not contain spaces, quotes, or semicolons."
+                      "text": "The key must not contain spaces, quotes, or semicolons."
                     }
                   }
                 }
@@ -2684,7 +2684,7 @@
                 "quotes": {
                   "or": {
                     "lin": {
-                      "de20f1e5": "The command must not contain quotes or line breaks."
+                      "text": "The command must not contain quotes or line breaks."
                     }
                   }
                 }
@@ -2698,7 +2698,7 @@
               "run": {
                 "diagnostics": {
                   "mak": {
-                    "21437f9b": "The launcher could not run diagnostics. Make sure the executable and launcher data are from the same build."
+                    "text": "The launcher could not run diagnostics. Make sure the executable and launcher data are from the same build."
                   }
                 }
               }
@@ -2714,7 +2714,7 @@
                 "to": {
                   "take": {
                     "full": {
-                      "d8da7003": "Restart BOIII for the change to take full effect."
+                      "text": "Restart BOIII for the change to take full effect."
                     }
                   }
                 }
@@ -2724,14 +2724,14 @@
         }
       },
       "edit": {
-        "464c4ffd": "Edit"
+        "text": "Edit"
       },
       "could": {
         "not": {
           "remove": {
             "this": {
               "bind": {
-                "2108baf0": "Could not remove this bind."
+                "text": "Could not remove this bind."
               }
             }
           },
@@ -2739,7 +2739,7 @@
             "the": {
               "binds": {
                 "file": {
-                  "a19b35e1": "Could not save the binds file."
+                  "text": "Could not save the binds file."
                 }
               }
             }
@@ -2752,7 +2752,7 @@
             "cg": {
               "fov": {
                 "100": {
-                  "c3ef807d": "Command (e.g. cg_fov 100)"
+                  "text": "Command (e.g. cg_fov 100)"
                 }
               }
             }
@@ -2764,25 +2764,25 @@
           "bridge": {
             "is": {
               "unavailable": {
-                "f48f866c": "Native launcher bridge is unavailable"
+                "text": "Native launcher bridge is unavailable"
               }
             }
           }
         }
       },
       "steamcmd": {
-        "7fc7d5ef": "SteamCMD"
+        "text": "SteamCMD"
       },
       "free": {
         "disk": {
           "space": {
-            "afe77031": "Free disk space"
+            "text": "Free disk space"
           }
         }
       },
       "wine": {
         "compatibility": {
-          "1e575d79": "Wine compatibility"
+          "text": "Wine compatibility"
         }
       },
       "blackops3": {
@@ -2790,7 +2790,7 @@
           "was": {
             "not": {
               "found": {
-                "0f22396a": "BlackOps3.exe was not found"
+                "text": "BlackOps3.exe was not found"
               }
             }
           }
@@ -2803,7 +2803,7 @@
               "repair": {
                 "workshop": {
                   "fold": {
-                    "077f2d95": "Folder is missing; use Repair Workshop Folders"
+                    "text": "Folder is missing; use Repair Workshop Folders"
                   }
                 }
               }
@@ -2813,62 +2813,62 @@
       },
       "preparing": {
         "verification": {
-          "c48fea95": "Preparing verification..."
+          "text": "Preparing verification..."
         },
         "removal": {
-          "327a435c": "Preparing removal..."
+          "text": "Preparing removal..."
         }
       },
       "filtering": {
         "manifest": {
           "files": {
-            "2159f493": "Filtering manifest files..."
+            "text": "Filtering manifest files..."
           }
         }
       },
       "cancelled": {
-        "d353a99e": "Cancelled"
+        "text": "Cancelled"
       },
       "done": {
-        "11a6767d": "Done"
+        "text": "Done"
       },
       "removing": {
         "mod": {
-          "39d57c56": "Removing mod..."
+          "text": "Removing mod..."
         },
         "mods": {
-          "53ff78d7": "Removing mods..."
+          "text": "Removing mods..."
         }
       },
       "nothing": {
         "to": {
           "remove": {
-            "5fd6e03e": "Nothing to remove"
+            "text": "Nothing to remove"
           }
         }
       },
       "base": {
         "game": {
-          "f547818a": "Base Game"
+          "text": "Base Game"
         }
       },
       "zombie": {
         "chronicles": {
-          "2a4efcad": "Zombie Chronicles"
+          "text": "Zombie Chronicles"
         }
       },
       "mp": {
         "dlc": {
-          "2b49bb64": "MP DLC"
+          "text": "MP DLC"
         }
       },
       "zm": {
         "dlc": {
-          "9f6f9de6": "ZM DLC"
+          "text": "ZM DLC"
         }
       },
       "complete": {
-        "143b270a": "Complete"
+        "text": "Complete"
       },
       "some": {
         "folders": {
@@ -2878,7 +2878,7 @@
                 "created": {
                   "check": {
                     "fo": {
-                      "8cfd56bc": "Some folders could not be created. Check folder permissions."
+                      "text": "Some folders could not be created. Check folder permissions."
                     }
                   }
                 }
@@ -2893,7 +2893,7 @@
             "players": {
               "this": {
                 "remo": {
-                  "c5c6923e": "Permanently delete boiii_players? This removes saves, settings, and custom binds and cannot be undone."
+                  "text": "Permanently delete boiii_players? This removes saves, settings, and custom binds and cannot be undone."
                 }
               }
             }
@@ -2907,7 +2907,7 @@
               "new": {
                 "defaults": {
                   "will": {
-                    "699d352f": "Profile data was removed. New defaults will be created on next launch."
+                    "text": "Profile data was removed. New defaults will be created on next launch."
                   }
                 }
               }
@@ -2917,7 +2917,7 @@
             "not": {
               "be": {
                 "removed": {
-                  "091fdd6a": "Profile data could not be removed."
+                  "text": "Profile data could not be removed."
                 }
               }
             }
@@ -2926,7 +2926,7 @@
       },
       "preset": {
         "applied": {
-          "ad9fccd7": "Preset Applied"
+          "text": "Preset Applied"
         }
       },
       "please": {
@@ -2938,7 +2938,7 @@
                   "and": {
                     "a": {
                       "boi": {
-                        "b7bbbf63": "Please enter both a display name and a BOIII Friend Code."
+                        "text": "Please enter both a display name and a BOIII Friend Code."
                       }
                     }
                   }
@@ -2955,7 +2955,7 @@
               "adding": {
                 "the": {
                   "friend": {
-                    "4c7a0374": "An error occurred while adding the friend."
+                    "text": "An error occurred while adding the friend."
                   }
                 }
               }
@@ -2966,25 +2966,25 @@
       "error": {
         "parsing": {
           "releases": {
-            "50d8cd37": "Error parsing releases:"
+            "text": "Error parsing releases:"
           }
         },
         "fetching": {
           "releases": {
-            "6e88af87": "Error fetching releases:"
+            "text": "Error fetching releases:"
           }
         },
-        "d98ee0e5": "ERROR"
+        "text": "ERROR"
       },
       "checking": {
-        "2e5f79bb": "Checking..."
+        "text": "Checking..."
       },
       "running": {
-        "f4ccae29": "Running"
+        "text": "Running"
       },
       "beta": {
         "experimental": {
-          "fa7ec2e4": "Beta (Experimental)"
+          "text": "Beta (Experimental)"
         }
       }
     },
@@ -2992,8 +2992,8 @@
       "label": "Launcher & game language",
       "system": "System default",
       "english": "English (United States)",
-      "french": "Français (France) — traduction partielle",
-      "help": "System default follows Windows when a translation is available. Game language changes only when supported by installed game content; French is partial."
+      "french": "French (France) — partial game translation",
+      "help": "System default follows Windows when a translation is available. Game language changes only when supported by installed game content; the French game text is partial."
     },
     "home": {
       "description": "Call of Duty: Black Ops 3 enhanced with our modifications. Experience the full campaign, multiplayer, and zombies modes with improved stability and additional features.",
@@ -3021,6 +3021,220 @@
     },
     "workshop": {
       "alreadyInstalled": "This workshop item is already installed at:\n{path}\n\nRemove it first if you want to reinstall."
+    },
+    "dynamic": {
+      "controls": {
+        "previous": "‹ Prev",
+        "next": "Next ›",
+        "close": "Close",
+        "pause": "Pause",
+        "resume": "Resume",
+        "removing": "Removing..."
+      },
+      "counts": {
+        "pageOf": "Page {current} / {total}",
+        "page": "Page {current}",
+        "friends": {
+          "one": "{count} friend",
+          "other": "{count} friends"
+        },
+        "items": {
+          "one": "{count} item",
+          "other": "{count} items"
+        },
+        "files": {
+          "one": "{count} file",
+          "other": "{count} files"
+        },
+        "itemsRemoved": {
+          "one": "{count} item removed",
+          "other": "{count} items removed"
+        },
+        "filesWithIssues": {
+          "one": "{count} file with issues:",
+          "other": "{count} files with issues:"
+        },
+        "fileCountLabel": "{name} ({count} files)",
+        "filesRemoved": {
+          "one": "{count} file removed ({detail})",
+          "other": "{count} files removed ({detail})"
+        }
+      },
+      "labels": {
+        "id": "ID: {id}",
+        "workshopId": "Workshop ID: {id}",
+        "mode": "Mode: {mode}",
+        "fileSize": "File size: {size}",
+        "attempt": "Attempt {count}",
+        "elapsed": "Elapsed: {time}",
+        "eta": "ETA: {time}",
+        "updating": "Updating: {path}",
+        "typeFolder": "Type: {type} | Folder: {folder}",
+        "setup": "First-time setup - downloading from Steam CDN",
+        "preparing": "Preparing..."
+      },
+      "verify": {
+        "modes": {
+          "all": "All",
+          "campaign": "Campaign",
+          "multiplayer": "Multiplayer",
+          "zombies": "Zombies",
+          "dlc": "DLC",
+          "base": "Base Game",
+          "mpDlc": "MP DLC",
+          "zmDlc": "ZM DLC",
+          "zombieChronicles": "Zombie Chronicles"
+        },
+        "status": {
+          "preparing": "Preparing verification...",
+          "loadingManifest": "Loading manifest...",
+          "parseFailed": "Failed to parse verification.json manifest",
+          "invalidManifest": "Invalid manifest: no files array",
+          "filtering": "Filtering manifest files...",
+          "cancelled": "Cancelled",
+          "failed": "Verification failed (try again)",
+          "done": "Done"
+        },
+        "verifying": "Verifying ({mode})...",
+        "manifestNotFound": "verification.json not found in {path}",
+        "failedToStart": "Failed to start verification: {reason}",
+        "failedPreset": "Failed to apply preset: {reason}",
+        "result": "{mode}: Verified {total} files: {ok} OK",
+        "errors": " | ERRORS: {issues}",
+        "optional": " | Optional (DLC): {issues}",
+        "componentIssue": "{component}: {issues}",
+        "allGood": " - all good!",
+        "componentPrefix": " | ",
+        "issueSeparator": ", ",
+        "componentSeparator": " ; ",
+        "allVerifiedNoChanges": "All files verified — no changes detected.",
+        "missing": {
+          "one": "{count} missing",
+          "other": "{count} missing"
+        },
+        "wrongSize": {
+          "one": "{count} wrong size",
+          "other": "{count} wrong size"
+        },
+        "corrupt": {
+          "one": "{count} corrupt",
+          "other": "{count} corrupt"
+        }
+      },
+      "messages": {
+        "sizeAvailable": "{size} available",
+        "gameData": "Game: {game} | Data: {data}",
+        "game": "Game: {game}",
+        "gamePathSet": "Game path set to:\n{path}",
+        "failedRemove": {
+          "one": "Failed to remove {count} file",
+          "other": "Failed to remove {count} files"
+        },
+        "removedFiles": {
+          "one": "Removed {count} file ({detail})",
+          "other": "Removed {count} files ({detail})"
+        },
+        "latest": "{version} (Latest)",
+        "releasesParseError": "Error parsing releases: {reason}",
+        "releasesFetchError": "Error fetching releases: {reason}"
+      },
+      "removal": {
+        "removingMod": "Removing mod...",
+        "removingMods": "Removing mods...",
+        "preparing": "Preparing removal...",
+        "complete": "Removal complete",
+        "nothing": "Nothing to remove",
+        "failed": "Removal failed"
+      },
+      "workshop": {
+        "status": {
+          "initializing": "Initializing...",
+          "diskFullCreate": "Error: Disk full - cannot create destination folder.",
+          "diskFullCopy": "Error: Disk full during file copy.",
+          "downloadInProgress": "Error: An in-game download is already in progress.",
+          "alreadyInstalled": "Already installed.",
+          "preparingUpdate": "Preparing update...",
+          "downloadingSteamCmd": "Downloading SteamCMD...",
+          "createSteamCmdFailed": "Error: Cannot create steamcmd folder.",
+          "downloadSteamCmdFailed": "Error: Failed to download SteamCMD.",
+          "extractingSteamCmd": "Extracting SteamCMD...",
+          "corruptSteamCmdZip": "Error: SteamCMD zip is empty or corrupt.",
+          "extractSteamCmdFailed": "Error: Failed to extract SteamCMD.",
+          "steamCmdExeMissing": "Error: SteamCMD extraction failed - steamcmd.exe not found.",
+          "steamCmdFirstRun": "Initializing SteamCMD (first run)...",
+          "steamCmdInitFailed": "Error: SteamCMD failed to initialize.",
+          "fetchingFileInfo": "Fetching file info...",
+          "notEnoughSpace": "Error: Not enough disk space.",
+          "resettingSteamCmd": "Resetting SteamCMD...",
+          "startSteamCmdFailed": "Error: Failed to start SteamCMD.",
+          "steamCmdUpdating": "Updating SteamCMD...",
+          "diskNearlyFull": "Error: Disk nearly full during download.",
+          "canceled": "Canceled.",
+          "steamCmdExit": "SteamCMD exited without completing",
+          "steamCmdExitRetrying": "SteamCMD exited without completing, retrying...",
+          "waitingSteamCmd": "Waiting for SteamCMD...",
+          "verifying": "Verifying download...",
+          "contentFolderMissing": "Error: Download failed - content folder not found.",
+          "downloadIncomplete": "Error: Download is empty or incomplete.",
+          "destinationFailed": "Error: Cannot create destination folder.",
+          "copying": "Copying files...",
+          "copyFailed": "Error: Failed to copy downloaded files.",
+          "emptyDestination": "Error: Copy completed but destination is empty.",
+          "noGameFiles": "Error: No game files found in download.",
+          "complete": "Done! Download complete.",
+          "diskFull": "Error: Disk full.",
+          "filesystemError": "Error: File system error.",
+          "downloadFailed": "Error: Workshop download failed.",
+          "downloadCrashed": "Error: Workshop download crashed."
+        },
+        "dynamic": {
+          "downloadStopped": "Download stopped by user after {count} attempts.",
+          "startingDownload": "Starting download for {title}...",
+          "startingWorkshopItem": "Starting download: {title}",
+          "startingWorkshopItemAttempt": "Starting download: {title} (attempt {count})",
+          "downloadingTitle": "Downloading {title}...",
+          "paused": "Paused - {title}",
+          "waitingSteamCmdAttempt": "Waiting for SteamCMD... (attempt {count})",
+          "steamCmdUpdatingAttempt": "Updating SteamCMD... (attempt {count})",
+          "steamCmdUpdating": "Updating SteamCMD...",
+          "elapsed": "Elapsed: {time}",
+          "eta": "ETA: {time}",
+          "attempt": "Attempt {count}",
+          "installing": "Installing files...",
+          "installingUpdate": "Installing update...",
+          "copyProgress": "{copied} / {total}",
+          "finishedWithNoZones": "{name} ({size}) — no .ff files found, may need manual setup.",
+          "finishedReady": "{name} is ready to use ({size})."
+        },
+        "details": {
+          "waitForCurrentDownload": "Wait for the current in-game download to finish before starting a new one from the launcher.",
+          "networkFailed": "Could not reach the Steam CDN. Check your internet connection.",
+          "retryAnytime": "You can retry the download at any time.",
+          "continueDownload": "Do you want to continue downloading?",
+          "progressPreserved": "Your progress will be preserved.",
+          "retryLimitTitle": "Retry Limit Reached",
+          "retryLimitMessage": "Download has used all retry attempts without completing.\n\nDo you want to continue downloading?\n(Your progress will be preserved)",
+          "resumeHint": "Download paused. Click Resume to continue.",
+          "noUsableZoneFiles": "The workshop item downloaded but contained no usable zone files.",
+          "incompatible": "This item may be corrupt or incompatible.",
+          "diskSpace": "Need ~{required} free, but only {available} available. Free up space and try again.",
+          "diskSpaceRemaining": "Only {available} remaining. Free up disk space and try again.",
+          "freeDiskSpace": "Free up disk space and try again.",
+          "copyDiskSpace": "Ran out of disk space while copying files. Free up space and try again.",
+          "networkSteamCdn": "Could not reach steamcdn-a.akamaihd.net. Check your internet connection.",
+          "selfUpdate": "SteamCMD is updating itself, this may take a minute",
+          "selfUpdateFailed": "The self-update may have failed. Try again or check your internet connection.",
+          "retryFailures": "Too many quick failures ({count}), resetting and retrying",
+          "pleaseWait": "Please wait",
+          "retryDiagnostics": "Exit code: {code} | Attempt {attempt}/{maxAttempts} | Quick fails: {failures}",
+          "downloadPathDiagnostic": "SteamCMD did not download to the expected path.\nChecked: {path}\n    and: {alternatePath}",
+          "emptyDownloadDiagnostic": "SteamCMD created the folder but no files were downloaded ({size}).\nPath: {path}\nTry again or check your internet connection.",
+          "copyFailedDiagnostic": "Source: {source}\nDestination: {destination}",
+          "copyEmptyDiagnostic": "Source had files but nothing was copied to: {path}\nSource size: {size}",
+          "noZoneDiagnostic": "The workshop item downloaded but contained no usable zone files.\nInstalled to: {path}\nThis item may be corrupt or incompatible.",
+          "diskFullException": "Ran out of disk space. Free up space and try again."
+        }
+      }
     }
   }
 }

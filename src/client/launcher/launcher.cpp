@@ -9,6 +9,7 @@
 #include "component/auth.hpp"
 #include "html/html_window.hpp"
 #include "launcher.hpp"
+#include "localization.hpp"
 #include "launcher_workshop.hpp"
 
 #include <game/game.hpp>
@@ -254,6 +255,7 @@ std::atomic<bool> folder_picker_done{false};
 
 std::mutex remove_status_mutex;
 std::string remove_status_message;
+std::string remove_status_message_key;
 double remove_progress_percent = 0.0;
 std::string remove_progress_details;
 std::atomic<bool> remove_running{false};
@@ -262,6 +264,7 @@ void set_remove_status(const std::string &msg, double pct,
                        const std::string &details = "") {
   std::lock_guard lock(remove_status_mutex);
   remove_status_message = msg;
+  remove_status_message_key = localization::message_key_for_english(msg);
   remove_progress_percent = pct;
   remove_progress_details = details;
 }
@@ -269,6 +272,7 @@ void set_remove_status(const std::string &msg, double pct,
 void reset_remove_status() {
   std::lock_guard lock(remove_status_mutex);
   remove_status_message.clear();
+  remove_status_message_key.clear();
   remove_progress_percent = 0.0;
   remove_progress_details.clear();
 }
@@ -290,6 +294,7 @@ std::uint64_t compute_folder_size(const std::filesystem::path &folder) {
 
 std::mutex verify_mutex;
 std::string verify_status_message;
+std::string verify_status_message_key;
 double verify_progress_percent = 0.0;
 std::string verify_progress_details;
 std::vector<std::string> verify_changed_files;
@@ -300,6 +305,7 @@ void set_verify_status(const std::string &msg, double pct,
                        const std::string &details) {
   std::lock_guard lock(verify_mutex);
   verify_status_message = msg;
+  verify_status_message_key = localization::message_key_for_english(msg);
   verify_progress_percent = pct;
   verify_progress_details = details;
 }
@@ -307,6 +313,7 @@ void set_verify_status(const std::string &msg, double pct,
 void reset_verify_status() {
   std::lock_guard lock(verify_mutex);
   verify_status_message.clear();
+  verify_status_message_key.clear();
   verify_progress_percent = 0.0;
   verify_progress_details.clear();
   verify_changed_files.clear();
@@ -1926,6 +1933,8 @@ bool run() {
           w.StartObject();
           w.Key("message");
           w.String(verify_status_message.c_str());
+          w.Key("messageKey");
+          w.String(verify_status_message_key.c_str());
           w.Key("progress");
           w.Double(verify_progress_percent);
           w.Key("details");
@@ -1958,6 +1967,8 @@ bool run() {
           w.StartObject();
           w.Key("message");
           w.String(remove_status_message.c_str());
+          w.Key("messageKey");
+          w.String(remove_status_message_key.c_str());
           w.Key("progress");
           w.Double(remove_progress_percent);
           w.Key("details");

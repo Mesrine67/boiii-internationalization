@@ -1,28 +1,15 @@
 (function () {
   "use strict";
 
-
-
   var currentLanguage = "en-US";
-  var ignoredClasses = [
-    "friend-name",
-    "mod-card-name",
-    "mod-card-description",
-    "workshop-item-title",
-    "workshop-item-description",
-    "workshop-modal-title",
-    "workshop-modal-description",
-    "library-modal-title",
-    "library-modal-description",
-    "maintainer-name"
-  ];
+  var ignoredClasses = ["friend-name", "mod-card-name", "mod-card-description", "workshop-item-title", "workshop-item-description", "workshop-modal-title", "workshop-modal-description", "library-modal-title", "library-modal-description", "maintainer-name"];
   var translatableAttributes = ["title", "placeholder", "aria-label", "alt"];
-
   var englishCatalog = null;
   var activeCatalog = null;
   var localeManifest = null;
   var supportedCatalogLocales = ["en-US"];
   var legacySourceKeys = Object.create(null);
+  var sourceMessagePatterns = [];
 
   function getBridge() {
     try {
@@ -39,8 +26,7 @@
       var bridge = getBridge();
       var raw = bridge && bridge.loadLauncherLocaleManifest && bridge.loadLauncherLocaleManifest();
       var manifest = typeof raw === "string" && raw ? JSON.parse(raw) : null;
-      if (!manifest || manifest.schemaVersion !== 1 || manifest.sourceLocale !== "en-US" ||
-          !manifest.locales || typeof manifest.locales !== "object") return null;
+      if (!manifest || manifest.schemaVersion !== 1 || manifest.sourceLocale !== "en-US" || !manifest.locales || typeof manifest.locales !== "object") return null;
       var locales = [];
       for (var locale in manifest.locales) {
         if (!Object.prototype.hasOwnProperty.call(manifest.locales, locale)) continue;
@@ -65,10 +51,7 @@
       var raw = bridge.loadLauncherLocale(locale);
       if (typeof raw !== "string" || !raw) return null;
       var catalog = JSON.parse(raw);
-      if (!catalog || typeof catalog !== "object" || !catalog._meta ||
-          catalog._meta.schemaVersion !== 1 || catalog._meta.locale !== locale ||
-          catalog._meta.sourceLocale !== "en-US" ||
-          !catalog.launcher || typeof catalog.launcher !== "object") return null;
+      if (!catalog || typeof catalog !== "object" || !catalog._meta || catalog._meta.schemaVersion !== 1 || catalog._meta.locale !== locale || catalog._meta.sourceLocale !== "en-US" || !catalog.launcher || typeof catalog.launcher !== "object") return null;
       return catalog;
     } catch (e) {
       return null;
@@ -102,27 +85,71 @@
     var parts = String(path || "").split(".");
     var value = root;
     for (var i = 0; i < parts.length; i++) {
-      if (!value || typeof value !== "object" ||
-          !Object.prototype.hasOwnProperty.call(value, parts[i])) return undefined;
+      if (!value || typeof value !== "object" || !Object.prototype.hasOwnProperty.call(value, parts[i])) return undefined;
       value = value[parts[i]];
     }
     return value;
   }
 
-  function indexLegacyStrings(value, path) {
+  function addSourcePattern(template, key) {
+    var names = [];
+    var expression = "";
+    var literalWeight = 0;
+    var cursor = 0;
+    var source = String(template);
+    var placeholder = /\{([A-Za-z0-9_.-]+)\}/g;
+    var match;
+    while ((match = placeholder.exec(source))) {
+      var literal = source.substring(cursor, match.index);
+      expression += literal.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      if (/[A-Za-z]{3}/.test(literal)) literalWeight += 3;
+      else literalWeight += (literal.match(/[A-Za-z]/g) || []).length;
+      expression += "([\\s\\S]+?)";
+      names.push(match[1]);
+      cursor = placeholder.lastIndex;
+    }
+    var suffix = source.substring(cursor);
+    expression += suffix.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    if (/[A-Za-z]{3}/.test(suffix)) literalWeight += 3;
+    else literalWeight += (suffix.match(/[A-Za-z]/g) || []).length;
+    if (names.length && literalWeight > 0) sourceMessagePatterns.push({
+      key: key,
+      names: names,
+      specificity: literalWeight,
+      expression: new RegExp("^" + expression + "$")
+    });
+  }
+
+  function indexSourceStrings(value, path) {
     if (!value || typeof value !== "object") return;
+    var isPlural = typeof value.one === "string" && typeof value.other === "string";
+    if (isPlural) {
+      legacySourceKeys[value.one] = path;
+      legacySourceKeys[value.other] = path;
+      addSourcePattern(value.one, path);
+      addSourcePattern(value.other, path);
+      return;
+    }
     for (var key in value) {
       if (!Object.prototype.hasOwnProperty.call(value, key)) continue;
       var nextPath = path + "." + key;
-      if (typeof value[key] === "string") legacySourceKeys[value[key]] = nextPath;
-      else indexLegacyStrings(value[key], nextPath);
+      if (typeof value[key] === "string") {
+        legacySourceKeys[value[key]] = nextPath;
+        addSourcePattern(value[key], nextPath);
+      } else {
+        indexSourceStrings(value[key], nextPath);
+      }
     }
   }
 
   function rebuildLegacyIndex() {
     legacySourceKeys = Object.create(null);
-    var legacy = englishCatalog && englishCatalog.launcher && englishCatalog.launcher.legacy;
-    if (legacy) indexLegacyStrings(legacy, "launcher.legacy");
+    sourceMessagePatterns = [];
+    var source = englishCatalog && englishCatalog.launcher;
+    if (source) indexSourceStrings(source, "launcher");
+    sourceMessagePatterns.sort(function (left, right) {
+      return right.specificity - left.specificity;
+    });
   }
 
   function interpolate(value, params) {
@@ -164,140 +191,111 @@
     return entry && entry.displayName ? entry.displayName : locale;
   }
   function translateDynamic(source) {
-    var installedWorkshopItem = source.match(
-      /^This workshop item is already installed at:\n([^\n]+)\n\nRemove it first if you want to reinstall\.$/
-    );
-    if (installedWorkshopItem) {
-      return translateKey(
-        "launcher.workshop.alreadyInstalled",
-        { path: installedWorkshopItem[1] },
-        source
-      );
+    var summary = source.match(/^(.+): Verified (\d+) files: (\d+) OK(.*)$/);
+    if (summary) return translateVerificationSummary(summary);
+    for (var i = 0; i < sourceMessagePatterns.length; i++) {
+      var pattern = sourceMessagePatterns[i];
+      var match = pattern.expression.exec(source);
+      if (!match) continue;
+      var params = {};
+      for (var j = 0; j < pattern.names.length; j++) {
+        params[pattern.names[j]] = pattern.names[j] === "mode"
+          ? translateVerificationMode(match[j + 1])
+          : match[j + 1];
+      }
+      if (params.count !== undefined && /^\d+$/.test(params.count)) {
+        params.count = Number(params.count);
+      }
+      return translateKey(pattern.key, params, source);
     }
-
     if (source.indexOf("\n") !== -1) {
       var lines = source.split("\n");
-      for (var li = 0; li < lines.length; li++) {
-        lines[li] = translate(lines[li]);
-      }
+      for (var line = 0; line < lines.length; line++) lines[line] = translate(lines[line]);
       return lines.join("\n");
     }
-
-    var match = source.match(/^Page (\d+) \/ (\d+)$/);
-    if (match) return "Page " + match[1] + " sur " + match[2];
-
-    match = source.match(/^(\d+) friends?$/);
-    if (match) return match[1] + (match[1] === "1" ? " ami" : " amis");
-
-    match = source.match(/^(\d+) items?$/);
-    if (match) return match[1] + (match[1] === "1" ? " élément" : " éléments");
-
-    match = source.match(/^(\d+) file(?:s)?$/);
-    if (match) return match[1] + (match[1] === "1" ? " fichier" : " fichiers");
-
-    match = source.match(/^ID: (.+)$/);
-    if (match) return "ID : " + match[1];
-
-    match = source.match(/^Workshop ID: (.+)$/);
-    if (match) return "ID de l’Atelier : " + match[1];
-
-    match = source.match(/^Page (\d+)$/);
-    if (match) return "Page " + match[1];
-
-    match = source.match(/^Starting download for (.+)\.\.\.$/);
-    if (match) return "Téléchargement de " + match[1] + "…";
-
-    match = source.match(/^Mode: (.+)$/);
-    if (match) return "Mode : " + translate(match[1]);
-
-    match = source.match(/^Verifying \((.+)\)\.\.\.$/);
-    if (match) return "Vérification (" + translate(match[1]) + ")…";
-
-    match = source.match(/^verification\.json not found in (.+)$/);
-    if (match) return "verification.json est introuvable dans " + match[1];
-
-    match = source.match(/^(\d+(?:[.,]\d+)?\s*(?:B|KB|MB|GB|TB)) available$/i);
-    if (match) return match[1] + " disponible(s)";
-
-    match = source.match(/^(.+): Verified (\d+) files: (\d+) OK(.*)$/);
-    if (match) {
-      var modeNames = {
-        All: "Tous",
-        Campaign: "Campagne",
-        Multiplayer: "Multijoueur",
-        Zombies: "Zombies"
-      };
-      var result = (modeNames[match[1]] || match[1]) + " : " + match[2] + " fichiers vérifiés : " + match[3] + " OK";
-      var tail = match[4]
-        .replace(/ \| ERRORS:/g, " | ERREURS :")
-        .replace(/ \| Optional \(DLC\):/g, " | Contenu facultatif (DLC) :")
-        .replace(/ - all good!/g, " - tout est correct !")
-        .replace(/(\d+) missing/g, "$1 fichier(s) manquant(s)")
-        .replace(/(\d+) wrong size/g, "$1 fichier(s) de taille incorrecte")
-        .replace(/(\d+) corrupt/g, "$1 fichier(s) corrompu(s)")
-        .replace(/Base Game/g, "Jeu de base")
-        .replace(/Zombie Chronicles/g, "Zombie Chronicles")
-        .replace(/MP DLC/g, "DLC multijoueur")
-        .replace(/ZM DLC/g, "DLC Zombies")
-        .replace(/Campaign/g, "Campagne")
-        .replace(/Multiplayer/g, "Multijoueur")
-        .replace(/Zombies/g, "Zombies");
-      return result + tail;
-    }
-
-    match = source.match(/^(\d+) items removed$/);
-    if (match) return match[1] + (match[1] === "1" ? " élément supprimé" : " éléments supprimés");
-
-    match = source.match(/^Game: (.+) \| Data: (.+)$/);
-    if (match) return "Jeu : " + match[1] + " | Données : " + match[2];
-
-    match = source.match(/^Game: (.+)$/);
-    if (match) return "Jeu : " + match[1];
-
-    match = source.match(/^Game path set to:\s*(.+)$/);
-    if (match) return "Chemin du jeu défini sur :\n" + match[1];
-
-    match = source.match(/^Failed to start verification: (.+)$/);
-    if (match) return "Impossible de démarrer la vérification : " + match[1];
-
-    match = source.match(/^Failed to apply preset: (.+)$/);
-    if (match) return "Impossible d’appliquer le préréglage : " + match[1];
-
-    match = source.match(/^Failed to remove (\d+) files?$/);
-    if (match) return "Impossible de supprimer " + match[1] + " fichier(s)";
-
-    match = source.match(/^(.+) \((\d+) files?\)$/);
-    if (match) {
-      return (
-        match[1] +
-        " (" +
-        match[2] +
-        (match[2] === "1" ? " fichier)" : " fichiers)")
-      );
-    }
-
-    match = source.match(/^Removed (\d+) files? \((.+)\)$/);
-    if (match) return match[1] + " fichier(s) supprimé(s) (" + match[2] + ")";
-
-    match = source.match(/^Error parsing releases: (.+)$/);
-    if (match) return "Erreur lors de l’analyse des versions : " + match[1];
-
-    match = source.match(/^Error fetching releases: (.+)$/);
-    if (match) return "Erreur lors du chargement des versions : " + match[1];
-
-    match = source.match(/^(\d+) files? with issues:$/);
-    if (match) {
-      return (
-        match[1] +
-        (match[1] === "1" ? " fichier" : " fichiers") +
-        " avec des problèmes :"
-      );
-    }
-
-    match = source.match(/^(.*) \(Latest\)$/);
-    if (match) return match[1] + " (dernière version)";
-
     return source;
+  }
+
+  function translateVerificationSummary(summary) {
+    var mode = translateVerificationMode(summary[1]);
+    var result = translateKey("launcher.dynamic.verify.result", {
+      mode: mode,
+      total: summary[2],
+      ok: summary[3]
+    }, summary[0].substring(0, summary[0].length - summary[4].length));
+    var tail = summary[4];
+    var sections = tail.split(" | ");
+    for (var sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
+      var section = sections[sectionIndex];
+      if (!section) continue;
+      if (section.indexOf("ERRORS:") === 0) {
+        result += translateKey("launcher.dynamic.verify.errors", {
+          issues: translateVerificationIssues(section.substring("ERRORS:".length))
+        }, " | ERRORS: " + section.substring("ERRORS:".length));
+      } else if (section.indexOf("Optional (DLC):") === 0) {
+        result += translateKey("launcher.dynamic.verify.optional", {
+          issues: translateVerificationIssues(section.substring("Optional (DLC):".length))
+        }, " | Optional (DLC): " + section.substring("Optional (DLC):".length));
+      } else if (section.trim().indexOf("- all good!") === 0) {
+        result += translateKey("launcher.dynamic.verify.allGood", null, " - all good!");
+      } else {
+        var components = section.split(" ; ");
+        result += translateKey("launcher.dynamic.verify.componentPrefix", null, " | ");
+        for (var componentIndex = 0; componentIndex < components.length; componentIndex++) {
+          var component = components[componentIndex].match(/^(.+?):\s*(.*)$/);
+          if (!component) {
+            result += components[componentIndex];
+            continue;
+          }
+          if (componentIndex > 0) {
+            result += translateKey("launcher.dynamic.verify.componentSeparator", null, " ; ");
+          }
+          result += translateKey("launcher.dynamic.verify.componentIssue", {
+            component: translate(component[1]),
+            issues: translateVerificationIssues(component[2])
+          }, components[componentIndex]);
+        }
+      }
+    }
+    return result;
+  }
+
+  function translateVerificationMode(mode) {
+    mode = String(mode || "");
+    var modeNames = ["Zombie Chronicles", "Base Game", "MP DLC", "ZM DLC", "Campaign", "Multiplayer", "Zombies", "All"];
+    for (var i = 0; i < modeNames.length; i++) {
+      var modeName = modeNames[i];
+      var modePattern = new RegExp("\\b" + modeName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b", "g");
+      mode = mode.replace(modePattern, translate(modeName));
+    }
+    return mode;
+  }
+
+  function translateVerificationIssues(source) {
+    var labels = [
+      { source: "wrong size", key: "wrongSize" },
+      { source: "missing", key: "missing" },
+      { source: "corrupt", key: "corrupt" }
+    ];
+    var remaining = source;
+    var formatted = [];
+    for (var i = 0; i < labels.length; i++) {
+      var expression = new RegExp("(\\d+) " + labels[i].source.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g");
+      var match;
+      while ((match = expression.exec(source))) {
+        formatted.push({ index: match.index, value: translateKey(
+          "launcher.dynamic.verify." + labels[i].key,
+          { count: Number(match[1]) }, match[0]) });
+      }
+    }
+    formatted.sort(function (left, right) { return left.index - right.index; });
+    if (!formatted.length) return remaining.trim();
+    remaining = "";
+    for (var part = 0; part < formatted.length; part++) {
+      if (part > 0) remaining += translateKey("launcher.dynamic.verify.issueSeparator", null, ", ");
+      remaining += formatted[part].value;
+    }
+    return remaining;
   }
 
   function translate(source) {
@@ -310,8 +308,7 @@
   function isIgnored(element) {
     while (element && element.nodeType === 1) {
       var tag = (element.tagName || "").toLowerCase();
-      if (tag === "script" || tag === "style" || tag === "textarea" ||
-          tag === "pre" || tag === "code") return true;
+      if (tag === "script" || tag === "style" || tag === "textarea" || tag === "pre" || tag === "code") return true;
       if (element.id === "playerName") return true;
       var classes = " " + (element.className || "") + " ";
       for (var i = 0; i < ignoredClasses.length; i++) {
@@ -428,12 +425,6 @@
         }
       }
     });
-    observer.observe(document.body, {
-      subtree: true,
-      childList: true,
-      characterData: true,
-      attributes: true,
-      attributeFilter: translatableAttributes
-    });
+    observer.observe(document.body, {subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: translatableAttributes});
   }
 })();

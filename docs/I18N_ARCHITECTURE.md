@@ -33,12 +33,12 @@ This is a source scan of the current `i18n/main` working tree, not a count of ev
 
 | Surface | Observed inventory | State |
 |---|---:|---|
-| Launcher HTML | 3,390 lines; current scanner finds 346 unique visible text/attribute fragments | Static English source is mapped by the locale catalog or explicit IDs. Twelve unmatched fragments are brands/logos, a version placeholder, a close glyph, dynamic page/friend counts, maintainer names, or a resolution example; they are not untranslated sentences. |
-| Launcher JavaScript French shim | The old shim had 477 exact source-to-French entries and dynamic rewrite rules; the current migration keeps 474 legacy entries plus 26 named keys | Existing French coverage is preserved, while new code uses locale catalogs and named IDs. Exact source matching remains only as a transition bridge. |
-| Launcher C++ status APIs | 68 calls to the current verify/remove/Workshop status setters, with 55 distinct first-literal messages in this scan | Messages and parameterized details are created in native code and passed to HTML as display text. Native dialogs and updater errors add more strings. |
+| Launcher HTML | 3,390 lines; current scanner checks 345 visible text/attribute fragments | The validator maps every static fragment or recognized dynamic template to a catalog entry. Brand names, versions, shortcuts, maintainer names, paths, and user content remain data rather than translated copy. |
+| Launcher catalogs/runtime | 666 source keys: 474 legacy mappings and 192 named/dynamic entries | French has 666/666 entries. Runtime matching supports placeholders, plurals, verification summaries, and multiline Workshop details; the legacy exact-text map remains a compatibility bridge. |
+| Launcher C++ status APIs | 68 calls to verify/remove/Workshop status setters, with 55 distinct first-literal messages in this scan | Status callbacks include `messageKey`; the HTML resolves messages and details through the active catalog. The retry-limit Windows dialog also reads that catalog. Other native dialogs and updater errors still need inventory. |
 | In-game overrides | 266 top-level entries were loaded by the test client in the prior run | This only demonstrates that the override file was read. It does not prove every key resolves or that the UI is fully French. |
 
-The screenshot of the Ezz launcher shows untranslated launcher labels such as `Play` and `Workshop`; the screenshot of the BO3 Controls page shows a different gap: its frame-smoothing description is still English. The current language selector is in Launch Options and supports the legacy English/French choice, but the earlier design has no system-default option or locale catalog loader. The live C++/HTML bridge therefore needs an explicit locale preference and catalog lookup.
+The screenshot of the Ezz launcher showed untranslated labels such as `Play` and `Workshop`; the screenshot of the BO3 Controls page showed a separate in-game gap: its frame-smoothing description remained English. The launcher selector now offers System default, English, and French through the locale catalog loader. This does not translate the separate in-game menus or install French game assets.
 
 Launcher strings come from several places:
 
@@ -47,11 +47,11 @@ Launcher strings come from several places:
 * C++ strings sent as status/message/detail fields, native file-picker text, and updater/error dialogs.
 * Dynamic third-party data such as mod names, Workshop titles, player names, paths, and server descriptions. These are user/content data and should not be translated by rewriting arbitrary text.
 
-The exact totals need to be reported by the catalog validator after the legacy map is extracted and after C++/JavaScript messages are migrated to stable keys. A single number from source grep would incorrectly count protocol labels, file paths, user data, and duplicated strings as translatable UI.
+Catalog coverage is reported by `scripts/i18n/validate-catalogs.mjs`. The source scan excludes known user data and recognizes catalog templates such as counts and dynamic paths, so the remaining warnings indicate actual gaps rather than values that should be translated.
 
 ### Phase 1 implementation snapshot
 
-The first launcher catalog migration now contains 500 English leaf keys and matching French entries (100% catalog key coverage; 16 entries are intentionally identical in the two catalogs). The current scan finds no unused legacy source strings in the scanned launcher/client files. This is catalog key coverage, not a claim that all launcher runtime text or any part of the game is fully translated. New home-screen, language-selector, launch-options, and Workshop already-installed text uses named IDs; the remaining exact-text bridge is temporary.
+The launcher catalogs contain 666 English leaf keys and matching French entries (100% catalog key coverage). The 474 imported source strings now use readable dotted keys under `launcher.legacy.*`, with explicit names for duplicate variants instead of generated hash suffixes. The validator finds every scanned static HTML fragment and no unused legacy source strings. This measures the catalog and scanned source only; it does not prove every third-party or runtime-generated value is translatable. New home-screen, language-selector, launch-options, status, and Workshop text uses named keys or catalog templates; the exact-text bridge remains temporary.
 
 ## 4. Recommended repository layout
 
@@ -100,7 +100,7 @@ Use hierarchical names for launcher-owned messages, for example:
 
 Use ICU MessageFormat only if a compatible implementation is deliberately bundled. Until then, define a small, documented placeholder syntax (`{current}`, `{total}`, `{name}`) and plural objects (`one` / `other`) in the catalog validator/runtime. Placeholder sets must match the English source. Never form a translated sentence by concatenating words around a number when word order can vary.
 
-During migration, the current English-text lookup may remain as a clearly marked `legacy` namespace. Each legacy source phrase should map to a stable catalog key. New code must use explicit IDs (`data-i18n="launcher.settings.language"` or `t("launcher.verify.scanning", params)`). Move legacy entries to named keys gradually and remove the source-text reverse lookup only when coverage is complete. Missing French keys fall back to English and are reported by validation/debug logging.
+The imported source phrases now map to readable, stable IDs such as `launcher.legacy.workshop.ready.text`; the `legacy` namespace marks their upstream origin, not a generated ID. New code must use explicit IDs (`data-i18n="launcher.settings.language"` or `t("launcher.verify.scanning", params)`). The exact-source reverse lookup remains only as a compatibility bridge for older upstream callbacks and should be removed when those callers all emit message keys. Missing French keys fall back to English and are reported by validation/debug logging.
 
 ## 5. Locale selection, persistence, and fallback
 
@@ -119,7 +119,7 @@ For BO3 language behavior, do not pass an arbitrary locale string as a command-l
 
 ## 6. C++ ↔ launcher message contract
 
-Today, native code sends English strings directly in status objects. For example, verification and Workshop callbacks expose a `message` and a free-form `details` string. Phase 2 should change stable, launcher-owned messages to a key plus typed parameters:
+Verification, removal, and Workshop callbacks now preserve the English `message` for state checks and also send a catalog-derived `messageKey`. The HTML resolves exact messages and parameterized status/detail text against the selected locale. Dynamic verification summaries use a dedicated formatter because the client assembles their counts and component issues before sending them. Remaining updater and native-dialog strings still need migration. The target contract for new callbacks remains a key plus typed parameters:
 
 ```json
 {
@@ -217,8 +217,10 @@ For the existing updater, keep catalogs beside the launcher payload, verify them
 
 ### Phase 2 — C++ launcher messages
 
-* Inventory and migrate updater, verification, diagnostics, errors, notifications, removal, and Workshop messages to keyed events and parameters.
-* Use the same catalogs for native dialogs where practical. Preserve structured detail/error codes.
+* [x] Add catalog-backed keys to verification, removal, and Workshop status callbacks.
+* [x] Translate dynamic verification summaries, counts, and Workshop detail templates.
+* [x] Use the same locale catalogs for the Workshop retry-limit Windows dialog.
+* [ ] Inventory remaining updater, file-picker, notification, and native error strings; move state decisions to explicit status/error codes.
 
 ### Phase 3 — in-game strings
 

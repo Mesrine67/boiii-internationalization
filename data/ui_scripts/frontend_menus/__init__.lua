@@ -99,8 +99,7 @@ local boiiiFrenchUiStrings = {
   ["kill confirmed"] = "ÉLIMINATION CONFIRMÉE",
   ["classic"] = "CLASSIQUE",
   ["gunsmith"] = "ARMURERIE",
-  ["craft custom variants of your guns for use in campaign and multiplayer"] =
-    "Créez des variantes personnalisées de vos armes pour la campagne et le multijoueur.",
+  ["craft custom variants of your guns for use in campaign and multiplayer"] = "Créez des variantes personnalisées de vos armes pour la campagne et le multijoueur.",
   ["emblems"] = "EMBLÈMES",
   ["calling cards"] = "CARTES DE VISITE",
   ["paintshop"] = "ATELIER DE PERSONNALISATION",
@@ -124,42 +123,25 @@ local boiiiFrenchUiStrings = {
 }
 
 local function boiiiTranslateFrontendText(text)
-  if type(text) ~= "string" then
-    return text
-  end
-
+  if type(text) ~= "string" then return text end
   -- LUI strings can include color codes or padding that is invisible on
   -- screen. Normalize only for matching; keep the original untouched if no
   -- French entry applies.
   local normalizedText = string.lower(text):gsub("%^%d", "")
   normalizedText = normalizedText:gsub("^%s+", ""):gsub("%s+$", "")
-
   local translated = boiiiFrenchUiStrings[normalizedText]
-  if translated then
-    return translated
-  end
-
+  if translated then return translated end
   local players, maxPlayers = normalizedText:match("^(%d+)%s+players%s+%((%d+)%s+max%)$")
   if players then
     local count = tonumber(players) or 0
     return string.format("%d joueur%s (%s max.)", count, count == 1 and "" or "s", maxPlayers)
   end
-
   local retrievingCount = normalizedText:match("^retrieving servers:%s*(%d+)$")
-  if retrievingCount then
-    return "Recherche des serveurs : " .. retrievingCount
-  end
-
+  if retrievingCount then return "Recherche des serveurs : " .. retrievingCount end
   local level = normalizedText:match("^level%s+(%d+)$")
-  if level then
-    return "NIVEAU " .. level
-  end
-
+  if level then return "NIVEAU " .. level end
   local requiredLevel = normalizedText:match("^requires level%s+(%d+)$")
-  if requiredLevel then
-    return "Niveau requis : " .. requiredLevel
-  end
-
+  if requiredLevel then return "Niveau requis : " .. requiredLevel end
   return text
 end
 
@@ -185,7 +167,6 @@ if LUI and not LUI._boiiiFrenchTextPatched then
     if type(LUI.UIText) == "table" then
       classes[#classes + 1] = LUI.UIText
     end
-
     local patched = {}
     local patchedAny = false
     for _, class in ipairs(classes) do
@@ -212,46 +193,28 @@ end
 
 -- Install the small text translator on every LUI startup. The menu-specific
 -- button changes below still run only while the frontend map is active.
-if Engine.GetCurrentMap() ~= "core_frontend" then
-  return
-end
-
-if not CoD.LobbyButtons then
-  return
-end
-
-if
-  type(Engine.IsUsingMods) == "function"
-  and Engine.IsUsingMods()
-  and (type(Engine.UsingModsUgcName) ~= "function" or Engine.UsingModsUgcName() ~= "usermaps")
-then
-  return
-end
-
+if Engine.GetCurrentMap() ~= "core_frontend" then return end
+if not CoD.LobbyButtons then return end
+if type(Engine.IsUsingMods) == "function" and Engine.IsUsingMods() and (type(Engine.UsingModsUgcName) ~= "function" or Engine.UsingModsUgcName() ~= "usermaps") then return end
 local enableLobbyMapVote = true -- toggle map vote in public lobby
 local enableLargeServerBrowserButton = true -- toggle large server browser button
-
 local utils = require("utils")
 require("datasources_start_menu_tabs")
 require("datasources_change_map_categories")
 require("datasources_gamesettingsflyout_buttons")
-
 CoD.LobbyButtons.PLAY_LOCAL.stringRef = "^1" .. Engine.Localize("MENU_PLAY_LOCAL_CAPS")
 CoD.LobbyButtons.PLAY_ONLINE.stringRef = "^2" .. Engine.Localize("XBOXLIVE_PLAY_ONLINE_CAPS")
-
 CoD.LobbyButtons.MP_PUBLIC_MATCH = {
   stringRef = "MENU_PLAY_CAPS",
   action = NavigateToLobby_SelectionList,
   param = "MPLobbyOnline",
   customId = "btnPublicMatch",
 }
-
 CoD.LobbyButtons.MP_FIND_MATCH = {
   stringRef = "MPUI_BASICTRAINING_CAPS",
   action = OpenFindMatch,
   customId = "btnFindMatch",
 }
-
 CoD.LobbyButtons.STATS = {
   stringRef = "STATS",
   action = function(self, element, controller, param, menu)
@@ -260,7 +223,6 @@ CoD.LobbyButtons.STATS = {
   end,
   customId = "btnMPStats",
 }
-
 CoD.LobbyButtons.QUICK_SETTINGS = {
   stringRef = "QUICK SETTINGS",
   action = function(self, element, controller, param, menu)
@@ -269,7 +231,6 @@ CoD.LobbyButtons.QUICK_SETTINGS = {
   end,
   customId = "btnQuickSettings",
 }
-
 CoD.LobbyButtons.MP_START_GAME = {
   stringRef = "MENU_START_GAME_CAPS",
   action = function(self, element, controller, param, menu)
@@ -278,7 +239,6 @@ CoD.LobbyButtons.MP_START_GAME = {
   end,
   customId = "btnStartGame",
 }
-
 CoD.LobbyButtons.SETTING_UP_BOTS = {
   stringRef = "MENU_SETUP_BOTS_CAPS",
   action = function(self, element, controller, param, menu)
@@ -287,7 +247,6 @@ CoD.LobbyButtons.SETTING_UP_BOTS = {
   end,
   customId = "btnSettingUpBots",
 }
-
 CoD.LobbyButtons.GameSettingsFlyoutArenas = {
   stringRef = "MPUI_SETUP_GAME_CAPS",
   action = function(self, element, controller, param, menu)
@@ -330,19 +289,10 @@ local addCustomButtons = function(controller, menuId, buttonTable, isLeader)
       utils.AddSpacer(buttonTable, theaterIndex - 1)
     end
   end
-
-  if
-    menuId == LobbyData.UITargets.UI_MPLOBBYMAIN.id
-    or menuId == LobbyData.UITargets.UI_MPLOBBYONLINE.id
-    or menuId == LobbyData.UITargets.UI_ZMLOBBYONLINE.id
-    or menuId == LobbyData.UITargets.UI_ZMLOBBYLANGAME.id
-    or (LobbyData.UITargets.UI_CPLOBBYONLINE and menuId == LobbyData.UITargets.UI_CPLOBBYONLINE.id)
-    or (LobbyData.UITargets.UI_CPLOBBYLANGAME and menuId == LobbyData.UITargets.UI_CPLOBBYLANGAME.id)
-  then
+  if menuId == LobbyData.UITargets.UI_MPLOBBYMAIN.id or menuId == LobbyData.UITargets.UI_MPLOBBYONLINE.id or menuId == LobbyData.UITargets.UI_ZMLOBBYONLINE.id or menuId == LobbyData.UITargets.UI_ZMLOBBYLANGAME.id or (LobbyData.UITargets.UI_CPLOBBYONLINE and menuId == LobbyData.UITargets.UI_CPLOBBYONLINE.id) or (LobbyData.UITargets.UI_CPLOBBYLANGAME and menuId == LobbyData.UITargets.UI_CPLOBBYLANGAME.id) then
     utils.AddSmallButton(controller, buttonTable, CoD.LobbyButtons.STATS)
     utils.AddSmallButton(controller, buttonTable, CoD.LobbyButtons.QUICK_SETTINGS)
   end
-
   if menuId == LobbyData.UITargets.UI_ZMLOBBYLANGAME.id then
     for _, button in ipairs({
       CoD.LobbyButtons.ZM_BUBBLEGUM_BUFFS,
@@ -354,16 +304,9 @@ local addCustomButtons = function(controller, menuId, buttonTable, isLeader)
       end
     end
   end
-
-  if
-    menuId == LobbyData.UITargets.UI_MPLOBBYONLINE.id
-    or menuId == LobbyData.UITargets.UI_ZMLOBBYONLINE.id
-    or menuId == LobbyData.UITargets.UI_MPLOBBYMAIN.id
-    or menuId == LobbyData.UITargets.UI_MPLOBBYLANGAME.id
-  then
+  if menuId == LobbyData.UITargets.UI_MPLOBBYONLINE.id or menuId == LobbyData.UITargets.UI_ZMLOBBYONLINE.id or menuId == LobbyData.UITargets.UI_MPLOBBYMAIN.id or menuId == LobbyData.UITargets.UI_MPLOBBYLANGAME.id then
     Engine.Mods_Lists_UpdateUsermaps()
   end
-
   if menuId == LobbyData.UITargets.UI_MPLOBBYONLINE.id then
     shouldShowMapVote = enableLobbyMapVote
     if enableLargeServerBrowserButton then
@@ -371,24 +314,19 @@ local addCustomButtons = function(controller, menuId, buttonTable, isLeader)
     end
   elseif menuId == LobbyData.UITargets.UI_MPLOBBYONLINEPUBLICGAME.id then
     utils.RemoveButton(buttonTable, CoD.LobbyButtons.MP_PUBLIC_LOBBY_LEADERBOARD)
-
     utils.AddLargeButton(controller, buttonTable, CoD.LobbyButtons.MP_START_GAME, 1)
     utils.AddSmallButton(controller, buttonTable, CoD.LobbyButtons.GameSettingsFlyoutMP, 2)
     utils.AddSpacer(buttonTable, utils.GetButtonIndex(buttonTable, CoD.LobbyButtons.GameSettingsFlyoutMP))
-
     lobbyMapVote(shouldShowMapVote)
     shouldShowMapVote = false
   elseif menuId == LobbyData.UITargets.UI_MPLOBBYONLINEARENAGAME.id then
     utils.AddLargeButton(controller, buttonTable, CoD.LobbyButtons.MP_START_GAME, 1)
     utils.AddSmallButton(controller, buttonTable, CoD.LobbyButtons.GameSettingsFlyoutArenas, 2)
-
     utils.AddSpacer(buttonTable, utils.GetButtonIndex(buttonTable, CoD.LobbyButtons.GameSettingsFlyoutArenas))
   end
-
   if menuId == LobbyData.UITargets.UI_ZMLOBBYONLINE.id then
     utils.RemoveButton(buttonTable, CoD.LobbyButtons.THEATER_ZM)
     utils.AddLargeButton(controller, buttonTable, CoD.LobbyButtons.THEATER_ZM)
-
     utils.RemoveSpaces(buttonTable)
     utils.AddSpacer(buttonTable, utils.GetButtonIndex(buttonTable, CoD.LobbyButtons.SERVER_BROWSER))
     local bgbIndex = utils.GetButtonIndex(buttonTable, CoD.LobbyButtons.ZM_BUBBLEGUM_BUFFS)

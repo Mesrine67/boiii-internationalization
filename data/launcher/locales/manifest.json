@@ -14,8 +14,8 @@
     },
     "fr-FR": {
       "file": "fr-FR.json",
-      "displayName": "Français (France) — traduction partielle",
-      "translationVersion": 1,
+      "displayName": "Français (France) — jeu partiellement traduit",
+      "translationVersion": 2,
       "status": "partial",
       "compatibility": {
         "stable": ">=3.0.0 <4.0.0",

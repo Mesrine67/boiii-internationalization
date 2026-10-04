@@ -12,10 +12,7 @@
         sprite.height = 32;
         var context = sprite.getContext("2d", { alpha: true });
         var glow = context.createRadialGradient(9, 17, 0, 9, 17, 9);
-        glow.addColorStop(
-          0,
-          gold ? "rgba(255,194,92,.3)" : "rgba(249,94,18,.26)"
-        );
+        glow.addColorStop(0, gold ? "rgba(255,194,92,.3)" : "rgba(249,94,18,.26)");
         glow.addColorStop(0.48, "rgba(249,115,22,.1)");
         glow.addColorStop(1, "rgba(249,115,22,0)");
         context.fillStyle = glow;
@@ -30,17 +27,10 @@
           context.restore();
         }
         context.fill();
-
         var flame = context.createLinearGradient(9, 5, 9, 27);
         flame.addColorStop(0, "rgba(255,230,170,0)");
-        flame.addColorStop(
-          0.34,
-          gold ? "rgba(255,213,128,.96)" : "rgba(255,151,57,.92)"
-        );
-        flame.addColorStop(
-          0.72,
-          gold ? "rgba(255,161,47,.72)" : "rgba(240,69,12,.7)"
-        );
+        flame.addColorStop(0.34, gold ? "rgba(255,213,128,.96)" : "rgba(255,151,57,.92)");
+        flame.addColorStop(0.72, gold ? "rgba(255,161,47,.72)" : "rgba(240,69,12,.7)");
         flame.addColorStop(1, "rgba(210,38,5,0)");
         context.fillStyle = flame;
         context.beginPath();
@@ -941,9 +931,17 @@
   var msgClose = document.querySelector("#messagePopup .popup-close");
   if (msgClose) msgClose.onclick = hideMessagePopup;
 
-  function showProgress(message, percent, details) {
-    var text = message || "";
-    if (details) text += " \u2014 " + details;
+  function translateLauncherMessage(message, key) {
+    var i18n = window.BOIIILauncherI18n;
+    if (!i18n || !message) return message || "";
+    if (key && i18n.translateKey) return i18n.translateKey(key, null, message);
+    return i18n.translate ? i18n.translate(message) : message;
+  }
+
+  function showProgress(message, percent, details, messageKey) {
+    var text = translateLauncherMessage(message, messageKey);
+    var translatedDetails = translateLauncherMessage(details);
+    if (translatedDetails) text += " \u2014 " + translatedDetails;
     progressInfo.textContent = text;
     var pf = document.getElementById("progressFill");
     if (percent <= 0) {
@@ -1941,8 +1939,8 @@
 
       if (status.message && status.message.length > 0) {
         workshopProgress.style.display = "block";
-        if (msgEl) msgEl.textContent = status.message;
-        if (detEl) detEl.textContent = status.details || "";
+        if (msgEl) msgEl.textContent = translateLauncherMessage(status.message, status.messageKey);
+        if (detEl) detEl.textContent = translateLauncherMessage(status.details);
 
         if (status.progress !== undefined && status.progress > 0) {
           if (window._wsIndeterminate) {
@@ -1958,7 +1956,7 @@
           var p = Math.min(status.progress, 99);
           workshopProgressFill.style.width = p + "%";
           if (pctEl) pctEl.textContent = p.toFixed(1) + "%";
-          showProgress(status.message, p, status.details);
+          showProgress(status.message, p, status.details, status.messageKey);
         } else {
           if (!window._wsIndeterminate) {
             window._wsIndeterminate = true;
@@ -1967,7 +1965,7 @@
             if (pf3) pf3.classList.add("indeterminate");
           }
           if (pctEl) pctEl.textContent = "";
-          showProgress(status.message, -1, status.details);
+          showProgress(status.message, -1, status.details, status.messageKey);
         }
 
         var isDone = status.message.indexOf("Done") !== -1;
@@ -2244,8 +2242,8 @@
             st.message.toLowerCase().indexOf("error") !== -1)
         )
           removalFailure = st.details || st.message;
-        if (msg) msg.textContent = st.message || "Removing...";
-        if (det) det.textContent = st.details || "";
+        if (msg) msg.textContent = translateLauncherMessage(st.message || "Removing...", st.messageKey);
+        if (det) det.textContent = translateLauncherMessage(st.details);
         if (fill) {
           if (st.progress >= 0 && st.progress <= 100) {
             fill.classList.remove("indeterminate");
@@ -3178,7 +3176,7 @@
               clearInterval(verifyPollInterval);
               verifyPollInterval = null;
               verifyCancelBtn.style.display = "none";
-              verifyStatusMsg.textContent = st.message;
+              verifyStatusMsg.textContent = translateLauncherMessage(st.message, st.messageKey);
               verifyStatusMsg.style.color = "#ef4444";
               verifyStartBtn.style.display = "";
               verifyStartBtn.textContent = "Close";
@@ -3195,7 +3193,7 @@
             var rawPct = Math.min(st.progress || 0, 100);
             if (rawPct > verifyMaxPct) verifyMaxPct = rawPct;
             var pct = verifyMaxPct;
-            verifyStatusMsg.textContent = st.message || "";
+            verifyStatusMsg.textContent = translateLauncherMessage(st.message, st.messageKey);
             if (
               st.message &&
               (st.message.indexOf("missing") !== -1 ||
@@ -3209,7 +3207,7 @@
             }
             verifyProgressFill2.style.width = pct.toFixed(1) + "%";
             verifyProgressPct.textContent = pct.toFixed(1) + "%";
-            verifyStatusDetails.textContent = st.details || "";
+            verifyStatusDetails.textContent = translateLauncherMessage(st.details);
             if (!st.running && st.progress >= 100) {
               clearInterval(verifyPollInterval);
               verifyPollInterval = null;
@@ -4692,21 +4690,17 @@
 
   function fetchReleases() {
     if (!versionOptions) return;
-
     var url = "https://api.github.com/repos/Ezz-lol/boiii-free/releases";
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
     xhr.onreadystatechange = function () {
       if (xhr.readyState !== 4) return;
-
       if (xhr.status === 200) {
         try {
           var releases = JSON.parse(xhr.responseText);
           if (releases && Array.isArray(releases) && releases.length) {
             _latestVersionTag = releases[0].tag_name;
-            var defaultOptEl = versionOptions.querySelector(
-              '.version-selector-option[data-value="latest"]'
-            );
+            var defaultOptEl = versionOptions.querySelector('.version-selector-option[data-value="latest"]');
             if (defaultOptEl) {
               defaultOptEl.textContent = getLatestLabel();
             }
@@ -4750,17 +4744,11 @@
     };
     xhr.send();
   }
-
   // Beta build - added first and prepended so it stays pinned at the top
   // of the list regardless of when the releases fetch below resolves.
-  _versionsData["beta"] = {
-    url: "https://r2.ezz.lol/boiii/beta/boiii.exe",
-    name: "versions/boiii-beta.exe",
-  };
+  _versionsData["beta"] = {url: "https://r2.ezz.lol/boiii/beta/boiii.exe", name: "versions/boiii-beta.exe",};
   addVersionOption("beta", "Beta (Experimental)", true);
-
   fetchReleases();
-
   var creditsPopup = document.getElementById("creditsPopup");
   var versionDisplay = document.getElementById("versionDisplay");
   if (versionDisplay && creditsPopup) {

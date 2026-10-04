@@ -36,6 +36,25 @@ function placeholders(value) {
     .sort();
 }
 
+function sourcePattern(value) {
+  const sourceText = String(value);
+  const expression = [];
+  let literalWeight = 0;
+  let cursor = 0;
+  const placeholder = /\{([A-Za-z0-9_.-]+)\}/g;
+  for (const match of sourceText.matchAll(placeholder)) {
+    const literal = sourceText.slice(cursor, match.index);
+    expression.push(literal.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+    literalWeight += (literal.match(/[A-Za-z]/g) || []).length;
+    expression.push("([\\s\\S]+?)");
+    cursor = match.index + match[0].length;
+  }
+  const suffix = sourceText.slice(cursor);
+  expression.push(suffix.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  literalWeight += (suffix.match(/[A-Za-z]/g) || []).length;
+  return literalWeight ? new RegExp(`^${expression.join("")}$`) : null;
+}
+
 function collectFiles(directory, extensions, result = []) {
   if (!fs.existsSync(directory)) return result;
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -120,8 +139,16 @@ if (source) {
       .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
       .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(parseInt(code, 16)))
       .replace(/&amp;/gi, "&").replace(/&lt;/gi, "<").replace(/&gt;/gi, ">")
-      .replace(/&quot;/gi, '"').replace(/&#39;/g, "'");
+      .replace(/&quot;/gi, '"').replace(/&#39;/g, "'").replace(/&times;/gi, "×");
     const known = new Set([...source.entries.values()].map((value) => value.replace(/\s+/g, " ").trim()));
+    const patterns = [...source.entries.values()].map(sourcePattern).filter(Boolean);
+    const catalogCovers = (text) => known.has(text) || patterns.some((pattern) => pattern.test(text));
+    const intentionallyDynamic = (text) => text.length <= 2 || text === "BOIII" || text === "BO" ||
+      /^v\d+(?:\.\d+)+$/i.test(text) || /^\d{3,5}x\d{3,5}$/i.test(text);
+    const userContentClasses = ["friend-name", "mod-card-name", "mod-card-description",
+      "workshop-item-title", "workshop-item-description", "workshop-modal-title",
+      "workshop-modal-description", "library-modal-title", "library-modal-description",
+      "maintainer-name", "maintainer-avatar"];
     const fragments = new Set();
     const uncovered = new Set();
     for (const match of html.matchAll(/>([^<>]+)</g)) {
@@ -130,9 +157,10 @@ if (source) {
       fragments.add(text);
       const openingStart = html.lastIndexOf("<", match.index);
       const openingTag = html.slice(openingStart, match.index + 1);
+      if (intentionallyDynamic(text) || userContentClasses.some((name) => openingTag.includes(name))) continue;
       const keyMatch = openingTag.match(/\bdata-i18n\s*=\s*["']([^"']+)["']/i);
       const key = keyMatch && keyMatch[1].replace(/^launcher\./, "");
-      if (!known.has(text) && !(key && source.entries.has(key))) uncovered.add(text);
+      if (!catalogCovers(text) && !(key && source.entries.has(key))) uncovered.add(text);
     }
     for (const attrMatch of html.matchAll(/\b(title|placeholder|aria-label|alt)\s*=\s*["']([^"']*)["']/gi)) {
       const name = attrMatch[1].toLowerCase();
@@ -141,11 +169,12 @@ if (source) {
       const tagStart = html.lastIndexOf("<", attrMatch.index);
       const tagEnd = html.indexOf(">", attrMatch.index);
       const tag = html.slice(tagStart, tagEnd + 1);
+      if (intentionallyDynamic(value) || userContentClasses.some((name) => tag.includes(name))) continue;
       const keyPattern = new RegExp(`\\bdata-i18n-${name}\\s*=\\s*["']([^"']+)["']`, "i");
       const keyMatch = tag.match(keyPattern);
       const key = keyMatch && keyMatch[1].replace(/^launcher\./, "");
       fragments.add(value);
-      if (!known.has(value) && !(key && source.entries.has(key))) uncovered.add(value);
+      if (!catalogCovers(value) && !(key && source.entries.has(key))) uncovered.add(value);
     }
     console.log(`Launcher HTML source scan: ${fragments.size} unique visible text/attribute fragments; ${uncovered.size} not matched to a catalog key/value.`);
     if (uncovered.size) warnings.push(`unmapped static launcher fragments (sample): ${[...uncovered].slice(0, 20).join(" | ")}`);

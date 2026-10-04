@@ -5,6 +5,7 @@
 #include <component/workshop.hpp>
 
 #include <launcher/html/html_frame.hpp>
+#include <launcher/localization.hpp>
 #include <launcher/launcher_workshop.hpp>
 
 #include <atomic>
@@ -159,6 +160,7 @@ constexpr const char *WORKSHOP_STATUS_IDLE = "";
 
 std::mutex workshop_status_mutex;
 std::string workshop_status_message = WORKSHOP_STATUS_IDLE;
+std::string workshop_status_message_key;
 double workshop_progress_percent = 0.0;
 std::string workshop_progress_details = "";
 std::string workshop_download_folder = "";
@@ -383,6 +385,7 @@ void set_workshop_status(const std::string &msg, double progress = -1.0,
                          const std::string &details = "") {
   std::lock_guard lock(workshop_status_mutex);
   workshop_status_message = msg;
+  workshop_status_message_key = localization::message_key_for_english(msg);
   if (progress >= 0.0)
     workshop_progress_percent = progress;
   workshop_progress_details = details;
@@ -391,6 +394,7 @@ void set_workshop_status(const std::string &msg, double progress = -1.0,
 void reset_workshop_status() {
   std::lock_guard lock(workshop_status_mutex);
   workshop_status_message = WORKSHOP_STATUS_IDLE;
+  workshop_status_message_key.clear();
   workshop_progress_percent = 0.0;
   workshop_progress_details.clear();
   workshop_download_folder.clear();
@@ -1638,12 +1642,22 @@ void workshop_download_thread(std::string workshop_id,
            !workshop_cancel_requested.load()) {
       attempt++;
       if (attempt > MAX_ATTEMPTS) {
+        const auto locale = localization::resolve_locale();
+        std::string retry_message =
+            "Download has used all retry attempts without completing.\n\n"
+            "Do you want to continue downloading?\n"
+            "(Your progress will be preserved)";
+        std::string retry_title = "Retry Limit Reached";
+        const auto translated_message = localization::text_for_key(
+            locale, "launcher.dynamic.workshop.details.retryLimitMessage");
+        const auto translated_title = localization::text_for_key(
+            locale, "launcher.dynamic.workshop.details.retryLimitTitle");
+        if (!translated_message.empty()) retry_message = translated_message;
+        if (!translated_title.empty()) retry_title = translated_title;
         int response = MessageBoxW(
-            nullptr,
-            L"Download has used all retry attempts without completing.\n\n"
-            L"Do you want to continue downloading?\n"
-            L"(Your progress will be preserved)",
-            L"Retry Limit Reached", MB_YESNO | MB_ICONQUESTION | MB_TOPMOST);
+            nullptr, localization::to_wide(retry_message).c_str(),
+            localization::to_wide(retry_title).c_str(),
+            MB_YESNO | MB_ICONQUESTION | MB_TOPMOST);
 
         if (response == IDYES) {
           attempt = 1;
@@ -2635,6 +2649,8 @@ void register_callbacks(html_frame *frame) {
         w.StartObject();
         w.Key("message");
         w.String(workshop_status_message.c_str());
+        w.Key("messageKey");
+        w.String(workshop_status_message_key.c_str());
         w.Key("progress");
         w.Double(workshop_progress_percent);
         w.Key("details");

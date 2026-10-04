@@ -1,11 +1,11 @@
 GIT_VERSIONING_COMMAND = "git describe --tags --always"
 GIT_CURRENT_BRANCH_COMMAND = "git symbolic-ref -q --short HEAD"
+dependencies = {}
+dependencies.basePath = "./deps"
 
 -- Quote the given string input as a C string
 function cstrquote(value)
-  if value == nil then
-    return '""'
-  end
+  if value == nil then return '""' end
   local result = value:gsub("\\", "\\\\")
   result = result:gsub('"', '\\"')
   result = result:gsub("\n", "\\n")
@@ -27,23 +27,14 @@ function vertonumarr(value, vernumber, partscount)
       table.insert(vernum, tonumber(num))
     end
   end
-  while #vernum < 3 do
-    table.insert(vernum, 0)
-  end
-  if #vernum < partscount then
-    table.insert(vernum, tonumber(vernumber))
-  end
+  while #vernum < 3 do table.insert(vernum, 0) end
+  if #vernum < partscount then table.insert(vernum, tonumber(vernumber)) end
   return vernum
 end
-
-dependencies = {
-  basePath = "./deps",
-}
 
 function dependencies.load()
   local dir = path.join(dependencies.basePath, "premake/*.lua")
   local deps = os.matchfiles(dir)
-
   for _, dep in pairs(deps) do
     dep = dep:gsub(".lua", "")
     include(dep)
@@ -65,23 +56,19 @@ function dependencies.projects()
     end
   end
 end
-
 newoption({
   trigger = "copy-to",
   description = "Optional, copy the EXE to a custom folder after build, define the path here if wanted.",
   value = "PATH",
 })
-
 newoption({
   trigger = "dev-build",
   description = "Enable development builds of the client.",
 })
-
 newoption({
   trigger = "no-check",
   description = "Disable ownership checks.",
 })
-
 newaction({
   trigger = "version",
   description = "Returns the version string for the current commit of the source code.",
@@ -91,26 +78,19 @@ newaction({
     local gitDescribeOutput = assert(proc:read("*a")):gsub("%s+", "")
     proc:close()
     local version = gitDescribeOutput
-
     proc = assert(io.popen(GIT_CURRENT_BRANCH_COMMAND, "r"))
     local gitCurrentBranchOutput = assert(proc:read("*a")):gsub("%s+", "")
     local gitCurrentBranchSuccess = proc:close()
     if gitCurrentBranchSuccess then
       -- We got a branch name, check if it is a feature branch
-      if
-        gitCurrentBranchOutput ~= "develop"
-        and gitCurrentBranchOutput ~= "master"
-        and gitCurrentBranchOutput ~= "main"
-      then
+      if gitCurrentBranchOutput ~= "develop" and gitCurrentBranchOutput ~= "master" and gitCurrentBranchOutput ~= "main" then
         version = version .. "-" .. gitCurrentBranchOutput
       end
     end
-
     print(version)
     os.exit(0)
   end,
 })
-
 newaction({
   trigger = "generate-buildinfo",
   description = "Sets up build information file like version.h.",
@@ -125,16 +105,13 @@ newaction({
         if m ~= nil then
           oldVersion = m
         end
-
         oldVersionHeaderContent = oldVersionHeader:read("*l")
       end
     end
-
     -- get current version via git
     local proc = assert(io.popen(GIT_VERSIONING_COMMAND, "r"))
     local gitDescribeOutput = assert(proc:read("*a")):gsub("%s+", "")
     proc:close()
-
     -- generate version.hpp with a revision number if not equal
     local gitDescribeOutputQuoted = cstrquote(gitDescribeOutput)
     if oldVersion ~= gitDescribeOutputQuoted then
@@ -143,7 +120,6 @@ newaction({
       local proc = assert(io.popen("git rev-parse HEAD", "r"))
       local gitCommitHash = assert(proc:read("*a")):gsub("%s+", "")
       proc:close()
-
       -- get whether this is a clean revision (no uncommitted changes)
       proc = assert(io.popen("git status --porcelain", "r"))
       ---@type integer
@@ -152,15 +128,12 @@ newaction({
         revDirty = 1
       end
       proc:close()
-
       -- get current tag name
       proc = assert(io.popen("git describe --tags --abbrev=0"))
       local tagName = proc:read("*l")
-
       -- get current branch name
       proc = assert(io.popen("git branch --show-current"))
       local branchName = proc:read("*l")
-
       -- branch for ci
       if branchName == nil or branchName == "" then
         proc = assert(io.popen("git show -s --pretty=%d HEAD"))
@@ -170,25 +143,17 @@ newaction({
           branchName = m
         end
       end
-
-      if branchName == nil then
-        branchName = "develop"
-      end
-
+      if branchName == nil then branchName = "develop" end
       print("Detected branch: " .. branchName)
-
       -- get revision number via git
       local proc = assert(io.popen("git rev-list --count HEAD", "r"))
       local revNumber = assert(proc:read("*a")):gsub("%s+", "")
-
       print("Update " .. oldVersion .. " -> " .. gitDescribeOutputQuoted)
-
       -- write to version.txt for preliminary updater
       -- NOTE - remove this once we have a proper updater and proper release versioning
       local versionFile = assert(io.open(wks.location .. "/version.txt", "w"))
       versionFile:write(gitCommitHash)
       versionFile:close()
-
       local defines = {
         "GIT_DESCRIBE",
         "GIT_DIRTY",
@@ -200,7 +165,6 @@ newaction({
         "VERSION_FILE",
         "VERSION",
       }
-
       -- write version header
       local versionHeader = assert(io.open(wks.location .. "/src/version.h", "w"))
       versionHeader:write("/*\n")
@@ -208,9 +172,7 @@ newaction({
       versionHeader:write(" * Do not touch!\n")
       versionHeader:write(" */\n")
       versionHeader:write("\n")
-      for _, def in ipairs(defines) do
-        versionHeader:write("#ifdef " .. def .. "\n" .. "#undef " .. def .. "\n" .. "#endif\n")
-      end
+      for _, def in ipairs(defines) do versionHeader:write("#ifdef " .. def .. "\n" .. "#undef " .. def .. "\n" .. "#endif\n") end
       versionHeader:write("#define GIT_DESCRIBE " .. gitDescribeOutputQuoted .. "\n")
       versionHeader:write("#define GIT_DIRTY " .. revDirty .. "\n")
       versionHeader:write("#define GIT_HASH " .. cstrquote(gitCommitHash) .. "\n")
@@ -218,19 +180,12 @@ newaction({
       versionHeader:write("#define GIT_BRANCH " .. cstrquote(branchName) .. "\n")
       versionHeader:write("\n")
       versionHeader:write("// Version transformed for RC files\n")
-      versionHeader:write(
-        "#define VERSION_PRODUCT_RC " .. table.concat(vertonumarr(tagName, revNumber, 3), ",") .. "\n"
-      )
-      versionHeader:write(
-        "#define VERSION_PRODUCT " .. cstrquote(table.concat(vertonumarr(tagName, revNumber, 3), ".")) .. "\n"
-      )
+      versionHeader:write("#define VERSION_PRODUCT_RC " .. table.concat(vertonumarr(tagName, revNumber, 3), ",") .. "\n")
+      versionHeader:write("#define VERSION_PRODUCT " .. cstrquote(table.concat(vertonumarr(tagName, revNumber, 3), ".")) .. "\n")
       versionHeader:write("#define VERSION_FILE_RC " .. table.concat(vertonumarr(tagName, revNumber, 4), ",") .. "\n")
-      versionHeader:write(
-        "#define VERSION_FILE " .. cstrquote(table.concat(vertonumarr(tagName, revNumber, 4), ".")) .. "\n"
-      )
+      versionHeader:write("#define VERSION_FILE " .. cstrquote(table.concat(vertonumarr(tagName, revNumber, 4), ".")) .. "\n")
       versionHeader:write("\n")
       versionHeader:write("// Alias definitions\n")
-
       versionHeader:write("#define VERSION GIT_DESCRIBE\n")
       versionHeader:write("#define SHORTVERSION VERSION_PRODUCT\n")
       versionHeader:flush()
@@ -242,9 +197,7 @@ newaction({
       versionHeaderHpp:write(" *\n")
       versionHeaderHpp:write(" * This file exists for reasons of complying with our coding standards.\n")
       versionHeaderHpp:write(" *\n")
-      versionHeaderHpp:write(
-        " * The Resource Compiler will ignore any content from C++ header files if they're not from STDInclude.hpp.\n"
-      )
+      versionHeaderHpp:write(" * The Resource Compiler will ignore any content from C++ header files if they're not from STDInclude.hpp.\n")
       versionHeaderHpp:write(" * That's the reason why we now place all version info in version.h instead.\n")
       versionHeaderHpp:write(" */\n")
       versionHeaderHpp:write("\n")
@@ -254,9 +207,7 @@ newaction({
     end
   end,
 })
-
 dependencies.load()
-
 workspace("boiii")
 if os.host() == "windows" then
   toolset("msc-clangcl")
@@ -267,49 +218,32 @@ startproject("client")
 location("./build")
 objdir("%{wks.location}/obj")
 targetdir("%{wks.location}/bin/%{cfg.platform}/%{cfg.buildcfg}")
-
 configurations({ "Debug", "Release" })
-
 language("C++")
 cppdialect("C++20")
-
 architecture("x86_64")
 platforms("x64")
-
 systemversion("latest")
 symbols("On")
 staticruntime("On")
 editandcontinue("Off")
 warnings("Extra")
 characterset("ASCII")
-
-if _OPTIONS["dev-build"] then
-  defines({ "DEV_BUILD" })
-end
-
-if _OPTIONS["no-check"] then
-  defines({ "NO_CHECK" })
-end
-
-if os.getenv("CI") then
-  defines({ "CI" })
-end
-
+if _OPTIONS["dev-build"] then defines({ "DEV_BUILD" }) end
+if _OPTIONS["no-check"] then defines({ "NO_CHECK" }) end
+if os.getenv("CI") then defines({ "CI" }) end
 incrementallink("Off")
 minimalrebuild("Off")
 multiprocessorcompile("On")
 enable64bitchecks("Off")
-
 filter("platforms:x64")
 defines({ "_WINDOWS", "WIN32" })
 filter({})
-
 filter("configurations:Release")
 optimize("Size")
 defines({ "NDEBUG" })
 -- flags({ "FatalCompileWarnings" })
 filter({})
-
 filter({ "configurations:Release", "toolset:msc*" })
 -- buildoptions({ "/GL" })
 buildoptions({
@@ -360,7 +294,6 @@ linkoptions({
   "-Wl,-opt:ref",
 })
 filter({})
-
 filter("configurations:Debug")
 optimize("Debug")
 defines({ "DEBUG", "_DEBUG", "_CRT_DEBUG" })
@@ -403,47 +336,36 @@ linkoptions({
   "-l libcmtd.lib",
 })
 filter({})
-
 project("common")
 kind("StaticLib")
 language("C++")
-
 filter({ "toolset: msc*" })
 buildoptions({ "-Qunused-arguments", "-Wno-dangling-else" })
 filter({})
 filter({ "toolset:not msc*" })
 buildoptions({ "-Wno-dangling-else" })
 filter({})
-
 files({ "./src/common/**.hpp", "./src/common/**.cpp" })
-
 includedirs({
   "./src/common",
   "./src",
   -- version.h and version.hpp headers
   "%{prj.location}/src",
 })
-
 resincludedirs({ "$(ProjectDir)src" })
-
 dependencies.imports()
-
 project("client")
 kind("WindowedApp")
 language("C++")
-
 filter({ "toolset: msc*" })
 buildoptions({ "-Qunused-arguments", "-Wno-dangling-else" })
 filter({})
 filter({ "toolset:not msc*" })
 buildoptions({ "-Wno-dangling-else" })
 filter({})
-
 targetname("boiii")
-
 pchheader("std_include.hpp")
 pchsource("src/client/std_include.cpp")
-
 files({
   "./src/client/**.rc",
   "./src/client/**.hpp",
@@ -458,21 +380,10 @@ includedirs({
   -- version.h and version.hpp headers
   "%{prj.location}/src",
 })
-
 resincludedirs({ "$(ProjectDir)src" })
-
 dependson({ "tlsdll" })
-
 links({ "common" })
-
-local hasVersion = (
-  os.isfile(path.join(_MAIN_SCRIPT_DIR, "src/version.h"))
-  or os.isfile(path.join(_MAIN_SCRIPT_DIR, "build/src/version.h"))
-)
-  and (
-    os.isfile(path.join(_MAIN_SCRIPT_DIR, "src/version.hpp"))
-    or os.isfile(path.join(_MAIN_SCRIPT_DIR, "build/src/version.hpp"))
-  )
+local hasVersion = (os.isfile(path.join(_MAIN_SCRIPT_DIR, "src/version.h")) or os.isfile(path.join(_MAIN_SCRIPT_DIR, "build/src/version.h"))) and (os.isfile(path.join(_MAIN_SCRIPT_DIR, "src/version.hpp")) or os.isfile(path.join(_MAIN_SCRIPT_DIR, "build/src/version.hpp")))
 if not hasVersion then
   if os.host() == "windows" then
     prebuildcommands({ "pushd %{_MAIN_SCRIPT_DIR}", "premake5 generate-buildinfo", "popd" })
@@ -480,11 +391,7 @@ if not hasVersion then
     prebuildcommands({ "cd %{_MAIN_SCRIPT_DIR} && premake5 generate-buildinfo" })
   end
 end
-
-if _OPTIONS["copy-to"] then
-  postbuildcommands({ 'copy /y "$(TargetPath)" "' .. _OPTIONS["copy-to"] .. '"' })
-end
-
+if _OPTIONS["copy-to"] then postbuildcommands({ 'copy /y "$(TargetPath)" "' .. _OPTIONS["copy-to"] .. '"' }) end
 dependencies.imports()
 filter("toolset:msc*")
 linkoptions({ "/base:0x170000000" })
@@ -492,59 +399,39 @@ filter({})
 filter("toolset:not msc*")
 linkoptions({ "-Wl,/base:0x170000000" })
 filter({})
-
 project("tlsdll")
 kind("SharedLib")
 language("C++")
-
 filter({ "toolset: msc*" })
 buildoptions({ "-Qunused-arguments", "-Wno-dangling-else" })
 filter({})
 filter({ "toolset:not msc*" })
 buildoptions({ "-Wno-dangling-else" })
 filter({})
-
 symbols("Off")
 exceptionhandling("Off")
-
 runtimechecks("Off")
 buffersecuritycheck("Off")
 nodefaultlib("On")
-
 -- check if CXX is cl, use /Zc:threadSafeInit- if so
 -- If g++ or clang++ is used, skip this, as this is the default; they can only disable it using -fno-threadsafe-statics, but we don't want that
 filter("toolset:msc*")
-
 buildoptions({ "/Zc:threadSafeInit-" })
-
 linkoptions({ "/NODEFAULTLIB", "/IGNORE:4210" })
 filter({})
-
 filter("toolset:not msc*")
-
 buildoptions({ "-fno-lto" })
 -- equivalents for /NODEFAULTLIB and /IGNORE:4210 for gcc/clang
-linkoptions({
-  "-nodefaultlibs",
-  "-nostdlib",
-  "-fno-lto",
-})
+linkoptions({ "-nodefaultlibs", "-nostdlib", "-fno-lto", })
 filter({})
-
 removebuildoptions({ "-fwhole-program-vtables" })
 removelinkoptions({ "/LTCG", "-fwhole-program-vtables" })
-
 files({ "./src/tlsdll/**.rc", "./src/tlsdll/**.hpp", "./src/tlsdll/**.cpp", "./src/tlsdll/resources/**.*" })
-
 includedirs({ "%{prj.location}/src/tlsdll", "%{prj.location}/src" })
-
 links({ "common" })
-
 resincludedirs({ "$(ProjectDir)src" })
-
 group("Dependencies")
 dependencies.projects()
-
 -- Create version.h header here, too, to allow multi-threaded builds to work.
 -- Otherwise, tls.dll will often fail to build due to missing version.h if the client project happens to build first and delete the generated version.h before tls.dll can build,
 -- or hasn't generated it yet when tls.dll is completing compilation.
