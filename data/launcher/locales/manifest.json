@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "sourceLocale": "en-US",
+  "locales": {
+    "en-US": {
+      "file": "en-US.json",
+      "displayName": "English (United States)",
+      "translationVersion": 1,
+      "status": "source",
+      "compatibility": {
+        "stable": ">=3.0.0 <4.0.0",
+        "beta": true
+      }
+    },
+    "fr-FR": {
+      "file": "fr-FR.json",
+      "displayName": "Français (France) — traduction partielle",
+      "translationVersion": 1,
+      "status": "partial",
+      "compatibility": {
+        "stable": ">=3.0.0 <4.0.0",
+        "beta": true
+      }
+    }
+  }
+}

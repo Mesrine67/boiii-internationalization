@@ -1936,6 +1936,86 @@ h1 {
   overflow-y: auto;
 }
 
+.advanced-launch-section {
+  margin: 2px 0 5px;
+  padding-top: 7px;
+  border-top: 1px solid rgba(249, 115, 22, 0.18);
+}
+
+.advanced-launch-toggle {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 31px;
+  padding: 5px 10px;
+  border: 1px solid rgba(68, 65, 63, 0.28);
+  border-radius: 5px;
+  background: rgba(18, 16, 15, 0.65);
+  cursor: pointer;
+  user-select: none;
+}
+
+.advanced-launch-toggle input {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: #f97316;
+  flex: 0 0 auto;
+}
+
+.advanced-launch-toggle .launch-option-name {
+  padding-left: 0;
+}
+
+.advanced-launch-section.enabled .advanced-launch-toggle {
+  border-color: rgba(249, 115, 22, 0.48);
+  background: rgba(249, 115, 22, 0.1);
+}
+
+.advanced-launch-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 9px 10px 3px;
+}
+
+.advanced-launch-fields[hidden] {
+  display: none;
+}
+
+.advanced-launch-label {
+  color: rgba(249, 115, 22, 0.82);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.advanced-launch-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 9px;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-radius: 5px;
+  outline: none;
+  background: rgba(10, 9, 8, 0.92);
+  color: rgba(248, 245, 240, 0.95);
+  font: inherit;
+  font-size: 0.72rem;
+}
+
+.advanced-launch-input:focus {
+  border-color: rgba(249, 115, 22, 0.8);
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.12);
+}
+
+.advanced-launch-help {
+  margin: 0;
+  color: rgba(210, 206, 202, 0.62);
+  font-size: 0.62rem;
+  line-height: 1.4;
+}
+
 .launch-option-card {
   display: flex;
   align-items: center;
@@ -3565,4 +3645,69 @@ body.reduced-motion *, body.reduced-motion *::before, body.reduced-motion *::aft
   h1 { font-size: 2.8rem; }
   .description { margin-bottom: 8px; }
   .main-content > * + * { margin-top: 7px; }
+}
+
+/* French translation selector and compact, scrollable launch options menu. */
+.launch-dropdown {
+  width: 272px;
+  max-width: calc(100vw - 28px);
+  max-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.launch-language {
+  flex: 0 0 auto;
+  padding: 8px 4px 10px;
+  margin-bottom: 7px;
+  border-bottom: 1px solid rgba(249, 115, 22, 0.16);
+}
+
+.launch-language-label {
+  display: block;
+  margin: 0 0 6px;
+  color: rgba(244, 240, 235, 0.9);
+  font-size: 0.74rem;
+  font-weight: 650;
+}
+
+.launch-language-select {
+  display: block;
+  width: 100%;
+  min-height: 34px;
+  padding: 6px 30px 6px 9px;
+  border: 1px solid rgba(249, 115, 22, 0.34);
+  border-radius: 6px;
+  color: rgba(248, 245, 240, 0.96);
+  background: rgba(25, 22, 20, 0.98);
+  font: inherit;
+  font-size: 0.76rem;
+  cursor: pointer;
+}
+
+.launch-language-select:focus-visible {
+  outline: 2px solid rgba(249, 115, 22, 0.84);
+  outline-offset: 2px;
+}
+
+.launch-language-select option {
+  color: #f5f1ec;
+  background: #171412;
+}
+
+.launch-language-help {
+  margin: 6px 1px 0;
+  color: rgba(210, 206, 202, 0.62);
+  font-size: 0.64rem;
+  line-height: 1.4;
+}
+
+.launch-dropdown-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: calc(100vh - 270px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }

@@ -91,6 +91,10 @@ int32_t parse_flags(int argc, char *argv[]) {
       .help("Skip intro videos")
       .default_value(false)
       .implicit_value(true);
+  program.add_argument("-french", "--french")
+      .help("Enable French localization overrides from AppData")
+      .default_value(false)
+      .implicit_value(true);
   program.add_argument("-windowed", "--windowed")
       .help("Launch in windowed mode")
       .default_value(false)

@@ -32,6 +32,7 @@
 #include <atomic>
 #include <map>
 #include <mutex>
+#include <optional>
 #include <set>
 #include <shlobj.h>
 #include <shlwapi.h>
@@ -58,6 +59,114 @@ std::string sanitize_player_name(const std::string &name) {
       result += c;
   }
   return result;
+}
+
+std::optional<std::string>
+sanitize_advanced_launch_args(std::string arguments) {
+  utils::string::trim(arguments);
+  if (arguments.size() > 512 ||
+      std::any_of(arguments.begin(), arguments.end(), [](const unsigned char c) {
+        return c < 0x20 || c == 0x7f;
+      })) {
+    return std::nullopt;
+  }
+  return arguments;
+}
+
+bool is_valid_launcher_locale_id(const std::string &locale) {
+  const auto separator = locale.find('-');
+  if ((separator != 2 && separator != 3) ||
+      locale.size() != separator + 3) {
+    return false;
+  }
+
+  for (size_t i = 0; i < separator; ++i) {
+    if (locale[i] < 'a' || locale[i] > 'z') {
+      return false;
+    }
+  }
+  return locale[separator + 1] >= 'A' && locale[separator + 1] <= 'Z' &&
+         locale[separator + 2] >= 'A' && locale[separator + 2] <= 'Z';
+}
+
+std::optional<std::string> read_launcher_locale_manifest() {
+  const auto path = game::get_appdata_path() / "data" / "launcher" /
+                    "locales" / "manifest.json";
+  std::error_code file_error;
+  const auto size = std::filesystem::file_size(path, file_error);
+  if (file_error || size > 256 * 1024) {
+    return std::nullopt;
+  }
+
+  std::string data;
+  if (!utils::io::read_file(path.string(), &data) || data.empty()) {
+    return std::nullopt;
+  }
+
+  rapidjson::Document manifest;
+  manifest.Parse<rapidjson::kParseValidateEncodingFlag>(data.data(),
+                                                        data.size());
+  if (manifest.HasParseError() || !manifest.IsObject() ||
+      !manifest.HasMember("schemaVersion") ||
+      !manifest["schemaVersion"].IsInt() ||
+      manifest["schemaVersion"].GetInt() != 1 ||
+      !manifest.HasMember("sourceLocale") ||
+      !manifest["sourceLocale"].IsString() ||
+      std::string(manifest["sourceLocale"].GetString()) != "en-US" ||
+      !manifest.HasMember("locales") || !manifest["locales"].IsObject()) {
+    return std::nullopt;
+  }
+
+  const auto &locales = manifest["locales"];
+  if (!locales.HasMember("en-US") || !locales["en-US"].IsObject()) {
+    return std::nullopt;
+  }
+  return data;
+}
+
+bool is_launcher_locale_available(const std::string &locale) {
+  if (!is_valid_launcher_locale_id(locale)) {
+    return false;
+  }
+
+  const auto data = read_launcher_locale_manifest();
+  if (!data) {
+    return false;
+  }
+
+  rapidjson::Document manifest;
+  manifest.Parse(data->data(), data->size());
+  const auto &locales = manifest["locales"];
+  if (!locales.HasMember(locale.c_str()) ||
+      !locales[locale.c_str()].IsObject()) {
+    return false;
+  }
+
+  const auto &entry = locales[locale.c_str()];
+  return entry.HasMember("file") && entry["file"].IsString() &&
+         std::string(entry["file"].GetString()) == locale + ".json";
+}
+
+CComVariant make_utf8_variant(const std::string &value) {
+  if (value.empty()) {
+    return CComVariant(L"");
+  }
+
+  const int wide_size = MultiByteToWideChar(
+      CP_UTF8, MB_ERR_INVALID_CHARS, value.data(),
+      static_cast<int>(value.size()), nullptr, 0);
+  if (wide_size <= 0) {
+    return CComVariant(L"");
+  }
+
+  std::wstring wide(static_cast<size_t>(wide_size), L'\0');
+  if (MultiByteToWideChar(CP_UTF8, MB_ERR_INVALID_CHARS, value.data(),
+                          static_cast<int>(value.size()), wide.data(),
+                          wide_size) != wide_size) {
+    return CComVariant(L"");
+  }
+
+  return CComVariant(wide.c_str());
 }
 
 const std::filesystem::path &get_binds_file() {
@@ -1271,10 +1380,20 @@ bool has_launch_option(const std::vector<std::string> &options,
   });
 }
 
-bool relaunch_with_launch_options(const std::vector<std::string> &options);
+void append_advanced_launch_args(std::string &command_line,
+                                const std::string &arguments) {
+  if (!arguments.empty()) {
+    command_line += " ";
+    command_line += arguments;
+  }
+}
+
+bool relaunch_with_launch_options(const std::vector<std::string> &options,
+                                  const std::string &advanced_args);
 
 bool relaunch_exe_with_launch_options(const std::string &exe_path,
-                                      const std::vector<std::string> &options) {
+                                      const std::vector<std::string> &options,
+                                      const std::string &advanced_args) {
   STARTUPINFOA startup_info;
   PROCESS_INFORMATION process_info;
   ZeroMemory(&startup_info, sizeof(startup_info));
@@ -1298,6 +1417,7 @@ bool relaunch_exe_with_launch_options(const std::string &exe_path,
     command_line += " -";
     command_line += option;
   }
+  append_advanced_launch_args(command_line, advanced_args);
 
   const DWORD creation_flags =
       has_launch_option(options, "noconsole") ? 0 : CREATE_NEW_CONSOLE;
@@ -1314,7 +1434,8 @@ bool relaunch_exe_with_launch_options(const std::string &exe_path,
 
 bool handle_version_launch(const std::string &exe_name,
                            const std::string &exe_url,
-                           const std::vector<std::string> &options) {
+                           const std::vector<std::string> &options,
+                           const std::string &advanced_args) {
   if (exe_name.empty() || exe_url.empty()) {
     return false;
   }
@@ -1350,10 +1471,12 @@ bool handle_version_launch(const std::string &exe_name,
     }
   }
 
-  return relaunch_exe_with_launch_options(executable_path.string(), options);
+  return relaunch_exe_with_launch_options(executable_path.string(), options,
+                                          advanced_args);
 }
 
-bool relaunch_with_launch_options(const std::vector<std::string> &options) {
+bool relaunch_with_launch_options(const std::vector<std::string> &options,
+                                  const std::string &advanced_args) {
   const utils::nt::library self =
       utils::nt::library::get_by_address(relaunch_with_launch_options);
   const std::string exe_path = self.get_path().generic_string();
@@ -1398,6 +1521,7 @@ bool relaunch_with_launch_options(const std::vector<std::string> &options) {
 
     command_line += " \"-" + token + "\"";
   }
+  append_advanced_launch_args(command_line, advanced_args);
 
   const DWORD creation_flags =
       has_launch_option(options, "noconsole") ? 0 : CREATE_NEW_CONSOLE;
@@ -1464,6 +1588,8 @@ bool run() {
   std::shared_ptr<bool> run_game = std::make_shared<bool>(false);
   std::shared_ptr<std::vector<std::string>> launch_options =
       std::make_shared<std::vector<std::string>>();
+  std::shared_ptr<std::string> advanced_launch_args =
+      std::make_shared<std::string>();
   std::shared_ptr<std::string> pending_exe_name =
       std::make_shared<std::string>();
   std::shared_ptr<std::string> pending_exe_url =
@@ -1475,7 +1601,9 @@ bool run() {
     window.get_html_frame()->register_callback(
         "getVersion",
         [](const std::vector<html_argument> & /*params*/) -> CComVariant {
-          return CComVariant(SHORTVERSION);
+          const std::string display_version =
+              std::string(SHORTVERSION) + " (internationalization)";
+          return CComVariant(display_version.c_str());
         });
 
     window.get_html_frame()->register_callback(
@@ -1917,6 +2045,61 @@ bool run() {
         });
 
     window.get_html_frame()->register_callback(
+        "readAdvancedLaunchSettings",
+        [](const std::vector<html_argument> & /*params*/) -> CComVariant {
+          const std::optional<std::string> stored =
+              utils::properties::load("advancedLaunchSettings");
+          return CComVariant(stored ? stored->c_str() : "");
+        });
+
+    window.get_html_frame()->register_callback(
+        "saveAdvancedLaunchSettings",
+        [](const std::vector<html_argument> &params) -> CComVariant {
+          if (params.empty() || !params[0].is_string())
+            return CComVariant("error");
+
+          const std::string data = params[0].get_string();
+          if (data.size() > 1024)
+            return CComVariant("invalid_settings");
+
+          rapidjson::Document document;
+          if (document.Parse(data.c_str()).HasParseError() ||
+              !document.IsObject() || !document.HasMember("enabled") ||
+              !document["enabled"].IsBool() ||
+              !document.HasMember("arguments") ||
+              !document["arguments"].IsString()) {
+            return CComVariant("invalid_settings");
+          }
+
+          const rapidjson::Value &stored_arguments = document["arguments"];
+          const std::string arguments(stored_arguments.GetString(),
+                                      stored_arguments.GetStringLength());
+          const auto safe_arguments = sanitize_advanced_launch_args(arguments);
+          if (!safe_arguments)
+            return CComVariant("invalid_arguments");
+
+          rapidjson::Document normalized;
+          normalized.SetObject();
+          auto &allocator = normalized.GetAllocator();
+          normalized.AddMember("enabled", document["enabled"].GetBool(),
+                               allocator);
+          rapidjson::Value normalized_arguments;
+          normalized_arguments.SetString(
+              safe_arguments->data(),
+              static_cast<rapidjson::SizeType>(safe_arguments->size()),
+              allocator);
+          normalized.AddMember("arguments", normalized_arguments, allocator);
+
+          rapidjson::StringBuffer buffer;
+          rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+          normalized.Accept(writer);
+          utils::properties::store(
+              "advancedLaunchSettings",
+              std::string(buffer.GetString(), buffer.GetSize()));
+          return CComVariant("ok");
+        });
+
+    window.get_html_frame()->register_callback(
         "readLauncherSettings",
         [](const std::vector<html_argument> & /*params*/) -> CComVariant {
           const std::optional<std::string> stored =
@@ -1936,6 +2119,99 @@ bool run() {
             return CComVariant("invalid_json");
           utils::properties::store("launcherUiSettings", data);
           return CComVariant("ok");
+        });
+
+    window.get_html_frame()->register_callback(
+        "readLauncherLanguagePreference",
+        [](const std::vector<html_argument> & /*params*/) -> CComVariant {
+          const std::optional<std::string> stored =
+              utils::properties::load("launcherLanguage");
+          return CComVariant(stored ? stored->c_str() : "");
+        });
+
+    window.get_html_frame()->register_callback(
+        "saveLauncherLanguagePreference",
+        [](const std::vector<html_argument> &params) -> CComVariant {
+          if (params.empty() || !params[0].is_string()) {
+            return CComVariant("error");
+          }
+
+          const std::string locale = params[0].get_string();
+          if (locale != "system" && !is_launcher_locale_available(locale)) {
+            return CComVariant("invalid_locale");
+          }
+
+          utils::properties::store("launcherLanguage", locale);
+          return CComVariant("ok");
+        });
+
+    window.get_html_frame()->register_callback(
+        "getSystemLocale",
+        [](const std::vector<html_argument> & /*params*/) -> CComVariant {
+          wchar_t locale_name[LOCALE_NAME_MAX_LENGTH]{};
+          if (GetUserDefaultLocaleName(locale_name,
+                                       LOCALE_NAME_MAX_LENGTH) <= 0) {
+            return CComVariant(L"en-US");
+          }
+          return CComVariant(locale_name);
+        });
+
+    window.get_html_frame()->register_callback(
+        "loadLauncherLocaleManifest",
+        [](const std::vector<html_argument> & /*params*/) -> CComVariant {
+          const auto manifest = read_launcher_locale_manifest();
+          return manifest ? make_utf8_variant(*manifest) : CComVariant(L"");
+        });
+
+    window.get_html_frame()->register_callback(
+        "loadLauncherLocale",
+        [](const std::vector<html_argument> &params) -> CComVariant {
+          if (params.empty() || !params[0].is_string()) {
+            return CComVariant(L"");
+          }
+
+          const std::string locale = params[0].get_string();
+          if (!is_launcher_locale_available(locale)) {
+            return CComVariant(L"");
+          }
+
+          const auto path = game::get_appdata_path() / "data" / "launcher" /
+                            "locales" / (locale + ".json");
+          std::error_code file_error;
+          const auto size = std::filesystem::file_size(path, file_error);
+          if (file_error || size > 1024 * 1024) {
+            return CComVariant(L"");
+          }
+
+          std::string data;
+          if (!utils::io::read_file(path.string(), &data) || data.empty()) {
+            return CComVariant(L"");
+          }
+
+          rapidjson::Document catalog;
+          catalog.Parse<rapidjson::kParseValidateEncodingFlag>(data.data(),
+                                                                data.size());
+          if (catalog.HasParseError() || !catalog.IsObject() ||
+              !catalog.HasMember("_meta") || !catalog["_meta"].IsObject()) {
+            return CComVariant(L"");
+          }
+
+          const auto &metadata = catalog["_meta"];
+          if (!metadata.HasMember("schemaVersion") ||
+              !metadata["schemaVersion"].IsInt() ||
+              metadata["schemaVersion"].GetInt() != 1 ||
+              !metadata.HasMember("locale") ||
+              !metadata["locale"].IsString() ||
+              locale != metadata["locale"].GetString() ||
+              !metadata.HasMember("sourceLocale") ||
+              !metadata["sourceLocale"].IsString() ||
+              std::string(metadata["sourceLocale"].GetString()) != "en-US" ||
+              !catalog.HasMember("launcher") ||
+              !catalog["launcher"].IsObject()) {
+            return CComVariant(L"");
+          }
+
+          return make_utf8_variant(data);
         });
 
     window.get_html_frame()->register_callback(
@@ -2870,6 +3146,15 @@ bool run() {
           if (params.size() >= 4 && params[3].is_string())
             exe_url = params[3].get_string();
 
+          std::string advanced_args{};
+          if (params.size() >= 5 && params[4].is_string()) {
+            const auto safe_arguments =
+                sanitize_advanced_launch_args(params[4].get_string());
+            if (!safe_arguments)
+              return CComVariant("invalid_advanced_args");
+            advanced_args = *safe_arguments;
+          }
+
           std::vector<std::string> opts;
           if (!option_list.empty()) {
             for (std::string &part : utils::string::split(option_list, ' ')) {
@@ -2880,12 +3165,12 @@ bool run() {
           }
 
           if (!exe_name.empty() && !exe_url.empty()) {
-            if (handle_version_launch(exe_name, exe_url, opts)) {
+            if (handle_version_launch(exe_name, exe_url, opts, advanced_args)) {
               return CComVariant("ok");
             }
           }
 
-          relaunch_with_launch_options(opts);
+          relaunch_with_launch_options(opts, advanced_args);
           return CComVariant("ok");
         });
 
@@ -2926,6 +3211,15 @@ bool run() {
           if (params.size() >= 4 && params[3].is_string())
             exe_url = params[3].get_string();
 
+          advanced_launch_args->clear();
+          if (params.size() >= 5 && params[4].is_string()) {
+            const auto safe_arguments =
+                sanitize_advanced_launch_args(params[4].get_string());
+            if (!safe_arguments)
+              return CComVariant("invalid_advanced_args");
+            *advanced_launch_args = *safe_arguments;
+          }
+
           launch_options->clear();
           if (!option_list.empty()) {
             for (std::string &part : utils::string::split(option_list, ' ')) {
@@ -2944,7 +3238,7 @@ bool run() {
             return {};
           }
 
-          if (!launch_options->empty()) {
+          if (!launch_options->empty() || !advanced_launch_args->empty()) {
             *run_game = false;
           } else {
             *run_game = true;
@@ -2962,12 +3256,13 @@ bool run() {
   }
 
   if (!pending_exe_name->empty() && !pending_exe_url->empty()) {
-    handle_version_launch(*pending_exe_name, *pending_exe_url, *launch_options);
+    handle_version_launch(*pending_exe_name, *pending_exe_url, *launch_options,
+                           *advanced_launch_args);
     return false;
   }
 
-  if (!launch_options->empty()) {
-    relaunch_with_launch_options(*launch_options);
+  if (!launch_options->empty() || !advanced_launch_args->empty()) {
+    relaunch_with_launch_options(*launch_options, *advanced_launch_args);
     return false;
   }
   return *run_game;

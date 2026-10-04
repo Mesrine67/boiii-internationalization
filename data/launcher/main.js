@@ -139,6 +139,11 @@
   var launchOptionCards = document.querySelectorAll(
     "#launchDropdown .launch-option-card"
   );
+  var gameLanguageSelect = document.getElementById("gameLanguageSelect");
+  var advancedLaunchEnabled = document.getElementById("advancedLaunchEnabled");
+  var advancedLaunchArguments = document.getElementById("advancedLaunchArguments");
+  var advancedLaunchFields = document.getElementById("advancedLaunchFields");
+  var advancedLaunchSection = document.querySelector(".advanced-launch-section");
   var modsPagination = document.getElementById("modsPagination");
   var modsPrevPageBtn = document.getElementById("modsPrevPageBtn");
   var modsNextPageBtn = document.getElementById("modsNextPageBtn");
@@ -513,16 +518,18 @@
   try {
     var storedOpts = null;
     try {
-      storedOpts = localStorage.getItem("boiii_launch_options");
+      var optionsBridge = getExternal();
+      if (optionsBridge && optionsBridge.readLaunchOptions) {
+        storedOpts = optionsBridge.readLaunchOptions();
+      }
     } catch (e) {}
-    if (storedOpts === null) {
-      storedOpts =
-        getExternal() &&
-        getExternal().readLaunchOptions &&
-        getExternal().readLaunchOptions();
+    if (storedOpts === null || typeof storedOpts === "undefined") {
+      try {
+        storedOpts = localStorage.getItem("boiii_launch_options");
+      } catch (e) {}
     }
-    if (storedOpts !== null) {
-      var rawParts = (storedOpts || "").split(" ");
+    if (storedOpts !== null && typeof storedOpts !== "undefined") {
+      var rawParts = (storedOpts || "").split(/\s+/);
       var parts = [];
       for (var pi = 0; pi < rawParts.length; pi++) {
         var trimmed = (rawParts[pi] || "")
@@ -530,6 +537,7 @@
           .replace(/^\s+|\s+$/g, "");
         if (trimmed) parts.push(trimmed);
       }
+      var frenchSelected = false;
       for (var i = 0; i < launchOptionCards.length; i++) {
         var optVal = (
           launchOptionCards[i].getAttribute("data-option") || ""
@@ -544,8 +552,85 @@
           }
         }
       }
+      for (var fi = 0; fi < parts.length; fi++) {
+        if (parts[fi] === "french") {
+          frenchSelected = true;
+          break;
+        }
+      }
+      window._legacyFrenchLaunchOption = frenchSelected;
     }
   } catch (e) {}
+
+  function updateAdvancedLaunchFields() {
+    var enabled = !!(advancedLaunchEnabled && advancedLaunchEnabled.checked);
+    if (advancedLaunchFields) advancedLaunchFields.hidden = !enabled;
+    if (advancedLaunchSection) {
+      advancedLaunchSection.classList.toggle("enabled", enabled);
+    }
+  }
+
+  function saveAdvancedLaunchSettings() {
+    var settings = {
+      enabled: !!(advancedLaunchEnabled && advancedLaunchEnabled.checked),
+      arguments: advancedLaunchArguments
+        ? (advancedLaunchArguments.value || "").slice(0, 512)
+        : "",
+    };
+    var serialized = JSON.stringify(settings);
+    try {
+      localStorage.setItem("boiii_advanced_launch_settings", serialized);
+    } catch (e) {}
+    try {
+      var settingsBridge = getExternal();
+      if (settingsBridge && settingsBridge.saveAdvancedLaunchSettings) {
+        settingsBridge.saveAdvancedLaunchSettings(serialized);
+      }
+    } catch (e) {}
+  }
+
+  function readAdvancedLaunchSettings() {
+    var serialized = null;
+    try {
+      var settingsBridge = getExternal();
+      if (settingsBridge && settingsBridge.readAdvancedLaunchSettings) {
+        serialized = settingsBridge.readAdvancedLaunchSettings();
+      }
+    } catch (e) {}
+    if (serialized === null || typeof serialized === "undefined") {
+      try {
+        serialized = localStorage.getItem("boiii_advanced_launch_settings");
+      } catch (e) {}
+    }
+    if (serialized) {
+      try {
+        var settings = JSON.parse(serialized);
+        if (advancedLaunchEnabled) advancedLaunchEnabled.checked = settings.enabled === true;
+        if (advancedLaunchArguments && typeof settings.arguments === "string") {
+          advancedLaunchArguments.value = settings.arguments.slice(0, 512);
+        }
+      } catch (e) {}
+    }
+    updateAdvancedLaunchFields();
+  }
+
+  function getAdvancedLaunchArguments() {
+    if (!advancedLaunchEnabled || !advancedLaunchEnabled.checked) return "";
+    return advancedLaunchArguments
+      ? (advancedLaunchArguments.value || "").replace(/^\s+|\s+$/g, "")
+      : "";
+  }
+
+  readAdvancedLaunchSettings();
+  if (advancedLaunchEnabled) {
+    advancedLaunchEnabled.addEventListener("change", function () {
+      updateAdvancedLaunchFields();
+      saveAdvancedLaunchSettings();
+    });
+  }
+  if (advancedLaunchArguments) {
+    advancedLaunchArguments.addEventListener("input", saveAdvancedLaunchSettings);
+  }
 
   try {
     var ex0 = getExternal();
@@ -590,6 +675,77 @@
     }
   })();
 
+  function populateLauncherLanguageOptions() {
+    if (!gameLanguageSelect || !window.BOIIILauncherI18n ||
+        !window.BOIIILauncherI18n.getAvailableLocales) return;
+    var locales = window.BOIIILauncherI18n.getAvailableLocales();
+    for (var removeIndex = gameLanguageSelect.options.length - 1;
+         removeIndex >= 0; removeIndex--) {
+      var existing = gameLanguageSelect.options[removeIndex];
+      if (existing.value !== "system" && locales.indexOf(existing.value) === -1) {
+        gameLanguageSelect.remove(removeIndex);
+      }
+    }
+    for (var i = 0; i < locales.length; i++) {
+      var locale = locales[i];
+      var option = null;
+      for (var j = 0; j < gameLanguageSelect.options.length; j++) {
+        if (gameLanguageSelect.options[j].value === locale) {
+          option = gameLanguageSelect.options[j];
+          break;
+        }
+      }
+      if (!option) {
+        option = document.createElement("option");
+        option.value = locale;
+        gameLanguageSelect.appendChild(option);
+      }
+      option.textContent = window.BOIIILauncherI18n.getLocaleDisplayName(locale);
+      option.removeAttribute("data-i18n");
+    }
+  }
+
+  function readLauncherLanguagePreference() {
+    var preference = "";
+    try {
+      var languageBridge = getExternal();
+      if (languageBridge && languageBridge.readLauncherLanguagePreference) {
+        preference = languageBridge.readLauncherLanguagePreference() || "";
+      }
+    } catch (e) {}
+    if (!preference) {
+      try { preference = localStorage.getItem("boiii_launcher_language") || ""; }
+      catch (e) {}
+    }
+    if (!preference && window._legacyFrenchLaunchOption) preference = "fr-FR";
+    if (!preference) preference = "system";
+    return preference;
+  }
+
+  function saveLauncherLanguagePreference() {
+    var preference = gameLanguageSelect ? gameLanguageSelect.value : "system";
+    try { localStorage.setItem("boiii_launcher_language", preference); } catch (e) {}
+    try {
+      var languageBridge = getExternal();
+      if (languageBridge && languageBridge.saveLauncherLanguagePreference) {
+        languageBridge.saveLauncherLanguagePreference(preference);
+      }
+    } catch (e) {}
+  }
+
+  populateLauncherLanguageOptions();
+  var savedLauncherLanguage = readLauncherLanguagePreference();
+  if (gameLanguageSelect) {
+    var savedLocaleAvailable = false;
+    for (var sli = 0; sli < gameLanguageSelect.options.length; sli++) {
+      if (gameLanguageSelect.options[sli].value === savedLauncherLanguage) {
+        savedLocaleAvailable = true;
+        break;
+      }
+    }
+    gameLanguageSelect.value = savedLocaleAvailable ? savedLauncherLanguage : "system";
+  }
+
   window.getSelectedLaunchOption = function () {
     var selected = [];
     for (var i = 0; i < launchOptionCards.length; i++) {
@@ -598,23 +754,57 @@
         if (opt) selected.push(opt);
       }
     }
+    if (window.BOIIILauncherI18n &&
+        window.BOIIILauncherI18n.getCurrentLocale() === "fr-FR") {
+      selected.push("french");
+    }
     return selected.join(" ");
   };
+
+  function saveSelectedLaunchOptions() {
+    var selectedOptions = window.getSelectedLaunchOption();
+    try {
+      localStorage.setItem("boiii_launch_options", selectedOptions);
+    } catch (e) {}
+    try {
+      var optionsBridge = getExternal();
+      if (optionsBridge && optionsBridge.saveLaunchOptions) {
+        optionsBridge.saveLaunchOptions(selectedOptions);
+      }
+    } catch (e) {}
+  }
+
+  function applyLauncherLanguage() {
+    try {
+      if (
+        window.BOIIILauncherI18n &&
+        window.BOIIILauncherI18n.setLanguage
+      ) {
+        return window.BOIIILauncherI18n.setLanguage(
+          gameLanguageSelect ? gameLanguageSelect.value : "system"
+        );
+      }
+    } catch (e) {}
+    return "en-US";
+  }
+
+  applyLauncherLanguage();
+  saveLauncherLanguagePreference();
+
+  if (gameLanguageSelect) {
+    gameLanguageSelect.addEventListener("change", function () {
+      applyLauncherLanguage();
+      saveLauncherLanguagePreference();
+      saveSelectedLaunchOptions();
+    });
+  }
 
   for (var oi = 0; oi < launchOptionCards.length; oi++) {
     (function (card) {
       card.onclick = function (e) {
         e.stopPropagation();
         card.classList.toggle("active");
-        try {
-          localStorage.setItem(
-            "boiii_launch_options",
-            window.getSelectedLaunchOption()
-          );
-          var ex = getExternal();
-          if (ex && ex.saveLaunchOptions)
-            ex.saveLaunchOptions(window.getSelectedLaunchOption());
-        } catch (e2) {}
+        saveSelectedLaunchOptions();
       };
     })(launchOptionCards[oi]);
   }
@@ -3080,6 +3270,20 @@
       }
       playBtn.disabled = true;
       var opts = window.getSelectedLaunchOption();
+      var advancedArgs = getAdvancedLaunchArguments();
+      if (advancedArgs.length > 512 || /[\x00-\x1f\x7f]/.test(advancedArgs)) {
+        playBtn.disabled = false;
+        var i18n = window.BOIIILauncherI18n;
+        showMessage(
+          i18n && i18n.translateKey
+            ? i18n.translateKey("launcher.launchOptions.invalidTitle")
+            : "Advanced launch options",
+          i18n && i18n.translateKey
+            ? i18n.translateKey("launcher.launchOptions.invalidMessage")
+            : "Enter one line of launch arguments, up to 512 characters. Control characters are not allowed."
+        );
+        return;
+      }
 
       var selectedVersion = _selectedVersion || "latest";
       var exeName = "";
@@ -3112,10 +3316,17 @@
                   window.getPlayerName(),
                   opts,
                   exeName,
-                  exeUrl
+                  exeUrl,
+                  advancedArgs
                 );
               } else {
-                getExternal().launchGame(window.getPlayerName(), opts);
+                getExternal().launchGame(
+                  window.getPlayerName(),
+                  opts,
+                  "",
+                  "",
+                  advancedArgs
+                );
               }
             } catch (e2) {}
           }
@@ -3129,18 +3340,37 @@
             window.getPlayerName(),
             opts,
             exeName,
-            exeUrl
+            exeUrl,
+            advancedArgs
           );
         } else {
-          getExternal().launchGame(window.getPlayerName(), opts);
+          getExternal().launchGame(
+            window.getPlayerName(),
+            opts,
+            "",
+            "",
+            advancedArgs
+          );
         }
         return;
       }
 
       if (exeName && exeUrl) {
-        getExternal().runGame(window.getPlayerName(), opts, exeName, exeUrl);
+        getExternal().runGame(
+          window.getPlayerName(),
+          opts,
+          exeName,
+          exeUrl,
+          advancedArgs
+        );
       } else {
-        getExternal().runGame(window.getPlayerName(), opts);
+        getExternal().runGame(
+          window.getPlayerName(),
+          opts,
+          "",
+          "",
+          advancedArgs
+        );
       }
     } catch (e) {}
   };

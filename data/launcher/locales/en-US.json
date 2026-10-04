@@ -1,0 +1,3026 @@
+{
+  "_meta": {
+    "schemaVersion": 1,
+    "locale": "en-US",
+    "sourceLocale": "en-US",
+    "translationVersion": 1
+  },
+  "launcher": {
+    "legacy": {
+      "home": {
+        "3a786953": "Home"
+      },
+      "workshop": {
+        "c0086f23": "Workshop",
+        "ready": {
+          "f4bd6678": "Workshop ready"
+        },
+        "on": {
+          "wine": {
+            "4d2352db": "Workshop on Wine"
+          }
+        },
+        "browsing": {
+          "is": {
+            "not": {
+              "available": {
+                "2931b25d": "Workshop browsing is not available."
+              }
+            }
+          },
+          "failed": {
+            "to": {
+              "start": {
+                "9545e56c": "Workshop browsing failed to start."
+              }
+            }
+          }
+        },
+        "search": {
+          "is": {
+            "not": {
+              "available": {
+                "de9b2aef": "Workshop search is not available."
+              }
+            }
+          },
+          "failed": {
+            "to": {
+              "start": {
+                "0c4f09e1": "Workshop search failed to start."
+              }
+            }
+          }
+        },
+        "id": {
+          "1c532d21": "Workshop ID"
+        },
+        "item": {
+          "installed": {
+            "successfully": {
+              "66a936ae": "Workshop item installed successfully."
+            }
+          }
+        },
+        "error": {
+          "3b89c76e": "Workshop Error"
+        },
+        "remove": {
+          "is": {
+            "not": {
+              "available": {
+                "09b7145e": "Workshop remove is not available."
+              }
+            }
+          }
+        },
+        "staging": {
+          "folder": {
+            "2828f3a0": "Workshop staging folder"
+          }
+        },
+        "downloads": {
+          "through": {
+            "steamcmd": {
+              "may": {
+                "be": {
+                  "3b9e0b4b": "Workshop downloads through SteamCMD may be unavailable"
+                }
+              }
+            }
+          }
+        },
+        "and": {
+          "profile": {
+            "folders": {
+              "were": {
+                "repaired": {
+                  "de786247": "Workshop and profile folders were repaired."
+                }
+              }
+            }
+          }
+        },
+        "folders": {
+          "could": {
+            "not": {
+              "be": {
+                "repaired": {
+                  "e39e9166": "Workshop folders could not be repaired."
+                }
+              }
+            }
+          }
+        }
+      },
+      "library": {
+        "dc20b3d5": "Library"
+      },
+      "friends": {
+        "bd104d1b": "Friends",
+        "list": {
+          "efc1b284": "Friends List"
+        },
+        "only": {
+          "d6ebf1f9": "Friends Only"
+        }
+      },
+      "settings": {
+        "74a883a0": "Settings",
+        "reset": {
+          "be84fea7": "Settings Reset"
+        }
+      },
+      "show": {
+        "credits": {
+          "19d17b66": "Show Credits"
+        },
+        "full": {
+          "untruncated": {
+            "log": {
+              "output": {
+                "logs": {
+                  "are": {
+                    "2375cb45": "Show full untruncated log output (logs are trimmed by default)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "fps": {
+          "counter": {
+            "56728cec": "Show FPS Counter"
+          }
+        }
+      },
+      "launch": {
+        "options": {
+          "947832bc": "Launch Options"
+        },
+        "with": {
+          "advanced": {
+            "options": {
+              "bca6b158": "Launch with advanced options"
+            }
+          },
+          "minimal": {
+            "settings": {
+              "for": {
+                "troublesh": {
+                  "d4a9d848": "Launch with minimal settings for troubleshooting (no mods loading)"
+                }
+              }
+            }
+          }
+        },
+        "without": {
+          "connecting": {
+            "to": {
+              "steam": {
+                "78e070e8": "Launch without connecting to Steam"
+              }
+            }
+          }
+        }
+      },
+      "additional": {
+        "launch": {
+          "arguments": {
+            "94103fef": "Additional launch arguments"
+          }
+        }
+      },
+      "example": {
+        "set": {
+          "com": {
+            "maxfps": {
+              "60": {
+                "b6860597": "Example: +set com_maxfps 60"
+              }
+            }
+          }
+        }
+      },
+      "optional": {
+        "arguments": {
+          "are": {
+            "passed": {
+              "to": {
+                "boiii": {
+                  "as": {
+                    "6747e403": "Optional arguments are passed to BOIII as written. The language menu already adds -french."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "dlc": {
+          "c16ccd4e": "Optional (DLC)"
+        }
+      },
+      "advanced": {
+        "launch": {
+          "options": {
+            "0f050ede": "Advanced launch options"
+          }
+        },
+        "9f088dbe": "Advanced"
+      },
+      "enter": {
+        "one": {
+          "line": {
+            "of": {
+              "launch": {
+                "arguments": {
+                  "up": {
+                    "to": {
+                      "5": {
+                        "9e755589": "Enter one line of launch arguments, up to 512 characters. Control characters are not allowed."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "your": {
+          "name": {
+            "b562dde9": "Enter your name..."
+          }
+        },
+        "workshop": {
+          "id": {
+            "or": {
+              "link": {
+                "a447de7f": "Enter Workshop ID or link..."
+              }
+            }
+          }
+        },
+        "a": {
+          "display": {
+            "name": {
+              "and": {
+                "boiii": {
+                  "friend": {
+                    "code": {
+                      "508b1b50": "Enter a display name and BOIII Friend Code to add a friend"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "workshop": {
+            "id": {
+              "or": {
+                "link": {
+                  "57b5e881": "Enter a Workshop ID or link."
+                }
+              }
+            }
+          }
+        },
+        "both": {
+          "a": {
+            "key": {
+              "and": {
+                "a": {
+                  "command": {
+                    "0f9c7640": "Enter both a key and a command."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "launcher": {
+        "game": {
+          "language": {
+            "3432f590": "Launcher & game language"
+          }
+        },
+        "features": {
+          "861088fa": "Launcher features"
+        },
+        "22614ace": "Launcher",
+        "data": {
+          "3bce4dc6": "Launcher data"
+        },
+        "ui": {
+          "data": {
+            "is": {
+              "missing": {
+                "or": {
+                  "incomplete": {
+                    "7f024ffe": "Launcher UI data is missing or incomplete"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "english": {
+        "ba118bf7": "English"
+      },
+      "french": {
+        "partial": {
+          "translation": {
+            "9e42bf51": "French (partial translation)"
+          }
+        }
+      },
+      "no": {
+        "console": {
+          "2b18c422": "No Console"
+        },
+        "steam": {
+          "59a9b10c": "No Steam"
+        },
+        "plugins": {
+          "1077ef9e": "No Plugins"
+        },
+        "image": {
+          "ffd6177d": "No Image"
+        },
+        "password": {
+          "56b9e00d": "No password"
+        },
+        "items": {
+          "found": {
+            "949da6a3": "No items found"
+          },
+          "match": {
+            "your": {
+              "search": {
+                "69d7dadb": "No items match your search"
+              }
+            }
+          }
+        },
+        "workshop": {
+          "items": {
+            "available": {
+              "f17a9588": "No workshop items available"
+            },
+            "installed": {
+              "yet": {
+                "3da63595": "No workshop items installed yet"
+              }
+            }
+          }
+        },
+        "installed": {
+          "items": {
+            "match": {
+              "your": {
+                "search": {
+                  "e6ca1668": "No installed items match your search"
+                }
+              }
+            }
+          }
+        },
+        "description": {
+          "available": {
+            "4d4c2197": "No description available."
+          }
+        },
+        "game": {
+          "modes": {
+            "selected": {
+              "or": {
+                "selected": {
+                  "modes": {
+                    "h": {
+                      "e14c0bde": "No game modes selected or selected modes have no files."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "files": {
+            "d2b273d0": "No game files"
+          }
+        },
+        "files": {
+          "found": {
+            "949d59b7": "No files found"
+          }
+        },
+        "custom": {
+          "binds": {
+            "saved": {
+              "53a1ec23": "No custom binds saved.",
+              "yet": {
+                "336290f3": "No custom binds saved yet"
+              }
+            }
+          }
+        },
+        "diagnostic": {
+          "results": {
+            "were": {
+              "returned": {
+                "41a40a50": "No diagnostic results were returned."
+              }
+            }
+          }
+        },
+        "friends": {
+          "added": {
+            "yet": {
+              "48313d74": "No friends added yet"
+            }
+          }
+        }
+      },
+      "hide": {
+        "the": {
+          "external": {
+            "console": {
+              "window": {
+                "without": {
+                  "d": {
+                    "8ed8c4dd": "Hide the external console window without disabling logs"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "keep": {
+        "launcher": {
+          "4a418b26": "Keep Launcher"
+        },
+        "the": {
+          "launcher": {
+            "open": {
+              "after": {
+                "starting": {
+                  "the": {
+                    "54fc7d2d": "Keep the launcher open after starting the game"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "enable": {
+        "cheats": {
+          "a008e3a0": "Enable Cheats"
+        },
+        "cheat": {
+          "dvars": {
+            "and": {
+              "commands": {
+                "other": {
+                  "play": {
+                    "4d68e437": "Enable cheat dvars and commands; other players can use them in a hosted private match"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ultrawide": {
+          "ui": {
+            "scaling": {
+              "some": {
+                "interface": {
+                  "c1dc8da6": "Enable ultrawide UI scaling; some interfaces may not align correctly"
+                }
+              }
+            }
+          }
+        },
+        "the": {
+          "developer": {
+            "console": {
+              "in": {
+                "game": {
+                  "11c1cb21": "Enable the developer console in-game"
+                }
+              }
+            }
+          }
+        },
+        "vertical": {
+          "sync": {
+            "to": {
+              "prevent": {
+                "screen": {
+                  "tea": {
+                    "f13846c8": "Enable vertical sync to prevent screen tearing"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "frame": {
+          "smoothing": {
+            "for": {
+              "consistent": {
+                "fram": {
+                  "49357aa6": "Enable frame smoothing for consistent frame pacing"
+                }
+              }
+            }
+          }
+        }
+      },
+      "skip": {
+        "intro": {
+          "32ba5101": "Skip Intro"
+        },
+        "the": {
+          "intro": {
+            "cinematic": {
+              "on": {
+                "startup": {
+                  "0b2e2850": "Skip the intro cinematic on startup"
+                }
+              }
+            }
+          },
+          "bo3": {
+            "logo": {
+              "intro": {
+                "video": {
+                  "on": {
+                    "startup": {
+                      "7e06a234": "Skip the BO3 logo intro video on startup"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "cinematics": {
+          "4f393213": "Skip Cinematics"
+        },
+        "every": {
+          "cinematic": {
+            "including": {
+              "in": {
+                "game": {
+                  "cut": {
+                    "c144e214": "Skip every cinematic, including in-game cutscenes"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "game": {
+          "intro": {
+            "68c26875": "Skip game intro"
+          }
+        },
+        "all": {
+          "intros": {
+            "7430697f": "Skip all intros"
+          },
+          "cinematic": {
+            "intro": {
+              "videos": {
+                "campaign": {
+                  "z": {
+                    "e777cb91": "Skip all cinematic intro videos (campaign, zombies, etc.)"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "borderless": {
+        "b136109a": "Borderless"
+      },
+      "run": {
+        "in": {
+          "borderless": {
+            "fullscreen": {
+              "mode": {
+                "cd594263": "Run in borderless fullscreen mode"
+              }
+            }
+          }
+        },
+        "the": {
+          "game": {
+            "in": {
+              "a": {
+                "windowed": {
+                  "window": {
+                    "5965bead": "Run the game in a windowed window"
+                  }
+                }
+              }
+            }
+          },
+          "server": {
+            "without": {
+              "a": {
+                "visible": {
+                  "window": {
+                    "952ba108": "Run the server without a visible window"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "diagnostics": {
+          "95d218f5": "Run Diagnostics",
+          "to": {
+            "check": {
+              "the": {
+                "installation": {
+                  "fc4237ba": "Run diagnostics to check the installation."
+                }
+              }
+            }
+          }
+        }
+      },
+      "windowed": {
+        "3f26603a": "Windowed",
+        "fullscreen": {
+          "or": {
+            "borderless": {
+              "720da0d7": "Windowed, Fullscreen, or Borderless"
+            }
+          }
+        }
+      },
+      "ultrawide": {
+        "ui": {
+          "b776c1cf": "Ultrawide UI"
+        }
+      },
+      "full": {
+        "logs": {
+          "04bb769f": "Full Logs"
+        },
+        "vram": {
+          "usage": {
+            "3bcabfee": "Full VRAM usage"
+          }
+        }
+      },
+      "dev": {
+        "console": {
+          "0c37dafa": "Dev Console"
+        }
+      },
+      "unsafe": {
+        "lua": {
+          "135194e2": "Unsafe Lua"
+        }
+      },
+      "allow": {
+        "loading": {
+          "of": {
+            "unsigned": {
+              "lua": {
+                "scripts": {
+                  "13289786": "Allow loading of unsigned Lua scripts"
+                }
+              }
+            }
+          }
+        }
+      },
+      "disable": {
+        "loading": {
+          "of": {
+            "custom": {
+              "plugins": {
+                "plugins": {
+                  "7d891b72": "Disable loading of custom plugins (plugins are enabled by default)"
+                }
+              }
+            }
+          }
+        },
+        "page": {
+          "and": {
+            "hover": {
+              "movement": {
+                "for": {
+                  "slower": {
+                    "85d9a4a3": "Disable page and hover movement for slower systems"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "asset": {
+          "pools": {
+            "patches": {
+              "6a414ac6": "Disable asset pools patches"
+            }
+          }
+        }
+      },
+      "safe": {
+        "mode": {
+          "61bf60a0": "Safe Mode"
+        }
+      },
+      "headless": {
+        "af9bfb72": "Headless"
+      },
+      "call": {
+        "of": {
+          "duty": {
+            "black": {
+              "ops": {
+                "3": {
+                  "enhanced": {
+                    "with": {
+                      "our": {
+                        "49ecb991": "Call of Duty: Black Ops 3 enhanced with our modifications. Experience the full campaign, multiplayer, and zombies modes with improved stability and additional features."
+                      }
+                    },
+                    "client": {
+                      "c": {
+                        "9989dfb2": "Call of Duty: Black Ops 3 enhanced client. Custom launcher, workshop support, and community features."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "auto": {
+        "updates": {
+          "8c00ca51": "Auto updates"
+        },
+        "refresh": {
+          "library": {
+            "97f1f707": "Auto-refresh library"
+          }
+        }
+      },
+      "community": {
+        "client": {
+          "a3fe0853": "Community client"
+        }
+      },
+      "version": {
+        "4c5726ee": "Version:"
+      },
+      "latest": {
+        "auto": {
+          "update": {
+            "ed4f2435": "Latest (Auto-update)"
+          }
+        }
+      },
+      "player": {
+        "name": {
+          "0456bb5c": "Player Name"
+        },
+        "sounds": {
+          "table": {
+            "93925d1c": "Player Sounds Table"
+          }
+        },
+        "fx": {
+          "table": {
+            "4a69e14d": "Player FX Table"
+          }
+        },
+        "character": {
+          "807ff035": "Player Character"
+        }
+      },
+      "discord": {
+        "053bc658": "Discord"
+      },
+      "forum": {
+        "4da7bd42": "Forum"
+      },
+      "manage": {
+        "5a234448": "Manage",
+        "your": {
+          "friends": {
+            "list": {
+              "add": {
+                "friends": {
+                  "by": {
+                    "th": {
+                      "9c7912e0": "Manage your friends list. Add friends by their BOIII Friend Code to see them here."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "installation": {
+          "f3d2ba4e": "Manage Installation"
+        }
+      },
+      "verify": {
+        "game": {
+          "files": {
+            "45c50213": "Verify Game Files"
+          }
+        },
+        "again": {
+          "be9badb2": "Verify Again"
+        }
+      },
+      "change": {
+        "game": {
+          "path": {
+            "bc1eea63": "Change Game Path"
+          }
+        },
+        "c0bf75bd": "Change"
+      },
+      "browse": {
+        "download": {
+          "and": {
+            "manage": {
+              "custom": {
+                "maps": {
+                  "and": {
+                    "9eecb904": "Browse, download, and manage custom maps and mods from the Steam Workshop."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "workshop": {
+          "fe755691": "Browse Workshop"
+        },
+        "and": {
+          "manage": {
+            "your": {
+              "installed": {
+                "workshop": {
+                  "59854529": "Browse and manage your installed workshop maps and mods."
+                }
+              }
+            }
+          }
+        }
+      },
+      "quick": {
+        "download": {
+          "25df2763": "Quick Download"
+        },
+        "preset": {
+          "a04ae528": "Quick preset"
+        }
+      },
+      "download": {
+        "by": {
+          "workshop": {
+            "id": {
+              "or": {
+                "link": {
+                  "92b871e5": "Download by Workshop ID or link"
+                }
+              }
+            }
+          }
+        },
+        "d6eafe82": "Download",
+        "timeout": {
+          "in": {
+            "seconds": {
+              "for": {
+                "workshop": {
+                  "i": {
+                    "36328445": "Download timeout in seconds for workshop items (60–3600)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "previous": {
+          "blackops3": {
+            "exe": {
+              "4b722a6f": "Download Previous BlackOps3.exe"
+            }
+          }
+        },
+        "complete": {
+          "d4be3940": "Download Complete"
+        },
+        "in": {
+          "progress": {
+            "15ab5743": "Download in progress"
+          }
+        }
+      },
+      "open": {
+        "folder": {
+          "68b3f4bf": "Open Folder"
+        },
+        "download": {
+          "folder": {
+            "a30e75e7": "Open download folder"
+          }
+        }
+      },
+      "pause": {
+        "858e4ba7": "Pause"
+      },
+      "cancel": {
+        "19766ed6": "Cancel"
+      },
+      "single": {
+        "column": {
+          "e664b8c6": "Single column"
+        }
+      },
+      "two": {
+        "columns": {
+          "ff4a0135": "Two columns"
+        }
+      },
+      "most": {
+        "recent": {
+          "7ffd1b8a": "Most Recent"
+        }
+      },
+      "top": {
+        "rated": {
+          "90e7047e": "Top Rated"
+        }
+      },
+      "oldest": {
+        "505dc450": "Oldest"
+      },
+      "alphabetical": {
+        "a49d631f": "Alphabetical"
+      },
+      "search": {
+        "49c266ba": "Search",
+        "by": {
+          "name": {
+            "ed82cf60": "Search by name..."
+          }
+        },
+        "installed": {
+          "items": {
+            "08866ff9": "Search installed items..."
+          }
+        }
+      },
+      "refresh": {
+        "9cbbfc3a": "↻ Refresh",
+        "0e916101": "Refresh",
+        "the": {
+          "mod": {
+            "library": {
+              "after": {
+                "a": {
+                  "workshop": {
+                    "d": {
+                      "9f26efc1": "Refresh the mod library after a workshop download completes"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "rate": {
+          "9be2cdd8": "Refresh Rate"
+        }
+      },
+      "clear": {
+        "83b12c22": "Clear",
+        "library": {
+          "search": {
+            "ea01654f": "Clear library search"
+          }
+        },
+        "profile": {
+          "data": {
+            "2ff74a28": "Clear Profile Data"
+          }
+        }
+      },
+      "loading": {
+        "workshop": {
+          "items": {
+            "f0898161": "Loading workshop items...",
+            "took": {
+              "too": {
+                "long": {
+                  "081e5c2f": "Loading workshop items took too long."
+                }
+              }
+            }
+          }
+        },
+        "manifest": {
+          "323c2ef0": "Loading manifest..."
+        }
+      },
+      "mod": {
+        "details": {
+          "91d9807f": "Mod Details"
+        }
+      },
+      "view": {
+        "on": {
+          "steam": {
+            "a3d1af79": "View on Steam"
+          }
+        },
+        "all": {
+          "contributors": {
+            "f814457d": "View All Contributors"
+          }
+        },
+        "dcc839a4": "View"
+      },
+      "installed": {
+        "items": {
+          "d1237a43": "Installed Items"
+        }
+      },
+      "list": {
+        "view": {
+          "48627bdf": "List View"
+        }
+      },
+      "grid": {
+        "view": {
+          "38ee89c3": "Grid View"
+        }
+      },
+      "check": {
+        "updates": {
+          "a4738b60": "Check Updates"
+        },
+        "for": {
+          "updates": {
+            "on": {
+              "launch": {
+                "d4b35530": "Check for updates on launch"
+              }
+            }
+          }
+        },
+        "9d60841e": "Check"
+      },
+      "delete": {
+        "all": {
+          "ef85afa1": "Delete All",
+          "mods": {
+            "663a15e8": "Delete all mods"
+          }
+        },
+        "e2d0a549": "Delete",
+        "game": {
+          "modes": {
+            "2cad74a9": "Delete Game Modes"
+          }
+        },
+        "complete": {
+          "a1c57a61": "Delete Complete"
+        }
+      },
+      "prev": {
+        "ad218904": "‹ Prev"
+      },
+      "next": {
+        "868d1670": "Next ›"
+      },
+      "your": {
+        "boiii": {
+          "friend": {
+            "code": {
+              "be43e747": "Your BOIII Friend Code"
+            }
+          },
+          "identity": {
+            "e3f5cd8f": "Your BOIII identity"
+          }
+        }
+      },
+      "unavailable": {
+        "ca184496": "Unavailable"
+      },
+      "copy": {
+        "friend": {
+          "code": {
+            "c350dd66": "Copy Friend Code"
+          }
+        }
+      },
+      "add": {
+        "friend": {
+          "0967ca7c": "Add Friend"
+        },
+        "9fd728c6": "Add",
+        "update": {
+          "f08ce4b4": "Add / Update"
+        }
+      },
+      "display": {
+        "name": {
+          "feb0decd": "Display name..."
+        },
+        "34e108c0": "Display",
+        "mode": {
+          "8ce318ba": "Display Mode"
+        },
+        "an": {
+          "in": {
+            "game": {
+              "fps": {
+                "counter": {
+                  "f4fba920": "Display an in-game FPS counter"
+                }
+              }
+            }
+          }
+        }
+      },
+      "boiii": {
+        "friend": {
+          "code": {
+            "714acf77": "BOIII Friend Code",
+            "must": {
+              "be": {
+                "a": {
+                  "numeric": {
+                    "value": {
+                      "9c0c8d5b": "BOIII Friend Code must be a numeric value."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "does": {
+          "not": {
+            "work": {
+              "with": {
+                "the": {
+                  "latest": {
+                    "steam": {
+                      "b40e8481": "BOIII does not work with the latest Steam update. If you downloaded the latest update through Steam, use the button below to get the previous BlackOps3.exe and replace the one in your game directory."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "configure": {
+        "launcher": {
+          "preferences": {
+            "graphics": {
+              "an": {
+                "38ea807f": "Configure launcher preferences, graphics, and network options."
+              }
+            }
+          }
+        }
+      },
+      "general": {
+        "c910d474": "General"
+      },
+      "graphics": {
+        "a874fca8": "Graphics",
+        "preset": {
+          "41ecd675": "Graphics Preset",
+          "applied": {
+            "successfully": {
+              "resta": {
+                "72a25d7d": "Graphics preset applied successfully. Restart the game for changes to take effect."
+              }
+            }
+          }
+        }
+      },
+      "asset": {
+        "pools": {
+          "c7ce4de5": "Asset Pools",
+          "reset": {
+            "f961bef9": "Asset Pools Reset"
+          }
+        },
+        "pool": {
+          "expansion": {
+            "802910ae": "Asset Pool Expansion"
+          }
+        }
+      },
+      "patches": {
+        "1c228155": "Patches"
+      },
+      "binds": {
+        "f61993f4": "Binds"
+      },
+      "diagnostics": {
+        "268f14bb": "Diagnostics",
+        "results": {
+          "b60ee1ed": "Diagnostics Results"
+        }
+      },
+      "game": {
+        "path": {
+          "7c4ee25f": "Game Path",
+          "updated": {
+            "6045bc29": "Game Path Updated"
+          }
+        },
+        "password": {
+          "68476ece": "Game Password"
+        },
+        "map": {
+          "96989c07": "Game Map"
+        },
+        "render": {
+          "resolution": {
+            "e": {
+              "g": {
+                "1920x1080": {
+                  "e99f42ba": "Game render resolution (e.g. 1920x1080)"
+                }
+              }
+            }
+          }
+        },
+        "running": {
+          "82d99c74": "Game Running"
+        },
+        "is": {
+          "running": {
+            "16e705d9": "Game is running"
+          }
+        },
+        "executable": {
+          "0e8e83f0": "Game executable"
+        }
+      },
+      "not": {
+        "set": {
+          "4895f731": "Not set"
+        },
+        "installed": {
+          "d177cdc0": "Not installed",
+          "yet": {
+            "it": {
+              "will": {
+                "download": {
+                  "when": {
+                    "ne": {
+                      "43c1ba48": "Not installed yet; it will download when needed"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "close": {
+        "launcher": {
+          "on": {
+            "play": {
+              "25294274": "Close launcher on play"
+            }
+          }
+        },
+        "the": {
+          "launcher": {
+            "window": {
+              "when": {
+                "you": {
+                  "start": {
+                    "t": {
+                      "9c1deb2f": "Close the launcher window when you start the game"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "game": {
+            "before": {
+              "clearing": {
+                "profile": {
+                  "dat": {
+                    "f0c8fa72": "Close the game before clearing profile data."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "automatically": {
+        "check": {
+          "for": {
+            "client": {
+              "updates": {
+                "whe": {
+                  "3a3308ef": "Automatically check for client updates when the launcher opens"
+                }
+              }
+            }
+          }
+        }
+      },
+      "reduced": {
+        "ui": {
+          "motion": {
+            "6c20ec3d": "Reduced UI motion"
+          }
+        }
+      },
+      "downloads": {
+        "d5fdc1af": "Downloads"
+      },
+      "retry": {
+        "attempts": {
+          "558fe9e3": "Retry Attempts"
+        }
+      },
+      "number": {
+        "of": {
+          "connection": {
+            "retry": {
+              "attempts": {
+                "for": {
+                  "wo": {
+                    "fafd119f": "Number of connection retry attempts for workshop downloads (1–1000)"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "timeout": {
+        "seconds": {
+          "1f966032": "Timeout (seconds)"
+        }
+      },
+      "performance": {
+        "442aded8": "Performance"
+      },
+      "extended": {
+        "asset": {
+          "pools": {
+            "d67dcaf2": "Extended asset pools"
+          }
+        }
+      },
+      "increase": {
+        "model": {
+          "image": {
+            "and": {
+              "material": {
+                "pool": {
+                  "lim": {
+                    "0eee756c": "Increase model, image, and material pool limits for heavy mods (requires restart)"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "reduce": {
+        "stuttering": {
+          "ede42b92": "Reduce stuttering"
+        }
+      },
+      "rename": {
+        "d3dcompiler": {
+          "46": {
+            "dll": {
+              "to": {
+                "use": {
+                  "latest": {
+                    "co": {
+                      "599d8ee5": "Rename d3dcompiler_46.dll to use latest compiler and reduce shader stutter"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "video": {
+        "d534be82": "Video"
+      },
+      "links": {
+        "9024c197": "Links"
+      },
+      "about": {
+        "4efca0d1": "About"
+      },
+      "ezz": {
+        "boiii": {
+          "6a262243": "EZZ BOIII"
+        }
+      },
+      "network": {
+        "1744b964": "Network",
+        "password": {
+          "73c76365": "Network Password"
+        }
+      },
+      "private": {
+        "network": {
+          "key": {
+            "for": {
+              "server": {
+                "isolation": {
+                  "c": {
+                    "a444ab62": "Private network key for server isolation (clients must match to connect)"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "password": {
+        "required": {
+          "to": {
+            "join": {
+              "your": {
+                "hosted": {
+                  "game": {
+                    "f23f31f1": "Password required to join your hosted game (g_password, leave empty to disable)"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "only": {
+        "allow": {
+          "friends": {
+            "to": {
+              "join": {
+                "your": {
+                  "lobby": {
+                    "eb77722d": "Only allow friends to join your lobby"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "reset": {
+        "all": {
+          "settings": {
+            "to": {
+              "defaults": {
+                "2cb04945": "Reset All Settings to Defaults"
+              }
+            }
+          },
+          "asset": {
+            "pool": {
+              "sizes": {
+                "to": {
+                  "their": {
+                    "defaul": {
+                      "0d3fcfe8": "Reset all asset pool sizes to their default values?"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "asset": {
+          "pool": {
+            "sizes": {
+              "to": {
+                "default": {
+                  "88fad6b6": "Reset Asset Pool Sizes to Default"
+                }
+              }
+            }
+          },
+          "pools": {
+            "65b0b80a": "Reset Asset Pools"
+          }
+        },
+        "settings": {
+          "c17307e2": "Reset Settings"
+        }
+      },
+      "turn": {
+        "off": {
+          "all": {
+            "asset": {
+              "pool": {
+                "patches": {
+                  "and": {
+                    "use": {
+                      "th": {
+                        "12bd6db2": "Turn off all asset pool patches and use the game's original limits (requires restart)"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "these": {
+        "settings": {
+          "control": {
+            "memory": {
+              "allocation": {
+                "f": {
+                  "f9f12fcf": "These settings control memory allocation for game assets. Setting values too high can cause crashes or excessive memory usage. Only change these if you know what you're doing."
+                }
+              }
+            }
+          }
+        }
+      },
+      "physics": {
+        "models": {
+          "c6b69e9a": "Physics & Models"
+        }
+      },
+      "phys": {
+        "preset": {
+          "8045408c": "Phys Preset"
+        },
+        "constraints": {
+          "ec16cdbe": "Phys Constraints"
+        }
+      },
+      "destructible": {
+        "def": {
+          "4f230377": "Destructible Def"
+        }
+      },
+      "xmodel": {
+        "f5bea40b": "XModel",
+        "mesh": {
+          "fc114430": "XModel Mesh"
+        },
+        "alias": {
+          "724507a3": "XModel Alias"
+        }
+      },
+      "materials": {
+        "rendering": {
+          "568c13b2": "Materials & Rendering"
+        }
+      },
+      "material": {
+        "616cb218": "Material"
+      },
+      "compute": {
+        "shader": {
+          "set": {
+            "3608e572": "Compute Shader Set"
+          }
+        }
+      },
+      "technique": {
+        "set": {
+          "87df74e2": "Technique Set"
+        }
+      },
+      "image": {
+        "1aa4cb0b": "Image"
+      },
+      "light": {
+        "def": {
+          "0b960d14": "Light Def"
+        },
+        "description": {
+          "27ba100e": "Light Description"
+        }
+      },
+      "lensflare": {
+        "def": {
+          "fc38a57a": "Lensflare Def"
+        }
+      },
+      "klf": {
+        "new": {
+          "lensflare": {
+            "1c072577": "KLF (New Lensflare)"
+          }
+        }
+      },
+      "texture": {
+        "list": {
+          "b80067ed": "Texture List"
+        },
+        "combo": {
+          "3ebd8bcf": "Texture Combo"
+        }
+      },
+      "maps": {
+        "volumes": {
+          "visibility": {
+            "f163faa9": "Maps, Volumes & Visibility"
+          }
+        }
+      },
+      "col": {
+        "map": {
+          "06838bb9": "Col Map"
+        }
+      },
+      "com": {
+        "map": {
+          "268e3e31": "Com Map"
+        }
+      },
+      "map": {
+        "ents": {
+          "91bca7c5": "Map Ents"
+        },
+        "table": {
+          "05f1b009": "Map Table",
+          "loading": {
+            "images": {
+              "29d2fb42": "Map Table Loading Images"
+            }
+          }
+        }
+      },
+      "gfx": {
+        "map": {
+          "71362fa8": "Gfx Map"
+        }
+      },
+      "ui": {
+        "map": {
+          "67fdd9f0": "UI Map"
+        }
+      },
+      "addon": {
+        "map": {
+          "ents": {
+            "68e862f4": "Addon Map Ents"
+          }
+        }
+      },
+      "umbra": {
+        "tome": {
+          "f2e6a40b": "Umbra Tome"
+        }
+      },
+      "navmesh": {
+        "5abaa18c": "Navmesh"
+      },
+      "nav": {
+        "volume": {
+          "e9057434": "Nav Volume"
+        }
+      },
+      "audio": {
+        "sound": {
+          "d573720c": "Audio & Sound"
+        }
+      },
+      "sound": {
+        "46124e02": "Sound",
+        "patch": {
+          "51f4b5cb": "Sound Patch"
+        }
+      },
+      "snd": {
+        "driver": {
+          "globals": {
+            "6060d1c4": "Snd Driver Globals"
+          }
+        }
+      },
+      "impact": {
+        "sounds": {
+          "table": {
+            "7e46a69a": "Impact Sounds Table"
+          }
+        }
+      },
+      "surface": {
+        "sound": {
+          "def": {
+            "53f3123d": "Surface Sound Def"
+          }
+        },
+        "fx": {
+          "table": {
+            "f98e8553": "Surface FX Table"
+          }
+        }
+      },
+      "entity": {
+        "sound": {
+          "impacts": {
+            "23a1577f": "Entity Sound Impacts"
+          }
+        },
+        "fx": {
+          "impacts": {
+            "5dd93e91": "Entity FX Impacts"
+          }
+        }
+      },
+      "weapons": {
+        "attachments": {
+          "101f80f9": "Weapons & Attachments"
+        }
+      },
+      "weapon": {
+        "1710782c": "Weapon",
+        "def": {
+          "a98fcf93": "Weapon Def"
+        },
+        "variant": {
+          "7a400003": "Weapon Variant"
+        },
+        "full": {
+          "77d932ae": "Weapon Full"
+        },
+        "camo": {
+          "b5864049": "Weapon Camo"
+        }
+      },
+      "shared": {
+        "weapon": {
+          "sounds": {
+            "6c713062": "Shared Weapon Sounds"
+          }
+        }
+      },
+      "attachment": {
+        "040d2b36": "Attachment",
+        "unique": {
+          "fafc579f": "Attachment Unique"
+        },
+        "cosmetic": {
+          "variant": {
+            "6d3cad93": "Attachment Cosmetic Variant"
+          }
+        }
+      },
+      "fx": {
+        "mechanics": {
+          "ui": {
+            "0d860746": "FX, Mechanics & UI"
+          }
+        },
+        "adf02dd6": "FX"
+      },
+      "tag": {
+        "fx": {
+          "2690f9ba": "Tag FX"
+        }
+      },
+      "impacts": {
+        "fx": {
+          "table": {
+            "b1872923": "Impacts FX Table"
+          }
+        }
+      },
+      "tracer": {
+        "1719e009": "Tracer"
+      },
+      "slug": {
+        "d15387ec": "Slug"
+      },
+      "bullet": {
+        "penetration": {
+          "e1091139": "Bullet Penetration"
+        }
+      },
+      "loc": {
+        "dmg": {
+          "table": {
+            "ceded03b": "Loc Dmg Table"
+          }
+        }
+      },
+      "aim": {
+        "table": {
+          "c64cfe62": "Aim Table"
+        }
+      },
+      "shellshock": {
+        "b6dda493": "Shellshock"
+      },
+      "flame": {
+        "table": {
+          "0e979973": "Flame Table"
+        }
+      },
+      "font": {
+        "64d0b3ad": "Font",
+        "icon": {
+          "49c10c7b": "Font Icon"
+        }
+      },
+      "truetype": {
+        "font": {
+          "2103640f": "TrueType Font"
+        }
+      },
+      "cg": {
+        "media": {
+          "table": {
+            "d3afa61c": "CG Media Table"
+          }
+        }
+      },
+      "characters": {
+        "ai": {
+          "vehicles": {
+            "39ba1c52": "Characters, AI & Vehicles"
+          }
+        }
+      },
+      "ai": {
+        "type": {
+          "2945ddcd": "AI Type"
+        }
+      },
+      "character": {
+        "1405a63e": "Character"
+      },
+      "vehicle": {
+        "a62394ba": "Vehicle",
+        "fx": {
+          "def": {
+            "a2e69f79": "Vehicle FX Def"
+          }
+        },
+        "sound": {
+          "def": {
+            "21d6a4eb": "Vehicle Sound Def"
+          }
+        }
+      },
+      "footstep": {
+        "table": {
+          "095aeffb": "Footstep Table"
+        }
+      },
+      "animation": {
+        "behaviors": {
+          "a5c05cd6": "Animation & Behaviors"
+        }
+      },
+      "xanim": {
+        "beeab26a": "XAnim"
+      },
+      "sanim": {
+        "c725929e": "SAnim"
+      },
+      "anim": {
+        "selector": {
+          "table": {
+            "b234b6aa": "Anim Selector Table"
+          }
+        },
+        "mapping": {
+          "table": {
+            "2c28f40b": "Anim Mapping Table"
+          }
+        },
+        "state": {
+          "machine": {
+            "7facd086": "Anim State Machine"
+          }
+        }
+      },
+      "behavior": {
+        "tree": {
+          "86eab9fb": "Behavior Tree"
+        },
+        "state": {
+          "machine": {
+            "a7b25e77": "Behavior State Machine"
+          }
+        }
+      },
+      "data": {
+        "scripts": {
+          "tables": {
+            "eb4826ba": "Data, Scripts & Tables"
+          }
+        }
+      },
+      "raw": {
+        "file": {
+          "d3ccb5d0": "Raw File"
+        }
+      },
+      "script": {
+        "parse": {
+          "tree": {
+            "67ad47fa": "Script Parse Tree"
+          }
+        },
+        "bundle": {
+          "09a672d8": "Script Bundle",
+          "list": {
+            "af35432a": "Script Bundle List"
+          }
+        }
+      },
+      "localize": {
+        "70447770": "Localize"
+      },
+      "string": {
+        "table": {
+          "956b15e0": "String Table"
+        }
+      },
+      "structured": {
+        "table": {
+          "8792422c": "Structured Table"
+        }
+      },
+      "leaderboard": {
+        "def": {
+          "33530d3e": "Leaderboard Def"
+        }
+      },
+      "ddl": {
+        "95da96f2": "DDL"
+      },
+      "key": {
+        "value": {
+          "pairs": {
+            "59de68de": "Key Value Pairs"
+          }
+        },
+        "e": {
+          "g": {
+            "f5": {
+              "20d02292": "Key (e.g. F5)"
+            }
+          }
+        }
+      },
+      "customization": {
+        "table": {
+          "65a15196": "Customization Table",
+          "fe": {
+            "images": {
+              "100e24a2": "Customization Table FE Images"
+            }
+          },
+          "color": {
+            "4f9c0094": "Customization Table Color"
+          }
+        }
+      },
+      "medal": {
+        "e191eb56": "Medal",
+        "table": {
+          "9790a80f": "Medal Table"
+        }
+      },
+      "misc": {
+        "advanced": {
+          "ba2c246a": "Misc & Advanced"
+        }
+      },
+      "objective": {
+        "3b20adc3": "Objective",
+        "list": {
+          "a258ba25": "Objective List"
+        }
+      },
+      "zbarrier": {
+        "48148361": "ZBarrier"
+      },
+      "glasses": {
+        "eb25ede2": "Glasses"
+      },
+      "type": {
+        "info": {
+          "b0e9b52e": "Type Info"
+        },
+        "baaddf70": "Type"
+      },
+      "rumble": {
+        "78b3cc36": "Rumble"
+      },
+      "xcam": {
+        "4f0e7e94": "XCam"
+      },
+      "bg": {
+        "cache": {
+          "ac9223fc": "BG Cache"
+        }
+      },
+      "bitfield": {
+        "c787d628": "Bitfield"
+      },
+      "binary": {
+        "html": {
+          "8a925db2": "Binary HTML"
+        }
+      },
+      "laser": {
+        "38df4d69": "Laser"
+      },
+      "beam": {
+        "2e5b0ef5": "Beam"
+      },
+      "streamer": {
+        "hint": {
+          "c53424cb": "Streamer Hint"
+        }
+      },
+      "steam": {
+        "update": {
+          "fix": {
+            "36634900": "Steam Update Fix"
+          }
+        }
+      },
+      "previous": {
+        "blackops3": {
+          "exe": {
+            "2f509394": "Previous BlackOps3.exe"
+          }
+        }
+      },
+      "apply": {
+        "a": {
+          "predefined": {
+            "graphics": {
+              "configuration": {
+                "25ded7ac": "Apply a predefined graphics configuration"
+              }
+            }
+          }
+        },
+        "31e392d1": "Apply"
+      },
+      "select": {
+        "1339bddc": "Select...",
+        "game": {
+          "modes": {
+            "to": {
+              "remove": {
+                "b4bfa797": "Select game modes to remove"
+              }
+            }
+          },
+          "mode": {
+            "4122873d": "Select Game Mode"
+          }
+        }
+      },
+      "smooth": {
+        "da519387": "Smooth",
+        "framerate": {
+          "30151dac": "Smooth Framerate"
+        }
+      },
+      "low": {
+        "latency": {
+          "705e2fd3": "Low-Latency"
+        }
+      },
+      "fullscreen": {
+        "c461dbb2": "Fullscreen"
+      },
+      "resolution": {
+        "d4055faf": "Resolution"
+      },
+      "monitor": {
+        "refresh": {
+          "rate": {
+            "in": {
+              "hz": {
+                "7d9d6abe": "Monitor refresh rate in Hz"
+              }
+            }
+          }
+        }
+      },
+      "v": {
+        "sync": {
+          "784de207": "V-Sync"
+        }
+      },
+      "fps": {
+        "limit": {
+          "dcc5d5ce": "FPS Limit"
+        }
+      },
+      "maximum": {
+        "frames": {
+          "per": {
+            "second": {
+              "0": {
+                "unlimited": {
+                  "825f9e49": "Maximum frames per second (0 = unlimited)"
+                }
+              }
+            }
+          }
+        }
+      },
+      "fov": {
+        "5608c2a1": "FOV"
+      },
+      "field": {
+        "of": {
+          "view": {
+            "65": {
+              "120": {
+                "a29d9af0": "Field of view (65-120)"
+              }
+            }
+          }
+        }
+      },
+      "unlock": {
+        "all": {
+          "graphics": {
+            "options": {
+              "3aba198e": "Unlock all graphics options"
+            }
+          }
+        }
+      },
+      "remove": {
+        "graphics": {
+          "restrictions": {
+            "for": {
+              "advanced": {
+                "995be343": "Remove graphics restrictions for advanced settings access"
+              }
+            }
+          }
+        },
+        "it": {
+          "first": {
+            "if": {
+              "you": {
+                "want": {
+                  "to": {
+                    "reinstall": {
+                      "1b5c9544": "Remove it first if you want to reinstall."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "c3812fc4": "Remove",
+        "workshop": {
+          "item": {
+            "8e691bc9": "Remove workshop item"
+          }
+        }
+      },
+      "max": {
+        "frame": {
+          "latency": {
+            "96486942": "Max Frame Latency"
+          }
+        },
+        "queued": {
+          "frames": {
+            "1": {
+              "low": {
+                "latency": {
+                  "4": {
+                    "smooth": {
+                      "1ae9b86e": "Max queued frames (1=low latency, 4=smooth)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "target": {
+        "all": {
+          "available": {
+            "vram": {
+              "to": {
+                "reduce": {
+                  "textur": {
+                    "8567c4f3": "Target all available VRAM to reduce texture streaming stutter"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "custom": {
+        "key": {
+          "binds": {
+            "db49e11f": "Custom Key Binds"
+          }
+        },
+        "binds": {
+          "761e94aa": "Custom binds"
+        }
+      },
+      "repair": {
+        "tools": {
+          "731932af": "Repair Tools"
+        },
+        "workshop": {
+          "folders": {
+            "f91ad30a": "Repair Workshop Folders"
+          }
+        }
+      },
+      "ready": {
+        "5fa7aac5": "Ready"
+      },
+      "clearing": {
+        "profile": {
+          "data": {
+            "permanently": {
+              "removes": {
+                "75d30046": "Clearing profile data permanently removes boiii_players, including settings, saves, and binds."
+              }
+            }
+          }
+        }
+      },
+      "all": {
+        "a52ace42": "All",
+        "items": {
+          "are": {
+            "up": {
+              "to": {
+                "date": {
+                  "5ee10a13": "All items are up to date!"
+                }
+              }
+            }
+          }
+        },
+        "good": {
+          "556115b1": "all good!"
+        },
+        "settings": {
+          "have": {
+            "been": {
+              "reset": {
+                "to": {
+                  "defaults": {
+                    "r": {
+                      "6ba3edd8": "All settings have been reset to defaults. Restart the game for changes to take effect."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "asset": {
+          "pool": {
+            "sizes": {
+              "have": {
+                "been": {
+                  "reset": {
+                    "to": {
+                      "de": {
+                        "0f7bb398": "All asset pool sizes have been reset to defaults. Restart the game for changes to take effect."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "zombies": {
+        "f0dd1d97": "Zombies"
+      },
+      "multiplayer": {
+        "563370a7": "Multiplayer"
+      },
+      "campaign": {
+        "268286d2": "Campaign"
+      },
+      "start": {
+        "verification": {
+          "01615b8f": "Start Verification"
+        }
+      },
+      "message": {
+        "2f77668a": "Message"
+      },
+      "ok": {
+        "565339bc": "OK"
+      },
+      "confirm": {
+        "eebdd24a": "Confirm"
+      },
+      "credits": {
+        "2a6b24ad": "Credits"
+      },
+      "maintainers": {
+        "4eb9f909": "Maintainers"
+      },
+      "you": {
+        "can": {
+          "browse": {
+            "the": {
+              "workshop": {
+                "on": {
+                  "wine": {
+                    "but": {
+                      "do": {
+                        "4ae1ad39": "You can browse the Workshop on Wine, but downloads are currently unavailable because SteamCMD does not work through Wine. You can still open item pages on Steam."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "this": {
+        "map": {
+          "is": {
+            "an": {
+              "archive": {
+                "ca3f9dcb": "THIS MAP IS AN ARCHIVE"
+              }
+            }
+          }
+        },
+        "item": {
+          "is": {
+            "already": {
+              "installed": {
+                "remove": {
+                  "it": {
+                    "f": {
+                      "d6c21346": "This item is already installed. Remove it first to reinstall."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "cannot": {
+          "be": {
+            "undone": {
+              "7f5d26a5": "? This cannot be undone."
+            }
+          }
+        },
+        "boiii": {
+          "friend": {
+            "code": {
+              "is": {
+                "already": {
+                  "in": {
+                    "your": {
+                      "67d4b449": "This BOIII Friend Code is already in your friends list."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "initializing": {
+        "6f191ff7": "Initializing..."
+      },
+      "popularity": {
+        "fe60d851": "Popularity"
+      },
+      "size": {
+        "1af85190": "Size"
+      },
+      "rating": {
+        "9f295304": "Rating"
+      },
+      "subscribers": {
+        "a344c89d": "Subscribers"
+      },
+      "already": {
+        "installed": {
+          "79eaac97": "Already Installed",
+          "9616d808": "Already installed"
+        }
+      },
+      "starting": {
+        "download": {
+          "for": {
+            "c9e914da": "Starting download for "
+          }
+        }
+      },
+      "a": {
+        "download": {
+          "is": {
+            "already": {
+              "in": {
+                "progress": {
+                  "stop": {
+                    "it": {
+                      "63a816c8": "A download is already in progress. Stop it and download \""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "workshop": {
+          "download": {
+            "is": {
+              "in": {
+                "progress": {
+                  "keep": {
+                    "th": {
+                      "2b2c7ffc": "A workshop download is in progress. Keep the launcher open while you play?"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "update": {
+        "c1c1009d": "Update",
+        "now": {
+          "f96f4d46": "Update Now"
+        }
+      },
+      "cannot": {
+        "remove": {
+          "folder": {
+            "name": {
+              "is": {
+                "missing": {
+                  "17b31497": "Cannot remove: folder name is missing."
+                }
+              }
+            }
+          }
+        },
+        "check": {
+          "updates": {
+            "55adb296": "Cannot check updates."
+          }
+        }
+      },
+      "another": {
+        "removal": {
+          "is": {
+            "already": {
+              "running": {
+                "6b99e0e5": "Another removal is already running."
+              }
+            }
+          }
+        }
+      },
+      "removal": {
+        "failed": {
+          "59ac9c0e": "Removal failed"
+        },
+        "complete": {
+          "b2834eac": "Removal complete"
+        }
+      },
+      "are": {
+        "you": {
+          "sure": {
+            "you": {
+              "want": {
+                "to": {
+                  "remove": {
+                    "61433ab4": "Are you sure you want to remove "
+                  },
+                  "reset": {
+                    "all": {
+                      "setting": {
+                        "fbcf4705": "Are you sure you want to reset all settings to defaults? This cannot be undone."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "failed": {
+        "to": {
+          "remove": {
+            "files": {
+              "fdceca7c": "Failed to remove files: "
+            }
+          },
+          "parse": {
+            "verification": {
+              "json": {
+                "manifest": {
+                  "740c1d83": "Failed to parse verification.json manifest"
+                }
+              }
+            }
+          },
+          "apply": {
+            "preset": {
+              "fd1be546": "Failed to apply preset: "
+            }
+          },
+          "add": {
+            "friend": {
+              "please": {
+                "check": {
+                  "the": {
+                    "inpu": {
+                      "a45daa53": "Failed to add friend. Please check the inputs."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "031a8f0f": "Failed"
+      },
+      "wrong": {
+        "size": {
+          "d6fb8664": "wrong size"
+        }
+      },
+      "verification": {
+        "not": {
+          "available": {
+            "ee4ef50f": "Verification not available."
+          }
+        },
+        "is": {
+          "already": {
+            "running": {
+              "e0ef2304": "Verification is already running."
+            }
+          }
+        },
+        "failed": {
+          "try": {
+            "again": {
+              "912e2b0d": "Verification failed (try again)"
+            }
+          }
+        }
+      },
+      "black": {
+        "ops": {
+          "iii": {
+            "is": {
+              "already": {
+                "running": {
+                  "d8057b57": "Black Ops III is already running."
+                }
+              }
+            }
+          }
+        }
+      },
+      "invalid": {
+        "folder": {
+          "55fc0560": "Invalid Folder"
+        },
+        "manifest": {
+          "no": {
+            "files": {
+              "array": {
+                "112d44e1": "Invalid manifest: no files array"
+              }
+            }
+          }
+        }
+      },
+      "the": {
+        "selected": {
+          "folder": {
+            "does": {
+              "not": {
+                "contain": {
+                  "black": {
+                    "24cda99e": "The selected folder does not contain BlackOps3.exe."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "key": {
+          "must": {
+            "not": {
+              "contain": {
+                "spaces": {
+                  "quotes": {
+                    "or": {
+                      "bd2d1c4e": "The key must not contain spaces, quotes, or semicolons."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "command": {
+          "must": {
+            "not": {
+              "contain": {
+                "quotes": {
+                  "or": {
+                    "lin": {
+                      "de20f1e5": "The command must not contain quotes or line breaks."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "launcher": {
+          "could": {
+            "not": {
+              "run": {
+                "diagnostics": {
+                  "mak": {
+                    "21437f9b": "The launcher could not run diagnostics. Make sure the executable and launcher data are from the same build."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "restart": {
+        "boiii": {
+          "for": {
+            "the": {
+              "change": {
+                "to": {
+                  "take": {
+                    "full": {
+                      "d8da7003": "Restart BOIII for the change to take full effect."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "edit": {
+        "464c4ffd": "Edit"
+      },
+      "could": {
+        "not": {
+          "remove": {
+            "this": {
+              "bind": {
+                "2108baf0": "Could not remove this bind."
+              }
+            }
+          },
+          "save": {
+            "the": {
+              "binds": {
+                "file": {
+                  "a19b35e1": "Could not save the binds file."
+                }
+              }
+            }
+          }
+        }
+      },
+      "command": {
+        "e": {
+          "g": {
+            "cg": {
+              "fov": {
+                "100": {
+                  "c3ef807d": "Command (e.g. cg_fov 100)"
+                }
+              }
+            }
+          }
+        }
+      },
+      "native": {
+        "launcher": {
+          "bridge": {
+            "is": {
+              "unavailable": {
+                "f48f866c": "Native launcher bridge is unavailable"
+              }
+            }
+          }
+        }
+      },
+      "steamcmd": {
+        "7fc7d5ef": "SteamCMD"
+      },
+      "free": {
+        "disk": {
+          "space": {
+            "afe77031": "Free disk space"
+          }
+        }
+      },
+      "wine": {
+        "compatibility": {
+          "1e575d79": "Wine compatibility"
+        }
+      },
+      "blackops3": {
+        "exe": {
+          "was": {
+            "not": {
+              "found": {
+                "0f22396a": "BlackOps3.exe was not found"
+              }
+            }
+          }
+        }
+      },
+      "folder": {
+        "is": {
+          "missing": {
+            "use": {
+              "repair": {
+                "workshop": {
+                  "fold": {
+                    "077f2d95": "Folder is missing; use Repair Workshop Folders"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "preparing": {
+        "verification": {
+          "c48fea95": "Preparing verification..."
+        },
+        "removal": {
+          "327a435c": "Preparing removal..."
+        }
+      },
+      "filtering": {
+        "manifest": {
+          "files": {
+            "2159f493": "Filtering manifest files..."
+          }
+        }
+      },
+      "cancelled": {
+        "d353a99e": "Cancelled"
+      },
+      "done": {
+        "11a6767d": "Done"
+      },
+      "removing": {
+        "mod": {
+          "39d57c56": "Removing mod..."
+        },
+        "mods": {
+          "53ff78d7": "Removing mods..."
+        }
+      },
+      "nothing": {
+        "to": {
+          "remove": {
+            "5fd6e03e": "Nothing to remove"
+          }
+        }
+      },
+      "base": {
+        "game": {
+          "f547818a": "Base Game"
+        }
+      },
+      "zombie": {
+        "chronicles": {
+          "2a4efcad": "Zombie Chronicles"
+        }
+      },
+      "mp": {
+        "dlc": {
+          "2b49bb64": "MP DLC"
+        }
+      },
+      "zm": {
+        "dlc": {
+          "9f6f9de6": "ZM DLC"
+        }
+      },
+      "complete": {
+        "143b270a": "Complete"
+      },
+      "some": {
+        "folders": {
+          "could": {
+            "not": {
+              "be": {
+                "created": {
+                  "check": {
+                    "fo": {
+                      "8cfd56bc": "Some folders could not be created. Check folder permissions."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "permanently": {
+        "delete": {
+          "boiii": {
+            "players": {
+              "this": {
+                "remo": {
+                  "c5c6923e": "Permanently delete boiii_players? This removes saves, settings, and custom binds and cannot be undone."
+                }
+              }
+            }
+          }
+        }
+      },
+      "profile": {
+        "data": {
+          "was": {
+            "removed": {
+              "new": {
+                "defaults": {
+                  "will": {
+                    "699d352f": "Profile data was removed. New defaults will be created on next launch."
+                  }
+                }
+              }
+            }
+          },
+          "could": {
+            "not": {
+              "be": {
+                "removed": {
+                  "091fdd6a": "Profile data could not be removed."
+                }
+              }
+            }
+          }
+        }
+      },
+      "preset": {
+        "applied": {
+          "ad9fccd7": "Preset Applied"
+        }
+      },
+      "please": {
+        "enter": {
+          "both": {
+            "a": {
+              "display": {
+                "name": {
+                  "and": {
+                    "a": {
+                      "boi": {
+                        "b7bbbf63": "Please enter both a display name and a BOIII Friend Code."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "an": {
+        "error": {
+          "occurred": {
+            "while": {
+              "adding": {
+                "the": {
+                  "friend": {
+                    "4c7a0374": "An error occurred while adding the friend."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "error": {
+        "parsing": {
+          "releases": {
+            "50d8cd37": "Error parsing releases:"
+          }
+        },
+        "fetching": {
+          "releases": {
+            "6e88af87": "Error fetching releases:"
+          }
+        },
+        "d98ee0e5": "ERROR"
+      },
+      "checking": {
+        "2e5f79bb": "Checking..."
+      },
+      "running": {
+        "f4ccae29": "Running"
+      },
+      "beta": {
+        "experimental": {
+          "fa7ec2e4": "Beta (Experimental)"
+        }
+      }
+    },
+    "language": {
+      "label": "Launcher & game language",
+      "system": "System default",
+      "english": "English (United States)",
+      "french": "Français (France) — traduction partielle",
+      "help": "System default follows Windows when a translation is available. Game language changes only when supported by installed game content; French is partial."
+    },
+    "home": {
+      "description": "Call of Duty: Black Ops 3 enhanced with our modifications. Experience the full campaign, multiplayer, and zombies modes with improved stability and additional features.",
+      "features": "Launcher features",
+      "autoUpdates": "Auto updates",
+      "workshopReady": "Workshop ready",
+      "communityClient": "Community client",
+      "play": "▶ PLAY",
+      "playerName": "Player Name",
+      "playerNamePlaceholder": "Enter your name...",
+      "discord": "Discord",
+      "forum": "Forum",
+      "manage": "Manage",
+      "verifyFiles": "Verify Game Files",
+      "changeGamePath": "Change Game Path"
+    },
+    "launchOptions": {
+      "title": "Launch Options",
+      "advanced": "Launch with advanced options",
+      "argumentsLabel": "Additional launch arguments",
+      "argumentsPlaceholder": "Example: +set com_maxfps 60",
+      "help": "Optional arguments are passed to BOIII as written. The language menu already adds -french.",
+      "invalidTitle": "Advanced launch options",
+      "invalidMessage": "Enter one line of launch arguments, up to 512 characters. Control characters are not allowed."
+    },
+    "workshop": {
+      "alreadyInstalled": "This workshop item is already installed at:\n{path}\n\nRemove it first if you want to reinstall."
+    }
+  }
+}

@@ -93,7 +93,7 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
       refreshCurrencyModels(controllerIndex)
       CoD.OverlayUtility.ShowToast(
         "BlackMarketEquipped",
-        newValue == 1 and "Local currencies maxed." or "Local currencies cleared.",
+        newValue == 1 and Engine.Localize("BOIII_FR_CURRENCY_MAXED") or Engine.Localize("BOIII_FR_CURRENCY_CLEARED"),
         nil,
         "uie_t7_icon_codpoints"
       )
@@ -111,8 +111,8 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
     optionsTable,
     CoD.OptionsUtility.CreateDvarSettings(
       controller,
-      "Unlock All Loot",
-      "Unlocks all Black Market loot.",
+      Engine.Localize("BOIII_FR_UNLOCK_ALL_LOOT"),
+      Engine.Localize("BOIII_FR_UNLOCK_ALL_LOOT_DESC"),
       "MPStatsSettings_unlock_loot",
       "cg_unlockall_loot",
       {
@@ -139,8 +139,8 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
       optionsTable,
       CoD.OptionsUtility.CreateDvarSettings(
         controller,
-        "Local Currency",
-        "Uses locally saved COD Points, Liquid Divinium, GobbleGums, and Cookbook Distills.",
+        Engine.Localize("BOIII_FR_LOCAL_CURRENCY"),
+        Engine.Localize("BOIII_FR_LOCAL_CURRENCY_DESC"),
         "MPStatsSettings_local_currency",
         "cg_local_currency",
         {
@@ -155,8 +155,8 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
       optionsTable,
       CoD.OptionsUtility.CreateDvarSettings(
         controller,
-        "Unlimited GobbleGums",
-        "Uses unlimited GobbleGums without replacing your earned inventory.",
+        Engine.Localize("BOIII_FR_UNLIMITED_GOBBLEGUMS"),
+        Engine.Localize("BOIII_FR_UNLIMITED_GOBBLEGUMS_DESC"),
         "MPStatsSettings_unlimited_gobblegums",
         "cg_unlockall_gobblegums",
         {
@@ -171,8 +171,8 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
       optionsTable,
       CoD.OptionsUtility.CreateDvarSettings(
         controller,
-        "Max Local Currencies",
-        "Sets COD Points, Liquid Divinium, and Cookbook Distills to maximum or zero.",
+        Engine.Localize("BOIII_FR_MAX_LOCAL_CURRENCIES"),
+        Engine.Localize("BOIII_FR_MAX_LOCAL_CURRENCIES_DESC"),
         "MPStatsSettings_max_currencies",
         "cg_max_local_currencies",
         {
@@ -189,8 +189,8 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
       optionsTable,
       CoD.OptionsUtility.CreateDvarSettings(
         controller,
-        "Unlock All Purchases",
-        "All items that need to be purchased with unlock tokens are unlocked.",
+        Engine.Localize("BOIII_FR_UNLOCK_ALL_PURCHASES"),
+        Engine.Localize("BOIII_FR_UNLOCK_ALL_PURCHASES_DESC"),
         "MPStatsSettings_purchase_all",
         "cg_unlockall_purchases",
         {
@@ -212,8 +212,8 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
       optionsTable,
       CoD.OptionsUtility.CreateDvarSettings(
         controller,
-        "Unlock All Class Slots",
-        "Unlocks all create-a-class slots and sets.",
+        Engine.Localize("BOIII_FR_UNLOCK_ALL_CLASS_SLOTS"),
+        Engine.Localize("BOIII_FR_UNLOCK_ALL_CLASS_SLOTS_DESC"),
         "MPStatsSettings_unlockall_cac_slots",
         "cg_unlockall_cac_slots",
         {
@@ -236,8 +236,8 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
     optionsTable,
     CoD.OptionsUtility.CreateDvarSettings(
       controller,
-      "Unlock All Attachments",
-      "All attachments on weapons are unlocked.",
+      Engine.Localize("BOIII_FR_UNLOCK_ALL_ATTACHMENTS"),
+      Engine.Localize("BOIII_FR_UNLOCK_ALL_ATTACHMENTS_DESC"),
       "MPStatsSettings_unlockall_attachments",
       "cg_unlockall_attachments",
       {
@@ -259,8 +259,8 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
     optionsTable,
     CoD.OptionsUtility.CreateDvarSettings(
       controller,
-      "Unlock all Camos and Reticles",
-      "All camos and reticles on weapons are unlocked.",
+      Engine.Localize("BOIII_FR_UNLOCK_ALL_CAMOS"),
+      Engine.Localize("BOIII_FR_UNLOCK_ALL_CAMOS_DESC"),
       "MPStatsSettings_unlockall_camos_and_reticles",
       "cg_unlockall_camos_and_reticles",
       {
@@ -282,8 +282,8 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
     optionsTable,
     CoD.OptionsUtility.CreateDvarSettings(
       controller,
-      "Unlock all Calling Cards",
-      "All calling cards are unlocked.",
+      Engine.Localize("BOIII_FR_UNLOCK_ALL_CALLING_CARDS"),
+      Engine.Localize("BOIII_FR_UNLOCK_ALL_CALLING_CARDS_DESC"),
       "MPStatsSettings_unlockall_calling_cards",
       "cg_unlockall_calling_cards",
       {
@@ -306,8 +306,8 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
       optionsTable,
       CoD.OptionsUtility.CreateDvarSettings(
         controller,
-        "Unlock all Specialists Outfits",
-        "All specialists outfits are unlocked.",
+        Engine.Localize("BOIII_FR_UNLOCK_ALL_OUTFITS"),
+        Engine.Localize("BOIII_FR_UNLOCK_ALL_OUTFITS_DESC"),
         "MPStatsSettings_unlockall_specialists_outfits",
         "cg_unlockall_specialists_outfits",
         {
@@ -331,8 +331,8 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
       optionsTable,
       CoD.OptionsUtility.CreateDvarSettings(
         controller,
-        "Unlock Easter Eggs",
-        "Complete all Easter Egg Achievements.",
+        Engine.Localize("BOIII_FR_COMPLETE_EASTER_EGGS"),
+        Engine.Localize("BOIII_FR_COMPLETE_EASTER_EGGS_DESC"),
         "MPStatsSettings_complete_ee",
         "all_ee_completed",
         {
@@ -399,22 +399,22 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
 
     for index, value in ipairs(rankLevels) do
       table.insert(rankObjs, {
-        name = value <= minlevel and "Min" or value >= maxlevel and "Max" or value,
+        name = value <= minlevel and Engine.Localize("BOIII_FR_MIN") or value >= maxlevel and Engine.Localize("BOIII_FR_MAX") or value,
         value = value - 1,
         default = value == currentRank,
-        title = "Rank Level",
-        desc = value ~= currentRank and "" or "Current Rank",
+        title = Engine.Localize("BOIII_FR_RANK_LEVEL"),
+        desc = value ~= currentRank and "" or Engine.Localize("BOIII_FR_CURRENT_RANK"),
       })
     end
 
     if hasDefault and currentRank ~= minlevel and currentRank < maxlevel and not isMasterPrestige then
       table.insert(rankObjs, {
-        name = "Current: "
-          .. tostring(currentRank <= minlevel and "Min" or currentRank >= maxlevel and "Max" or currentRank),
+        name = Engine.Localize("BOIII_FR_CURRENT") .. ": "
+          .. tostring(currentRank <= minlevel and Engine.Localize("BOIII_FR_MIN") or currentRank >= maxlevel and Engine.Localize("BOIII_FR_MAX") or currentRank),
         value = currentRank - 1,
         default = true,
-        title = "Rank Level",
-        desc = "Do not adjust rank",
+        title = Engine.Localize("BOIII_FR_RANK_LEVEL"),
+        desc = Engine.Localize("BOIII_FR_DO_NOT_CHANGE_RANK"),
       })
     end
   end
@@ -422,10 +422,10 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
   local prestigeTable = {}
   for i = 0, 11 do
     table.insert(prestigeTable, {
-      name = i == 0 and "None" or i == 11 and "Master" or i,
+      name = i == 0 and Engine.Localize("BOIII_FR_NONE") or i == 11 and Engine.Localize("BOIII_FR_MASTER") or i,
       value = i,
       default = i == currentPrestige,
-      title = "Prestige",
+      title = Engine.Localize("BOIII_FR_PRESTIGE"),
       desc = "",
     })
   end
@@ -468,7 +468,7 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
   if #rankLevels > 0 then
     table.insert(optionsTable, {
       models = {
-        name = "Prestige",
+        name = Engine.Localize("BOIII_FR_PRESTIGE"),
         desc = "",
         image = nil,
         optionsDatasource = createSettingsDatasource(
@@ -496,7 +496,7 @@ DataSources.MPStatsSettings = DataSourceHelpers.ListSetup("MPStatsSettings", fun
 
     table.insert(optionsTable, {
       models = {
-        name = "Rank Level",
+        name = Engine.Localize("BOIII_FR_RANK_LEVEL"),
         desc = "",
         image = nil,
         optionsDatasource = createSettingsDatasource(

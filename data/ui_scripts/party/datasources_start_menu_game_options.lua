@@ -19,7 +19,7 @@ local function addFriendsAccessOption(options, controller)
   local friendsCanJoin = Engine.DvarBool(controller, "friends_open")
   table.insert(options, {
     models = {
-      displayText = friendsCanJoin and "CLOSE FRIEND JOINING" or "OPEN TO FRIENDS",
+      displayText = Engine.Localize(friendsCanJoin and "BOIII_FR_CLOSE_TO_FRIENDS" or "BOIII_FR_OPEN_TO_FRIENDS"),
       action = function(self, element, actionController, param, menu)
         Engine.Exec(actionController, "friends_open")
         StartMenuGoBack_ListElement(self, element, actionController, param, menu)
@@ -126,7 +126,7 @@ local customStartMenuGameOptions = ListHelper_SetupDataSource("StartMenuGameOpti
     if isLocalHost then
       restartGameOption = {
         models = {
-          displayText = "RESTART GAME",
+          displayText = Engine.Localize("BOIII_FR_RESTART_GAME"),
           action = RestartGame,
         },
       }
@@ -138,7 +138,7 @@ local customStartMenuGameOptions = ListHelper_SetupDataSource("StartMenuGameOpti
     if isLocalHost then
       restartGameOption = {
         models = {
-          displayText = "RESTART GAME",
+          displayText = Engine.Localize("BOIII_FR_RESTART_GAME"),
           action = RestartGame,
         },
       }
@@ -148,7 +148,7 @@ local customStartMenuGameOptions = ListHelper_SetupDataSource("StartMenuGameOpti
   if isLocalHost then
     table.insert(options, {
       models = {
-        displayText = "GAME TWEAKS",
+        displayText = Engine.Localize("BOIII_FR_GAME_TWEAKS"),
         action = function(self, element, controller, param, menu)
           if menu and menu.openPopup then
             menu:openPopup("BoiiiGameTweaksMenu", controller)
@@ -160,7 +160,7 @@ local customStartMenuGameOptions = ListHelper_SetupDataSource("StartMenuGameOpti
     })
     table.insert(options, {
       models = {
-        displayText = "KICK PLAYER",
+        displayText = Engine.Localize("BOIII_FR_KICK_PLAYER"),
         action = function(self, element, controller, param, menu)
           if menu and menu.openPopup then
             menu:openPopup("BoiiiKickPlayersMenu", controller)
@@ -177,7 +177,7 @@ local customStartMenuGameOptions = ListHelper_SetupDataSource("StartMenuGameOpti
   if endGameOption then
     table.insert(options, endGameOption)
   end
-  table.insert(options, { models = { displayText = "QUIT TO DESKTOP", action = OpenPCQuit } })
+  table.insert(options, { models = { displayText = Engine.Localize("BOIII_FR_QUIT_TO_DESKTOP"), action = OpenPCQuit } })
   return options
 end, true)
 
